@@ -1,0 +1,217 @@
+/* Figma Background Component Styles - Generated from Figma Dev */
+
+/* Figma Design Tokens */
+:root {
+  --bar-colour-1: rgba(136, 129, 163, 1);
+  --bar-colour-2: rgba(194, 106, 114, 1);
+  --bar-colour-3: rgba(122, 158, 126, 1);
+  --bar-colour-4: rgba(230, 162, 60, 1);
+  --bar-colour-5: rgba(27, 45, 74, 1);
+  --beige: rgba(243, 243, 238, 1);
+  --black: rgba(24, 24, 28, 1);
+  --blue: rgba(18, 66, 141, 1);
+  --deep-green: rgba(16, 59, 43, 1);
+  --grey-black: rgba(58, 58, 60, 1);
+  --light-green: rgba(59, 130, 103, 1);
+  --lime: rgba(203, 223, 144, 1);
+  --nigeria-green: rgba(31, 102, 75, 1);
+  --off-white: rgba(252, 250, 250, 1);
+  --outfit-font-family: "Outfit", Helvetica;
+  --outfit-font-size: 12px;
+  --outfit-font-style: normal;
+  --outfit-font-weight: 400;
+  --outfit-letter-spacing: 0px;
+  --outfit-line-height: normal;
+  --sky-blue: rgba(230, 241, 243, 1);
+  --variable-collection-color: rgba(203, 223, 144, 1);
+}
+
+/* Main container - Figma Dev generated styles */
+.figma-background {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.overlap-group-wrapper {
+  background-color: #ffffff;
+  height: 1080px;
+  width: 1920px;
+  position: relative;
+}
+
+.overlap-group {
+  /* Your Figma animation background */
+  background-image: url('/assets/helda_animation.gif');
+  background-position: 50% 50%;
+  background-size: cover;
+  height: 1080px;
+  width: 100%;
+  position: relative;
+  
+  /* Additional complex background animation from your examples */
+  background: 
+    url('/assets/helda_animation.gif'),
+    radial-gradient(circle at 20% 30%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(118, 75, 162, 0.1) 0%, transparent 50%),
+    linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  background-size: cover, 400px 400px, 300px 300px, 100% 100%;
+  background-position: 50% 50%, 0 0, 100% 100%, 0 0;
+  animation: backgroundFloat 20s ease-in-out infinite;
+}
+
+/* Floating background animation from your figma-examples */
+@keyframes backgroundFloat {
+  0%, 100% { 
+    background-position: 50% 50%, 0 0, 100% 100%, 0 0; 
+  }
+  50% { 
+    background-position: 50% 50%, 20px 20px, calc(100% - 20px) calc(100% - 20px), 0 0; 
+  }
+}
+
+.frame {
+  height: 13px;
+  left: 960px;
+  position: relative;
+  top: 456px;
+  width: 896px;
+}
+
+/* Responsive scaling for different screen sizes */
+@media (max-width: 1920px) {
+  .overlap-group-wrapper {
+    width: 100vw;
+    height: 56.25vw; /* Maintain 16:9 aspect ratio */
+    min-height: 100vh;
+  }
+  
+  .overlap-group {
+    height: 100%;
+  }
+  
+  .frame {
+    left: 50%;
+    transform: translateX(-50%);
+    /* Scale proportionally */
+    width: min(896px, 46.67vw);
+    height: min(13px, 0.68vw);
+    top: min(456px, 23.75vw);
+  }
+}
+
+@media (max-height: 1080px) {
+  .overlap-group-wrapper {
+    height: 100vh;
+    width: 177.78vh; /* Maintain 16:9 aspect ratio */
+    max-width: 100vw;
+  }
+  
+  .frame {
+    /* Scale based on viewport height */
+    left: 50vh;
+    top: min(456px, 42.22vh);
+    width: min(896px, 82.96vh);
+    height: min(13px, 1.2vh);
+  }
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  .overlap-group-wrapper {
+    width: 100vw;
+    height: 56.25vw;
+    min-height: 100vh;
+  }
+  
+  .frame {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80vw;
+    height: 3px;
+    top: 50vh;
+  }
+}
+
+/* Animated background shapes - REPLACE WITH FIGMA ELEMENTS */
+.background-shape {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  animation: float 6s ease-in-out infinite;
+}
+
+.shape-1 {
+  width: 300px;
+  height: 300px;
+  top: 10%;
+  left: 10%;
+  animation-delay: 0s;
+  /* REPLACE WITH:
+  background-image: url('/assets/figma-shape-1.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  */
+}
+
+.shape-2 {
+  width: 200px;
+  height: 200px;
+  top: 60%;
+  right: 15%;
+  animation-delay: 2s;
+}
+
+.shape-3 {
+  width: 150px;
+  height: 150px;
+  bottom: 20%;
+  left: 20%;
+  animation-delay: 4s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+  }
+}
+
+/* Instructions for Figma integration */
+.figma-instructions {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Hide instructions in production */
+@media (min-width: 768px) {
+  .figma-instructions {
+    display: none;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .background-shape {
+    width: 100px !important;
+    height: 100px !important;
+  }
+}

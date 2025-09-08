@@ -1,0 +1,13 @@
+.image {
+    height: 1080px;
+    width: 1920px;
+}
+
+.image .slide {
+    height: 1080px;
+    left: 0;
+    object-fit: cover;
+    position: fixed;
+    top: 0;
+    width: 1920px;
+}

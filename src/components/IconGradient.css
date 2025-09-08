@@ -1,0 +1,13 @@
+.image {
+    height: 138px;
+    width: 82px;
+}
+
+.image .icon-gradient {
+    height: 138px;
+    left: 0;
+    object-fit: cover;
+    position: fixed;
+    top: 0;
+    width: 82px;
+}

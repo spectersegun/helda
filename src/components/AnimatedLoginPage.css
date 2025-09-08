@@ -1,0 +1,30 @@
+/* Figma Dev Generated Styles for AnimatedLoginPage */
+
+.animated-login-page {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.animated-login-page .overlap-group-wrapper {
+    background-color: #ffffff;
+    height: 1080px;
+    width: 1920px;
+}
+
+.animated-login-page .overlap-group {
+    background-image: url('/assets/helda_animation.gif');
+    background-position: 50% 50%;
+    background-size: cover;
+    height: 1080px;
+}
+
+.animated-login-page .frame {
+    height: 13px;
+    left: 960px;
+    position: relative;
+    top: 456px;
+    width: 896px;
+}
