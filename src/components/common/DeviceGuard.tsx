@@ -12,7 +12,7 @@ export default function DeviceGuard({ children }: Props) {
 
   const isMobileDevice = () => {
     const ua = navigator.userAgent.toLowerCase();
-    return /iphone|android|mobile/i.test(ua) || window.innerWidth < 768;
+    return /iphone|android|mobile/i.test(ua) || window.innerWidth < 1280;
   };
 
   useEffect(() => {
