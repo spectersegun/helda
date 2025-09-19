@@ -44,13 +44,13 @@ export const HealthcareSector = () => {
         >
           <div className="rectangle" />
 
-          <div className="text-wrapper">Choose your Healthcare Category</div>
-
           <img
             className="icon-gradient"
             alt="Icon gradient"
             src={iconGradient1}
           />
+
+          <div className="text-wrapper">Choose your Healthcare Category</div>
 
           <div className="healthcare-categories">
             <div

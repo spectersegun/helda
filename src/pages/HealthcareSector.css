@@ -1,524 +1,525 @@
 .healthcare-sector {
-    background-color: #ffffff;
-    display: flex;
-    flex-direction: row;
-.healthcare-sector .group {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  .healthcare-sector .group {
     height: min(315px, 35vh);
     width: min(232px, 20vw);
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
+  }
 
-.healthcare-sector .group-wrapper {
+  .healthcare-sector .group-wrapper {
     height: min(49px, 6vh);
     width: 100%;
     position: absolute;
     bottom: 0;
     display: flex;
     justify-content: center;
-}tent: center;
-    width: 100vw;
-    height: 100vh;
-    opacity: 0;
-    animation: fadeIn 0.8s ease-in forwards;
-    overflow: hidden;
-    position: relative;
+  }
+  tent: center;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  animation: fadeIn 0.8s ease-in forwards;
+  overflow: hidden;
+  position: relative;
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .healthcare-sector .overlap-wrapper {
-    background-color: #ffffff;
-    height: 100vh;
-    width: 100vw;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background-color: #ffffff;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .healthcare-sector .overlap {
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 100vh;
-    width: 100vw;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .healthcare-categories {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    gap: min(60px, 5vw);
-    position: absolute;
-    bottom: 25%;
-    left: 50%;
-    transform: translateX(-50%);
-    flex-wrap: nowrap;
-    width: 90%;
-    max-width: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: min(60px, 5vw);
+  position: absolute;
+  bottom: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  flex-wrap: nowrap;
+  width: 90%;
+  max-width: 1200px;
 }
 
 .healthcare-sector .group {
-    height: min(315px, 35vh);
-    width: min(232px, 20vw);
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  height: min(315px, 35vh);
+  width: min(232px, 20vw);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .healthcare-sector .group-wrapper {
-    height: min(49px, 6vh);
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
+  height: min(49px, 6vh);
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
 }
 
 .healthcare-sector .rectangle {
-    background-color: var(--off-white);
-    border-radius: 20px;
-    height: min(955px, 88vh);
-    width: min(1778px, 92vw);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  background-color: var(--off-white);
+  border-radius: 20px;
+  height: min(955px, 88vh);
+  width: min(1778px, 92vw);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .healthcare-sector .text-wrapper {
-    color: #000000;
-    font-family: "Outfit-Bold", Helvetica;
-    font-size: clamp(20px, 5vw, 48px);
-    font-weight: 700;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    text-align: center;
-    top: 30%;
-    left: 50%;
-    transform: translateX(-50%);
-    white-space: nowrap;
-    max-width: 90vw;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  color: #000000;
+  font-family: "Outfit-Bold", Helvetica;
+  font-size: clamp(20px, 5vw, 40px);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  max-width: 90vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .healthcare-sector .icon-gradient {
-    height: min(138px, 12vh);
-    width: min(82px, 7vw);
-    object-fit: cover;
-    position: absolute;
-    top: 15%;
-    left: 50%;
-    transform: translateX(-50%);
+  height: min(138px, 12vh);
+  width: min(82px, 7vw);
+  object-fit: cover;
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .healthcare-sector .group {
-    height: min(315px, 35vh);
-    width: min(232px, 20vw);
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    flex: 0 0 auto;
+  height: min(315px, 35vh);
+  width: min(232px, 20vw);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  flex: 0 0 auto;
 }
 
 .healthcare-sector .group-wrapper {
-    height: min(49px, 6vh);
-    width: 100%;
-    position: absolute;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
+  height: min(49px, 6vh);
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
 }
 
 .healthcare-sector .overlap-group-wrapper {
-    height: min(49px, 6vh);
-    width: 100%;
-    display: flex;
-    justify-content: center;
+  height: min(49px, 6vh);
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .healthcare-sector .overlap-group {
-    background-color: var(--nigeria-green);
-    border-radius: 36px;
-    height: min(49px, 6vh);
-    position: relative;
-    width: min(232px, 20vw);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background-color: var(--nigeria-green);
+  border-radius: 36px;
+  height: min(49px, 6vh);
+  position: relative;
+  width: min(232px, 20vw);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .healthcare-sector .div {
-    color: #ffffff;
-    font-family: "Outfit-SemiBold", Helvetica;
-    font-size: clamp(12px, 1.5vw, 16px);
-    font-weight: 600;
-    letter-spacing: 0;
-    line-height: normal;
-    text-align: center;
+  color: #ffffff;
+  font-family: "Outfit-SemiBold", Helvetica;
+  font-size: clamp(12px, 1.5vw, 16px);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: normal;
+  text-align: center;
 }
 
 .healthcare-sector .img {
-    height: min(226px, 25vh);
-    width: min(163px, 15vw);
-    object-fit: cover;
-    border-radius: 20px;
-    margin-bottom: min(20px, 2vh);
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+  height: min(226px, 25vh);
+  width: min(163px, 15vw);
+  object-fit: cover;
+  border-radius: 20px;
+  margin-bottom: min(20px, 2vh);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Hospital image border */
 .healthcare-sector .group .img {
-    border: 1px solid #1F664B;
+  border: 1px solid #1f664b;
 }
 
 /* Dentist image border */
 .healthcare-sector .group-2 .img {
-    border: 2px solid #12428D;
+  border: 2px solid #12428d;
 }
 
 /* Pharmacy image border */
 .healthcare-sector .pharmacy-image .img {
-    border: 2px solid #CBDF90;
+  border: 2px solid #cbdf90;
 }
 
 .healthcare-sector .group-2 {
-    height: min(315px, 35vh);
-    width: min(232px, 20vw);
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    flex: 0 0 auto;
+  height: min(315px, 35vh);
+  width: min(232px, 20vw);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  flex: 0 0 auto;
 }
 
 .healthcare-sector .div-wrapper {
-    background-color: var(--blue);
-    border-radius: 36px;
-    height: min(49px, 6vh);
-    position: relative;
-    width: min(232px, 20vw);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background-color: var(--blue);
+  border-radius: 36px;
+  height: min(49px, 6vh);
+  position: relative;
+  width: min(232px, 20vw);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .healthcare-sector .text-wrapper-2 {
-    color: #ffffff;
-    font-family: "Outfit-SemiBold", Helvetica;
-    font-size: clamp(12px, 1.5vw, 16px);
-    font-weight: 600;
-    letter-spacing: 0;
-    line-height: normal;
-    text-align: center;
+  color: #ffffff;
+  font-family: "Outfit-SemiBold", Helvetica;
+  font-size: clamp(12px, 1.5vw, 16px);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: normal;
+  text-align: center;
 }
 
 .healthcare-sector .pharmacy-image {
-    height: min(315px, 35vh);
-    width: min(232px, 20vw);
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 0 0 auto;
+  height: min(315px, 35vh);
+  width: min(232px, 20vw);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 0 0 auto;
 }
 
 .healthcare-sector .overlap-group-2 {
-    background-color: var(--lime);
-    border-radius: 36px;
-    height: min(49px, 6vh);
-    position: relative;
-    width: min(232px, 20vw);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background-color: var(--lime);
+  border-radius: 36px;
+  height: min(49px, 6vh);
+  position: relative;
+  width: min(232px, 20vw);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .healthcare-sector .text-wrapper-3 {
-    color: var(--nigeria-green);
-    font-family: "Outfit-SemiBold", Helvetica;
-    font-size: clamp(12px, 1.5vw, 16px);
-    font-weight: 600;
-    letter-spacing: 0;
-    line-height: normal;
-    text-align: center;
+  color: var(--nigeria-green);
+  font-family: "Outfit-SemiBold", Helvetica;
+  font-size: clamp(12px, 1.5vw, 16px);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: normal;
+  text-align: center;
 }
 
 /* Hover states for healthcare categories */
 /* Hospital hover - green border */
 .healthcare-sector .group:hover .img.hospital {
-    border-radius: 36px;
-    border: 2px solid var(--nigeria-green, #1F664B);
-    background: var(--off-white, #FCFAFA);
-    transform: scale(1.1);
-    transition: all 0.3s ease;
+  border-radius: 36px;
+  border: 2px solid var(--nigeria-green, #1f664b);
+  background: var(--off-white, #fcfafa);
+  transform: scale(1.1);
+  transition: all 0.3s ease;
 }
 
 /* Hospital button hover */
 .healthcare-sector .group:hover .overlap-group {
-    border-radius: 36px;
-    border: 2px solid var(--nigeria-green, #1F664B);
-    background: var(--off-white, #FCFAFA);
-    transform: scale(1.05);
-    transition: all 0.3s ease;
+  border-radius: 36px;
+  border: 2px solid var(--nigeria-green, #1f664b);
+  background: var(--off-white, #fcfafa);
+  transform: scale(1.05);
+  transition: all 0.3s ease;
 }
 
 .healthcare-sector .group:hover .div {
-    color: var(--nigeria-green, #1F664B);
-    transition: color 0.3s ease;
+  color: var(--nigeria-green, #1f664b);
+  transition: color 0.3s ease;
 }
 
 /* Dentist hover - blue border */
 .healthcare-sector .group-2:hover .img.dentist {
-    border-radius: 36px;
-    border: 2px solid var(--blue, #12428D);
-    background: var(--off-white, #FCFAFA);
-    transform: scale(1.1);
-    transition: all 0.3s ease;
+  border-radius: 36px;
+  border: 2px solid var(--blue, #12428d);
+  background: var(--off-white, #fcfafa);
+  transform: scale(1.1);
+  transition: all 0.3s ease;
 }
 
 /* Dentist button hover */
 .healthcare-sector .group-2:hover .div-wrapper {
-    border-radius: 36px;
-    border: 2px solid var(--blue, #12428D);
-    background: var(--off-white, #FCFAFA);
-    transform: scale(1.05);
-    transition: all 0.3s ease;
+  border-radius: 36px;
+  border: 2px solid var(--blue, #12428d);
+  background: var(--off-white, #fcfafa);
+  transform: scale(1.05);
+  transition: all 0.3s ease;
 }
 
 .healthcare-sector .group-2:hover .text-wrapper-2 {
-    color: var(--blue, #12428D);
-    transition: color 0.3s ease;
+  color: var(--blue, #12428d);
+  transition: color 0.3s ease;
 }
 
 /* Pharmacy hover - lime border */
 .healthcare-sector .pharmacy-image:hover .img.pharmacy {
-    border-radius: 36px;
-    border: 2px solid var(--lime, #CBDF90);
-    background: var(--off-white, #FCFAFA);
-    transform: scale(1.1);
-    transition: all 0.3s ease;
+  border-radius: 36px;
+  border: 2px solid var(--lime, #cbdf90);
+  background: var(--off-white, #fcfafa);
+  transform: scale(1.1);
+  transition: all 0.3s ease;
 }
 
 /* Pharmacy button hover */
 .healthcare-sector .pharmacy-image:hover .overlap-group-2 {
-    border-radius: 36px;
-    border: 2px solid var(--lime, #CBDF90);
-    background: var(--off-white, #FCFAFA);
-    transform: scale(1.05);
-    transition: all 0.3s ease;
+  border-radius: 36px;
+  border: 2px solid var(--lime, #cbdf90);
+  background: var(--off-white, #fcfafa);
+  transform: scale(1.05);
+  transition: all 0.3s ease;
 }
 
 .healthcare-sector .pharmacy-image:hover .text-wrapper-3 {
-    color: var(--lime, #CBDF90);
-    transition: color 0.3s ease;
+  color: var(--lime, #cbdf90);
+  transition: color 0.3s ease;
 }
 
 /* Click states with shadows */
 /* Hospital click state */
 .healthcare-sector .group.clicked .img.hospital {
-    border-radius: 36px;
-    background: var(--nigeria-green, #1F664B);
-    box-shadow: 0 4px 7.3px -1px #1F664B;
-    transition: all 0.3s ease;
+  border-radius: 36px;
+  background: var(--nigeria-green, #1f664b);
+  box-shadow: 0 4px 7.3px -1px #1f664b;
+  transition: all 0.3s ease;
 }
 
 .healthcare-sector .group.clicked .overlap-group {
-    border-radius: 36px;
-    background: var(--nigeria-green, #1F664B) !important;
-    box-shadow: 0 4px 7.3px -1px #1F664B;
-    transition: all 0.3s ease;
+  border-radius: 36px;
+  background: var(--nigeria-green, #1f664b) !important;
+  box-shadow: 0 4px 7.3px -1px #1f664b;
+  transition: all 0.3s ease;
 }
 
 .healthcare-sector .group.clicked .div {
-    color: #ffffff;
+  color: #ffffff;
 }
 
 /* Dentist click state */
 .healthcare-sector .group-2.clicked .img.dentist {
-    border-radius: 36px;
-    background: var(--blue, #12428D);
-    box-shadow: 0 4px 7.3px -1px #12428D;
-    transition: all 0.3s ease;
+  border-radius: 36px;
+  background: var(--blue, #12428d);
+  box-shadow: 0 4px 7.3px -1px #12428d;
+  transition: all 0.3s ease;
 }
 
 .healthcare-sector .group-2.clicked .div-wrapper {
-    border-radius: 36px;
-    background: var(--blue, #12428D) !important;
-    box-shadow: 0 4px 7.3px -1px #12428D;
-    transition: all 0.3s ease;
+  border-radius: 36px;
+  background: var(--blue, #12428d) !important;
+  box-shadow: 0 4px 7.3px -1px #12428d;
+  transition: all 0.3s ease;
 }
 
 .healthcare-sector .group-2.clicked .text-wrapper-2 {
-    color: #ffffff;
+  color: #ffffff;
 }
 
 /* Pharmacy click state */
 .healthcare-sector .pharmacy-image.clicked .img.pharmacy {
-    border-radius: 36px;
-    background: var(--lime, #CBDF90);
-    box-shadow: 0 4px 7.3px -1px #1F664B;
-    transition: all 0.3s ease;
+  border-radius: 36px;
+  background: var(--lime, #cbdf90);
+  box-shadow: 0 4px 7.3px -1px #1f664b;
+  transition: all 0.3s ease;
 }
 
 .healthcare-sector .pharmacy-image.clicked .overlap-group-2 {
-    border-radius: 36px;
-    background: var(--lime, #CBDF90) !important;
-    box-shadow: 0 4px 7.3px -1px #1F664B;
-    transition: all 0.3s ease;
+  border-radius: 36px;
+  background: var(--lime, #cbdf90) !important;
+  box-shadow: 0 4px 7.3px -1px #1f664b;
+  transition: all 0.3s ease;
 }
 
 .healthcare-sector .pharmacy-image.clicked .text-wrapper-3 {
-    color: #ffffff;
+  color: #ffffff;
 }
 
 /* Add cursor pointer for interactive elements */
 .healthcare-sector .group,
 .healthcare-sector .group-2,
 .healthcare-sector .pharmacy-image {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 /* Mobile responsive adjustments */
 @media (max-width: 768px) {
-    .healthcare-categories {
-        flex-direction: row;
-        gap: min(20px, 3vw);
-        bottom: 18%;
-        flex-wrap: nowrap;
-        justify-content: space-evenly;
-        width: 95%;
-    }
-    
-    .healthcare-sector .text-wrapper {
-        font-size: clamp(16px, 6vw, 32px);
-        top: 8%;
-        white-space: normal;
-        max-width: 95vw;
-        line-height: 1.2;
-    }
-    
-    .healthcare-sector .icon-gradient {
-        height: min(100px, 10vh);
-        width: min(60px, 8vw);
-        top: 6%;
-    }
-    
-    .healthcare-sector .group,
-    .healthcare-sector .group-2,
-    .healthcare-sector .pharmacy-image {
-        height: min(280px, 32vh);
-        width: min(220px, 50vw);
-    }
-    
-    .healthcare-sector .img {
-        height: min(200px, 22vh);
-        width: min(150px, 35vw);
-        margin-bottom: min(15px, 2vh);
-    }
-    
-    .healthcare-sector .overlap-group,
-    .healthcare-sector .div-wrapper,
-    .healthcare-sector .overlap-group-2 {
-        height: min(45px, 5vh);
-        width: min(200px, 45vw);
-    }
-    
-    .healthcare-sector .div,
-    .healthcare-sector .text-wrapper-2,
-    .healthcare-sector .text-wrapper-3 {
-        font-size: clamp(10px, 3vw, 14px);
-    }
+  .healthcare-categories {
+    flex-direction: row;
+    gap: min(20px, 3vw);
+    bottom: 18%;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    width: 95%;
+  }
+
+  .healthcare-sector .text-wrapper {
+    font-size: clamp(16px, 6vw, 32px);
+    top: 8%;
+    white-space: normal;
+    max-width: 95vw;
+    line-height: 1.2;
+  }
+
+  .healthcare-sector .icon-gradient {
+    height: min(100px, 10vh);
+    width: min(60px, 8vw);
+    top: 6%;
+  }
+
+  .healthcare-sector .group,
+  .healthcare-sector .group-2,
+  .healthcare-sector .pharmacy-image {
+    height: min(280px, 32vh);
+    width: min(220px, 50vw);
+  }
+
+  .healthcare-sector .img {
+    height: min(200px, 22vh);
+    width: min(150px, 35vw);
+    margin-bottom: min(15px, 2vh);
+  }
+
+  .healthcare-sector .overlap-group,
+  .healthcare-sector .div-wrapper,
+  .healthcare-sector .overlap-group-2 {
+    height: min(45px, 5vh);
+    width: min(200px, 45vw);
+  }
+
+  .healthcare-sector .div,
+  .healthcare-sector .text-wrapper-2,
+  .healthcare-sector .text-wrapper-3 {
+    font-size: clamp(10px, 3vw, 14px);
+  }
 }
 
 @media (max-width: 480px) {
-    .healthcare-categories {
-        flex-direction: column;
-        gap: min(15px, 2vh);
-        bottom: 12%;
-        width: 90%;
-        align-items: center;
-    }
-    
-    .healthcare-sector .rectangle {
-        height: min(800px, 85vh);
-        width: min(350px, 95vw);
-    }
-    
-    .healthcare-sector .group,
-    .healthcare-sector .group-2,
-    .healthcare-sector .pharmacy-image {
-        height: min(240px, 28vh);
-        width: min(180px, 45vw);
-    }
-    
-    .healthcare-sector .img {
-        height: min(160px, 18vh);
-        width: min(120px, 30vw);
-    }
-    
-    .healthcare-sector .overlap-group,
-    .healthcare-sector .div-wrapper,
-    .healthcare-sector .overlap-group-2 {
-        height: min(40px, 4.5vh);
-        width: min(160px, 40vw);
-    }
-    
-    .healthcare-sector .text-wrapper {
-        font-size: clamp(14px, 7vw, 28px);
-        top: 5%;
-        white-space: normal;
-        max-width: 98vw;
-        line-height: 1.1;
-        padding: 0 10px;
-    }
+  .healthcare-categories {
+    flex-direction: column;
+    gap: min(15px, 2vh);
+    bottom: 12%;
+    width: 90%;
+    align-items: center;
+  }
+
+  .healthcare-sector .rectangle {
+    height: min(800px, 85vh);
+    width: min(350px, 95vw);
+  }
+
+  .healthcare-sector .group,
+  .healthcare-sector .group-2,
+  .healthcare-sector .pharmacy-image {
+    height: min(240px, 28vh);
+    width: min(180px, 45vw);
+  }
+
+  .healthcare-sector .img {
+    height: min(160px, 18vh);
+    width: min(120px, 30vw);
+  }
+
+  .healthcare-sector .overlap-group,
+  .healthcare-sector .div-wrapper,
+  .healthcare-sector .overlap-group-2 {
+    height: min(40px, 4.5vh);
+    width: min(160px, 40vw);
+  }
+
+  .healthcare-sector .text-wrapper {
+    font-size: clamp(14px, 7vw, 28px);
+    top: 5%;
+    white-space: normal;
+    max-width: 98vw;
+    line-height: 1.1;
+    padding: 0 10px;
+  }
 }
 
 /* Very small screens - force horizontal if possible */
 @media (max-width: 380px) {
-    .healthcare-categories {
-        flex-direction: row;
-        gap: min(10px, 2vw);
-        bottom: 15%;
-        overflow-x: auto;
-        padding: 0 10px;
-    }
-    
-    .healthcare-sector .group,
-    .healthcare-sector .group-2,
-    .healthcare-sector .pharmacy-image {
-        height: min(200px, 25vh);
-        width: min(120px, 30vw);
-        flex-shrink: 0;
-    }
-    
-    .healthcare-sector .img {
-        height: min(120px, 15vh);
-        width: min(90px, 22vw);
-    }
+  .healthcare-categories {
+    flex-direction: row;
+    gap: min(10px, 2vw);
+    bottom: 15%;
+    overflow-x: auto;
+    padding: 0 10px;
+  }
+
+  .healthcare-sector .group,
+  .healthcare-sector .group-2,
+  .healthcare-sector .pharmacy-image {
+    height: min(200px, 25vh);
+    width: min(120px, 30vw);
+    flex-shrink: 0;
+  }
+
+  .healthcare-sector .img {
+    height: min(120px, 15vh);
+    width: min(90px, 22vw);
+  }
 }

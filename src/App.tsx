@@ -15,8 +15,11 @@ import HospitalLogin from "./pages/HospitalLogin";
 import DentistLogin from "./pages/DentistLogin";
 import PharmacyLogin from "./pages/PharmacyLogin";
 import LoadingPage from "./pages/LoadingPage";
+import "./index.css";
 import "./App.css";
 import DeviceGuard from "./components/common/DeviceGuard";
+import Incompatible from "./pages/Incompatible";
+import { HealthcareSector2 } from "./pages/HealthCareSector2";
 
 // Protected Route Component
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
@@ -34,12 +37,14 @@ function App() {
               <Routes>
                 <Route path="/" element={<SplashPage />} />
                 <Route path="/healthcare" element={<HealthcareSector />} />
+                <Route path="/healthcare2" element={<HealthcareSector2 />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/hospital-login" element={<HospitalLogin />} />
                 <Route path="/dentist-login" element={<DentistLogin />} />
                 <Route path="/pharmacy-login" element={<PharmacyLogin />} />
                 <Route path="/loading" element={<LoadingPage />} />
                 <Route path="/animations" element={<AnimationShowcase />} />
+                <Route path="/incompatible" element={<Incompatible />} />
                 <Route
                   path="/dashboard"
                   element={<ProtectedRoute>{<Dashboard />}</ProtectedRoute>}
