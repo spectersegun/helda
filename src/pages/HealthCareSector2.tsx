@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
-import dentistImage from "./Dentist.png";
-import hospitalImage from "./Hospital image.jpg";
-import pharmacyImage from "./Pharmacy image.png";
-import iconGradient1 from "./icon_gradient1.png";
-import backgroundImage from "./Slide1 1.jpg";
+// import { Link } from "react-router-dom";
+// import dentistImage from "./Dentist.png";
+// import hospitalImage from "./Hospital image.jpg";
+// import pharmacyImage from "./Pharmacy image.png";
+// import iconGradient1 from "./icon_gradient1.png";
+// import backgroundImage from "./Slide1 1.jpg";
 import "./HealthCareSector2.css";
 
 /**
