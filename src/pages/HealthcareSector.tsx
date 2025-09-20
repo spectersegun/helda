@@ -30,6 +30,7 @@ export const HealthcareSector = () => {
       }
     }, 300); // Small delay to show the click state
   };
+
   return (
     <div className="healthcare-sector">
       <div className="overlap-wrapper">

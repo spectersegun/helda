@@ -15,8 +15,9 @@ import HospitalLogin from "./pages/HospitalLogin";
 import DentistLogin from "./pages/DentistLogin";
 import PharmacyLogin from "./pages/PharmacyLogin";
 import LoadingPage from "./pages/LoadingPage";
-import "./index.css";
 import "./App.css";
+import "./index.css";
+
 import DeviceGuard from "./components/common/DeviceGuard";
 import Incompatible from "./pages/Incompatible";
 import { HealthcareSector2 } from "./pages/HealthCareSector2";
@@ -36,8 +37,8 @@ function App() {
             <Suspense fallback={<LoadingPage />}>
               <Routes>
                 <Route path="/" element={<SplashPage />} />
-                <Route path="/healthcare" element={<HealthcareSector />} />
-                <Route path="/healthcare2" element={<HealthcareSector2 />} />
+                <Route path="/healthcare" element={<HealthcareSector2 />} />
+                <Route path="/healthcare2" element={<HealthcareSector />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/hospital-login" element={<HospitalLogin />} />
                 <Route path="/dentist-login" element={<DentistLogin />} />

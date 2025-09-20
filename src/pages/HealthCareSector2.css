@@ -1,21 +1,9 @@
-:root {
-  --off-white: #fcfafa;
-  --nigeria-green: #1f664b;
-  --blue: #12428d;
-  --lime: #cbdf90;
-}
-
-/* ===== Shell ===== */
-.healthcare {
-  background-color: #ffffff;
-  min-height: 100vh;
-  width: 100%;
-  display: grid;
-  place-items: center;
+/* .healthcare-sector2 {
   opacity: 0;
   animation: fadeIn 0.8s ease-in forwards;
   overflow: hidden;
   position: relative;
+  overflow-y: hidden;
 }
 
 @keyframes fadeIn {
@@ -29,237 +17,48 @@
   }
 }
 
-.healthcare__bg {
-  position: absolute;
-  inset: 0;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+.element-class {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-.healthcare__panel {
-  position: absolute;
-  inset: 0;
+.element-class::-webkit-scrollbar {
+  display: none;
+} */
+
+.healthcare-sector2 {
+  /* your animation */
+  opacity: 0;
+  animation: fadeIn 0.8s ease-in forwards;
+
+  /* lock to viewport & prevent scroll */
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  overflow: hidden !important;
+
+  /* hide scrollbars across browsers */
+  -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.healthcare-sector2::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
-.healthcare__card {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  height: min(955px, 88vh);
-  width: min(1778px, 92vw);
-  transform: translate(-50%, -50%);
-  background: var(--off-white);
-  border-radius: 20px;
+/* Optional: ensure the inner card never shows its own scrollbars */
+.healthcare-sector2 .no-scroll {
+  overflow: hidden !important;
 }
 
-/* ===== Title / Icon ===== */
-.healthcare__title {
-  position: absolute;
-  top: 18%;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #000;
-  font-family: "Outfit-SemiBold", Helvetica, Arial, sans-serif;
-  font-size: clamp(20px, 5vw, 40px);
-  font-weight: 700;
-  text-align: center;
-  max-width: 90vw;
-  line-height: 1.15;
-}
-
-/* ===== Categories ===== */
-.healthcare__list {
-  position: absolute;
-  left: 50%;
-  bottom: 22%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  gap: clamp(12px, 5vw, 60px);
-  width: 90%;
-  max-width: 1200px;
-  flex-wrap: nowrap;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
-/* One category card */
-.category {
-  width: clamp(140px, 20vw, 232px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  text-decoration: none;
-  outline: none;
-  cursor: pointer;
-}
-
-.category__img {
-  width: clamp(110px, 15vw, 163px);
-  height: clamp(120px, 25vh, 226px);
-  object-fit: cover;
-  border-radius: 20px;
-  display: block;
-  border: 2px solid transparent;
-  background: #fff;
-  transition: transform 0.25s ease, box-shadow 0.25s ease,
-    border-color 0.25s ease, background-color 0.25s ease;
-}
-
-.category__cta {
-  margin-top: 4px;
-  width: 100%;
-  max-width: 232px;
-  height: 49px;
-  border-radius: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: "Outfit-SemiBold", Helvetica, Arial, sans-serif;
-  font-weight: 600;
-  font-size: clamp(12px, 1.5vw, 16px);
-  color: #fff;
-  transition: transform 0.25s ease, background-color 0.25s ease,
-    color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-}
-
-/* ===== Variant colors via data-variant ===== */
-.category[data-variant="hospital"] .category__cta {
-  background: var(--nigeria-green);
-}
-.category[data-variant="dentist"] .category__cta {
-  background: var(--blue);
-}
-.category[data-variant="pharmacy"] .category__cta {
-  background: var(--lime);
-  color: #1f664b;
-}
-
-/* Hover — image border + CTA invert */
-.category[data-variant="hospital"]:hover .category__img {
-  border-color: var(--nigeria-green);
-  transform: scale(1.04);
-  background: var(--off-white);
-}
-.category[data-variant="dentist"]:hover .category__img {
-  border-color: var(--blue);
-  transform: scale(1.04);
-  background: var(--off-white);
-}
-.category[data-variant="pharmacy"]:hover .category__img {
-  border-color: var(--lime);
-  transform: scale(1.04);
-  background: var(--off-white);
-}
-
-.category[data-variant="hospital"]:hover .category__cta {
-  background: var(--off-white);
-  color: var(--nigeria-green);
-  border: 2px solid var(--nigeria-green);
-}
-.category[data-variant="dentist"]:hover .category__cta {
-  background: var(--off-white);
-  color: var(--blue);
-  border: 2px solid var(--blue);
-}
-.category[data-variant="pharmacy"]:hover .category__cta {
-  background: var(--off-white);
-  color: #1f664b;
-  border: 2px solid var(--lime);
-}
-
-/* Active (click) */
-.category:active .category__img {
-  box-shadow: 0 4px 7.3px -1px rgba(0, 0, 0, 0.25);
-  transform: scale(1.02);
-}
-.category:active .category__cta {
-  box-shadow: 0 4px 7.3px -1px rgba(0, 0, 0, 0.25);
-  transform: scale(0.98);
-}
-
-/* ===== Responsive ===== */
-@media (max-width: 768px) {
-  .healthcare__title {
-    top: 10%;
-    font-size: clamp(18px, 6vw, 32px);
+/* keep your keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  .healthcare__logo {
-    top: 5%;
-    height: min(100px, 10vh);
-    width: min(60px, 8vw);
-  }
-
-  .healthcare__list {
-    bottom: 18%;
-    gap: clamp(10px, 3vw, 20px);
-    width: 95%;
-    justify-content: space-evenly;
-    flex-wrap: nowrap;
-  }
-
-  .category {
-    width: min(220px, 50vw);
-  }
-  .category__img {
-    width: min(150px, 35vw);
-    height: min(200px, 22vh);
-  }
-  .category__cta {
-    width: min(200px, 45vw);
-    height: min(45px, 5vh);
-  }
-}
-
-@media (max-width: 480px) {
-  .healthcare__card {
-    height: min(800px, 85vh);
-    width: min(350px, 95vw);
-  }
-  .healthcare__list {
-    bottom: 12%;
-    flex-direction: column;
-    gap: min(12px, 2vh);
-    align-items: center;
-  }
-  .category {
-    width: min(180px, 45vw);
-  }
-  .category__img {
-    width: min(120px, 30vw);
-    height: min(160px, 18vh);
-  }
-  .category__cta {
-    width: min(160px, 40vw);
-    height: min(40px, 4.5vh);
-  }
-
-  .healthcare__title {
-    top: 6%;
-    padding: 0 12px;
-    font-size: clamp(16px, 7vw, 28px);
-    line-height: 1.15;
-  }
-}
-
-@media (max-width: 380px) {
-  .healthcare__list {
-    flex-direction: row;
-    gap: 10px;
-    bottom: 15%;
-    overflow-x: auto;
-    padding: 0 10px;
-  }
-  .category {
-    width: min(120px, 30vw);
-    flex-shrink: 0;
-  }
-  .category__img {
-    width: min(90px, 22vw);
-    height: min(120px, 15vh);
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

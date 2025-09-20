@@ -3,9 +3,18 @@
 @import "tailwindcss";
 @import "tailwindcss/preflight";
 
+/* @import "tailwindcss"; */
+
 /* Import Google Fonts - Outfit family for Figma integration */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"); */
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+/* replace this line: 
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+*/
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
+/* Outfit already includes 100–900 — no change needed */
+
 /* @tailwind utilities; */
 
 :root {
@@ -109,6 +118,8 @@
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
 
   /* Transitions */
   --transition-fast: 150ms ease;
@@ -128,6 +139,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  font-synthesis-weight: none;
 }
 
 * {
