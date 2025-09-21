@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import dentistImage from "./Dentist.png";
 import hospitalImage from "./Hospital image.jpg";
 import { useNavigate } from "react-router-dom";
@@ -9,11 +9,11 @@ export const HealthcareSector2 = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const navigate = useNavigate();
 
-  const [isAnimated, setIsAnimated] = useState(false);
+  // const [isAnimated, setIsAnimated] = useState(false);
 
-  useEffect(() => {
-    setIsAnimated(true);
-  }, []);
+  // useEffect(() => {
+  //   setIsAnimated(true);
+  // }, []);
 
   const handleCategoryClick = (category: string) => {
     setSelectedCategory(category);
