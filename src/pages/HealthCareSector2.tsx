@@ -72,7 +72,7 @@ export const HealthcareSector2 = () => {
                     !border-1 !border-[#1F664B]
                     transition-transform duration-300 ease-out
                     origin-center
-                    group-hover:scale-[1.1] group-hover:!border-2 group-hover:!border-[#1F664B] group-hover:rounded-4xl
+                    group-hover:scale-[1.1] 
                   "
                   alt="Hospital image"
                   src={hospitalImage}
@@ -83,8 +83,7 @@ export const HealthcareSector2 = () => {
                     !mt-10 flex justify-center items-center w-full !h-10 !rounded-full
                     !bg-[#1F664B] !text-white !text-sm
                     transition-colors duration-300 ease-out
-
-                    group-hover:!bg-white group-hover:!text-[#1F664B] !border-2 !border-[#1F664B] scale-[1.1]
+                    group-hover:!bg-white group-hover:!text-[#1F664B] !border-2 !border-[#1F664B] 
                   "
                 >
                   Hospital
@@ -96,16 +95,16 @@ export const HealthcareSector2 = () => {
               className={`group ${
                 selectedCategory === "dentist" ? "clicked" : ""
               }`}
-              onClick={() => handleCategoryClick("dentist")}
+              onClick={() => handleCategoryClick("pharmacy")}
             >
               <div className="w-[200px] cursor-pointer select-none">
                 <img
                   className="
                     !w-[140px] !h-auto rounded-2xl !mx-auto
-                    !border-1 !border-[#CBDF90]
+                    !border-2 !border-[#CBDF90]
                     transition-transform duration-300 ease-out
-                    origin-center
-                    group-hover:scale-[1.1] group-hover:!border-2 group-hover:!border-[#CBDF90] group-hover:rounded-4xl
+                    origin-center font-medium
+                    group-hover:scale-[1.1]  group-hover:!border-[#CBDF90]  group-hover:shadow-[0_4px_4px_0_rgba(0,0,0,0.50)]
                   "
                   alt="Dentist image"
                   src={pharmacyImage}
@@ -115,9 +114,9 @@ export const HealthcareSector2 = () => {
                   className="
                     !mt-10 flex justify-center items-center w-full !h-10 !rounded-full
                     !bg-[#CBDF90] !text-white !text-sm
-                    transition-colors duration-300 ease-out
+                    transition-colors duration-300 ease-out font-medium
 
-                    group-hover:!bg-white group-hover:!text-[#CBDF90] !border-2 !border-[#CBDF90] scale-[1.1]
+                    group-hover:!bg-white group-hover:!text-[#CBDF90]  !border-2 !border-[#CBDF90] 
                   "
                 >
                   Pharmacy
@@ -129,16 +128,16 @@ export const HealthcareSector2 = () => {
               className={`group ${
                 selectedCategory === "pharmacy" ? "clicked" : ""
               }`}
-              onClick={() => handleCategoryClick("pharmacy")}
+              onClick={() => handleCategoryClick("dentist")}
             >
               <div className="w-[200px] cursor-pointer select-none">
                 <img
                   className="
                     !w-[140px] !h-auto rounded-2xl !mx-auto
-                    !border-1 !border-[#12428D]
+                    !border-2 !border-[#12428D]
                     transition-transform duration-300 ease-out
                     origin-center
-                    group-hover:scale-[1.1] group-hover:!border-2 group-hover:!border-[#12428D] group-hover:rounded-4xl
+                    group-hover:scale-[1.1] group-hover:!border-2 group-hover:!border-[#12428D]
                   "
                   alt="Dentist image"
                   src={dentistImage}
@@ -146,11 +145,11 @@ export const HealthcareSector2 = () => {
 
                 <button
                   className="
-                    !mt-10 flex justify-center items-center w-full !h-10 !rounded-full
+                    !mt-10 flex justify-center items-center w-full !h-10 !rounded-full font-medium
                     !bg-[#12428D] !text-white !text-sm
                     transition-colors duration-300 ease-out
 
-                    group-hover:!bg-white group-hover:!text-[#12428D] !border-2 !border-[#12428D] scale-[1.1]
+                    group-hover:!bg-white group-hover:!text-[#12428D] !border-2 !border-[#12428D] 
                   "
                 >
                   Dentist
