@@ -188,7 +188,7 @@ export default function HospitalLogin2() {
                      active:!bg-[#1F664B]  active:!text-white
                   "
                     >
-                      {loading ? "Loading..." : "Hospital"}
+                      {loading ? "Loading..." : "Login"}
                     </button>
                   </div>
                 </Form>

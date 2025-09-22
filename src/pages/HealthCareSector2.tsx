@@ -9,12 +9,6 @@ export const HealthcareSector2 = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const navigate = useNavigate();
 
-  // const [isAnimated, setIsAnimated] = useState(false);
-
-  // useEffect(() => {
-  //   setIsAnimated(true);
-  // }, []);
-
   const handleCategoryClick = (category: string) => {
     setSelectedCategory(category);
     // Navigate to the specific login page based on category
