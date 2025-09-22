@@ -55,7 +55,7 @@ export const HealthcareSector2 = () => {
             id="healthcare-heading"
             className="!text-4xl mb-6 text-center text-black !mt-16 !font-extrabold "
           >
-            Choose your Healthcare Categorys
+            Choose your Healthcare Category
           </h1>
 
           <div className="flex !max-w-3xl !mx-auto gap-24 justify-center !mt-16 ">
