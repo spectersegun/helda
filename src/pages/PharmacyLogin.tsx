@@ -156,7 +156,6 @@ import { ConfigProvider, Form } from "antd";
 import GreenWrapper from "./commons/GreenWrapper";
 import type { LoginValues } from "../types";
 import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
-import { Link } from "react-router-dom";
 import { validateLogin } from "../data/userCredentials";
 
 export default function PharmacyLogin() {
@@ -231,14 +230,14 @@ export default function PharmacyLogin() {
             />
           </div>
           <div className="!py-12 relative flex justify-center items-center h-full overflow-y-auto hide-native-scrollbar ">
-            <div>
+            {/* <div>
               <Link
                 to="/healthcare"
                 className=" back-button !absolute !top-12 !left-8 !text-[#1F664B] !font-medium hover:!underline underline-offset-2 "
               >
                 ← Back
               </Link>
-            </div>
+            </div> */}
             <div className="text-center !py-6  ">
               <div className="flex justify-center !mb-12">
                 <img

@@ -223,3 +223,14 @@ input:focus {
   /** WebKit */
   display: none;
 }
+
+.login-title {
+  color: #000;
+  text-align: center;
+  font-family: Outfit;
+  font-size: clamp(24px, 4vw, 48px);
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin: 0 0 min(20px, 2vh) 0;
+}
