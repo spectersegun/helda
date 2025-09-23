@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ConfigProvider, Form } from "antd";
-import GreenWrapper from "./commons/GreenWrapper";
+import GreenWrapper from "../components/common/GreenWrapper";
 import type { LoginValues } from "../types";
 import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 import { validateLogin } from "../data/userCredentials";

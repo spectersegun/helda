@@ -24,6 +24,12 @@ import Incompatible from "./pages/Incompatible";
 import { HealthcareSector2 } from "./pages/HealthCareSector2";
 import HospitalLogin2 from "./pages/HospitalLogin2";
 import { ToastProvider } from "./providers/ToastProvider";
+import Dashboard2 from "./pages/Dashboard2";
+import Pricing from "./pages/Pricing";
+import Patient from "./pages/Patient";
+import AIAssistant from "./pages/AIAssistant";
+import Settings from "./pages/Settings";
+import Revenue from "./pages/Revenue";
 
 // Protected Route Component
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
@@ -42,19 +48,41 @@ function App() {
                 <Routes>
                   <Route path="/" element={<SplashPage />} />
                   <Route path="/healthcare" element={<HealthcareSector2 />} />
-                  {/* <Route path="/healthcare2" element={<HealthcareSector />} /> */}
-
                   <Route path="/login" element={<LoginPage />} />
                   <Route path="/hospital-login" element={<HospitalLogin2 />} />
-                  {/* <Route path="/hospital-login2" element={<HospitalLogin />} /> */}
                   <Route path="/dentist-login" element={<DentistLogin />} />
                   <Route path="/pharmacy-login" element={<PharmacyLogin />} />
                   <Route path="/loading" element={<LoadingPage />} />
                   <Route path="/animations" element={<AnimationShowcase />} />
                   <Route path="/incompatible" element={<Incompatible />} />
                   <Route
-                    path="/dashboard"
+                    path="/dashboard2"
                     element={<ProtectedRoute>{<Dashboard />}</ProtectedRoute>}
+                  />
+
+                  <Route
+                    path="/dashboard"
+                    element={<ProtectedRoute>{<Dashboard2 />}</ProtectedRoute>}
+                  />
+                  <Route
+                    path="/pricing"
+                    element={<ProtectedRoute>{<Pricing />}</ProtectedRoute>}
+                  />
+                  <Route
+                    path="/revenue"
+                    element={<ProtectedRoute>{<Revenue />}</ProtectedRoute>}
+                  />
+                  <Route
+                    path="/patient"
+                    element={<ProtectedRoute>{<Patient />}</ProtectedRoute>}
+                  />
+                  <Route
+                    path="/ai-assistant"
+                    element={<ProtectedRoute>{<AIAssistant />}</ProtectedRoute>}
+                  />
+                  <Route
+                    path="/settings"
+                    element={<ProtectedRoute>{<Settings />}</ProtectedRoute>}
                   />
                 </Routes>
               </Suspense>

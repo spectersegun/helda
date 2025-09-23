@@ -234,3 +234,7 @@ input:focus {
   line-height: normal;
   margin: 0 0 min(20px, 2vh) 0;
 }
+
+.font-outfit {
+  font-family: "Outfit", sans-serif;
+}

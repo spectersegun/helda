@@ -57,6 +57,10 @@ export default {
         outfit: ["Outfit", "Helvetica", "sans-serif"],
         inter: ["Inter", "sans-serif"],
       },
+      backgroundImage: {
+        "helda-rail":
+          "linear-gradient(270deg, rgba(31,102,75,0.16) -2.61%, rgba(31,102,75,0.05) 100%)",
+      },
     },
   },
   plugins: [],
