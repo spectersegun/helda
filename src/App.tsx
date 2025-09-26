@@ -30,6 +30,7 @@ import Patient from "./pages/Patient";
 import AIAssistant from "./pages/AIAssistant";
 import Settings from "./pages/Settings";
 import Revenue from "./pages/Revenue";
+import Profile from "./pages/Profile";
 
 // Protected Route Component
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
@@ -83,6 +84,11 @@ function App() {
                   <Route
                     path="/settings"
                     element={<ProtectedRoute>{<Settings />}</ProtectedRoute>}
+                  />
+
+                  <Route
+                    path="/profile"
+                    element={<ProtectedRoute>{<Profile />}</ProtectedRoute>}
                   />
                 </Routes>
               </Suspense>

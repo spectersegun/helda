@@ -1,6 +1,7 @@
 // src/components/WelcomeCard.tsx
 "use client";
 
+import { Link } from "react-router-dom";
 import AvatarCircle from "./AvatarCircle";
 
 type WelcomeCardProps = {
@@ -12,12 +13,12 @@ type WelcomeCardProps = {
 
 export default function WelcomeCard({
   name,
-  subtitle = "Your intelligent hub for patient trends, service pricing and revenue performance",
+  subtitle = "",
   className = "",
 }: WelcomeCardProps) {
   return (
     <div
-      className={`!px-4 !pt-2 !pb-4 bg-[#FCFAFA] rounded-[20px] !shadow-md flex justify-between items-center ${className}`}
+      className={`!px-5 !pt-2 !pb-4 bg-[#FCFAFA] rounded-[20px] !shadow-md flex justify-between items-center ${className}`}
     >
       <div>
         <h1 className="!font-medium !text-black !text-2xl !mb-1 font-outfit">
@@ -26,7 +27,9 @@ export default function WelcomeCard({
         <h4 className="!font-light !text-lg !mb-0">{subtitle}</h4>
       </div>
 
-      <AvatarCircle src="/images/dp.png" />
+      <Link to="/profile">
+        <AvatarCircle src="/images/dp.png" />
+      </Link>
     </div>
   );
 }
