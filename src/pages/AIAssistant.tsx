@@ -27,7 +27,7 @@ const sampleChat: ChatRow[] = [
 
 export default function AIAssistant() {
   const [withQuestions, setWithQuestions] = useState<boolean>(false);
-  const [chat, setChat] = useState<ChatRow[]>(sampleChat);
+  const [chat] = useState<ChatRow[]>(sampleChat);
 
   return (
     <GreenWrapper>
