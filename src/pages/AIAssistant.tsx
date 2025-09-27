@@ -7,9 +7,9 @@ import EmptyQuestion from "../components/common/EmptyQuestion";
 import { useEffect, useState } from "react";
 
 type ChatRow = {
-  suggestion: string; // right-side quoted text
-  text: string; // assistant paragraph
-  userAvatarUrl?: string; // optional user avatar
+  suggestion: string;
+  text: string;
+  userAvatarUrl?: string;
 };
 
 const sampleChat: ChatRow[] = [
