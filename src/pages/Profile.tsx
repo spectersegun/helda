@@ -9,26 +9,26 @@ export default function Profile() {
       <div className="!p-6 !h-full  bg-[#f3f3ee] flex gap-5 font-outfit">
         <HeldaSidebar2 activeKey="settings" />
 
-        <div className="flex-1 flex flex-col gap-5">
+        <div className="flex-1 flex flex-col gap-0">
           <WelcomeCard
             name="Proflie"
             avatarSrc="/images/dp.png"
             className="!shadow-[0_1px_2px_rgba(0,0,0,0.06),0_2px_6px_rgba(0,0,0,0.05)] flex-shrink-0"
           />
 
-          <div className="grid grid-cols-1 gap-5 items-stretch flex-1 !relative !pt-10 ">
+          <div className="grid grid-cols-1 gap-5 items-stretch flex-1 !relative !pt-10 overflow-y-auto !pb-40 !bt-5">
             <div className="!mx-auto  !max-w-[360px] !text-center ">
               <div className="flex flex-col items-center ">
                 <img
                   src="/images/dp.png"
                   alt="dp"
-                  className="!w-60 h-auto rounded-full "
+                  className="!w-40 h-auto rounded-full "
                 />
 
-                <h4 className="text-black !text-4xl font-normal !mt-1.5 !mb-3 ">
+                <h4 className="text-black !text-3xl font-normal !mt-1.5 !mb-2 ">
                   Mayowa Oladunjoye
                 </h4>
-                <h4 className="text-black !text-4xl font-normal !mt-1.5 !mb-4 ">
+                <h4 className="text-black !text-3xl font-normal !mt-1.5 !mb-3 ">
                   CEO
                 </h4>
 

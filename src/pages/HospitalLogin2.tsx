@@ -5,6 +5,7 @@ import GreenWrapper from "../components/common/GreenWrapper";
 import type { LoginValues } from "../types";
 import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 import { validateLogin } from "../data/userCredentials";
+import { notify } from "../utils/notify";
 
 export default function HospitalLogin2() {
   const [form] = Form.useForm<LoginValues>();
@@ -44,8 +45,9 @@ export default function HospitalLogin2() {
           setPasswordError("You have entered an incorrect password");
         }
       } else {
-        console.log("Hospital login successful:", { email: values.email });
-        navigate("/loading");
+        // console.log("Hospital login successful:", { email: values.email });
+        notify.success("Login successful!");
+        navigate("/dashboard");
       }
     } catch (error) {
       console.error("Login validation error:", error);
