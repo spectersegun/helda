@@ -1,0 +1,64 @@
+name: Next.js CI/CD
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x] # Next.js works best with Node 18+
+
+    steps:
+      # Checkout code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Setup Node.js
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "npm"
+
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          rm -rf .next node_modules
+          npm install
+
+      # Run tests (optional - remove if no tests)
+      - name: Run tests
+        run: npm test --if-present
+
+      # Build Next.js app
+      - name: Build project
+        run: npm run build
+
+      # Upload build artifacts (optional: helpful for debugging)
+      - name: Upload production-ready build
+        uses: actions/upload-artifact@v4
+        with:
+          name: nextjs-build
+          path: .next
+
+  # Example deploy job (to Vercel CLI)
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/main' # only deploy from main branch
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel
+
+      - name: Deploy to Vercel
+        run: vercel --prod --token=${{ secrets.VERCEL_TOKEN }}

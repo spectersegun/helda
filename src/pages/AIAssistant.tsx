@@ -4,7 +4,7 @@ import HeldaSidebar from "../components/common/HeldaSidebar";
 import { BotIcon, SendIcon } from "../components/common/Icons";
 import AISide from "../components/AISide";
 import EmptyQuestion from "../components/common/EmptyQuestion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type ChatRow = {
   suggestion: string; // right-side quoted text
@@ -27,7 +27,11 @@ const sampleChat: ChatRow[] = [
 
 export default function AIAssistant() {
   const [withQuestions, setWithQuestions] = useState<boolean>(false);
-  const [chat] = useState<ChatRow[]>(sampleChat);
+  const [chat, setChat] = useState<ChatRow[]>([]);
+
+  useEffect(() => {
+    setChat(sampleChat);
+  }, []);
 
   return (
     <GreenWrapper>
