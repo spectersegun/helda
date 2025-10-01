@@ -1,20 +1,21 @@
 // src/components/WelcomeCard.tsx
 "use client";
 
-import { Link } from "react-router-dom";
 import AvatarCircle from "./AvatarCircle";
 
 type WelcomeCardProps = {
-  name: string; // e.g. "Mayowa"
-  subtitle?: string; // optional subtext under the title
-  avatarSrc?: string; // e.g. "/images/dp.png"
-  className?: string; // extra classes for the outer wrapper
+  name: string;
+  subtitle?: string;
+  avatarSrc?: string;
+  className?: string;
+  setActive: () => void;
 };
 
 export default function WelcomeCard({
   name,
   subtitle = "",
   className = "",
+  setActive,
 }: WelcomeCardProps) {
   return (
     <div
@@ -24,12 +25,12 @@ export default function WelcomeCard({
         <h1 className="!font-medium !text-black !text-2xl !mb-1 font-outfit">
           {name}
         </h1>
-        <h4 className="!font-light !text-lg !mb-0">{subtitle}</h4>
+        <h4 className="!font-light !text-base !mb-0">{subtitle}</h4>
       </div>
 
-      <Link to="/profile">
+      <span onClick={() => setActive()} className="cursor-pointer">
         <AvatarCircle src="/images/dp.png" />
-      </Link>
+      </span>
     </div>
   );
 }

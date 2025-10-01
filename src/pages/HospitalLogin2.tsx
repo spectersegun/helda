@@ -50,7 +50,7 @@ export default function HospitalLogin2() {
       } else {
         if (success) {
           notify.success("Login successful!");
-          navigate("/dashboard");
+          navigate("/loading");
         } else {
           notify.error("Login failed. Please check your credentials.");
         }

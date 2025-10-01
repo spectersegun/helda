@@ -52,7 +52,7 @@ export default function PharmacyLogin() {
       } else {
         if (success) {
           notify.success("Login successful!");
-          navigate("/dashboard");
+          navigate("/loading");
         } else {
           notify.error("Login failed. Please check your credentials.");
         }

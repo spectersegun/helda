@@ -1,7 +1,5 @@
 "use client";
 
-import { Link } from "react-router-dom";
-
 type SidebarItem = {
   key: string;
   label: string;
@@ -13,10 +11,10 @@ type SidebarItem = {
 type HeldaSidebarProps = {
   activeKey?: string;
   items?: SidebarItem[];
-  settingsTo?: string;
   className?: string;
   logoSrc?: string;
   productName?: string;
+  onChange?: (key: string) => void; // <-- NEW
 };
 
 const DEFAULT_ITEMS: SidebarItem[] = [
@@ -58,9 +56,9 @@ const DEFAULT_ITEMS: SidebarItem[] = [
 ];
 
 export default function HeldaSidebar({
+  onChange,
   activeKey = "home",
   items = DEFAULT_ITEMS,
-  settingsTo = "/settings",
   className = "",
   logoSrc = "/public/images/logo1.png",
   productName = "Helda Insights",
@@ -269,7 +267,10 @@ export default function HeldaSidebar({
                     key={item.key}
                     className={`sidebar-item ${isActive ? "active" : ""}`}
                   >
-                    <Link to={item.to} className="sidebar-link">
+                    <span
+                      className="sidebar-link"
+                      onClick={() => onChange?.(item.key)}
+                    >
                       <div className="sidebar-link-content">
                         <span>
                           <img
@@ -280,7 +281,7 @@ export default function HeldaSidebar({
                         </span>
                         <span className="sidebar-text">{item.label}</span>
                       </div>
-                    </Link>
+                    </span>
                   </li>
                 );
               })}
@@ -289,7 +290,7 @@ export default function HeldaSidebar({
         </div>
 
         <div className="settings-container">
-          <Link to={settingsTo} className="sidebar-link">
+          <span onClick={() => onChange?.("settings")} className="sidebar-link">
             <div className="settings-item">
               <div className="settings-link-content">
                 <span>
@@ -302,7 +303,7 @@ export default function HeldaSidebar({
                 <span className="sidebar-text">Settings</span>
               </div>
             </div>
-          </Link>
+          </span>
         </div>
       </aside>
     </>
