@@ -6,6 +6,7 @@ import type { LoginValues } from "../types";
 import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 import { validateLogin } from "../data/userCredentials";
 import { notify } from "../utils/notify";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function HospitalLogin2() {
   const [form] = Form.useForm<LoginValues>();
@@ -14,6 +15,7 @@ export default function HospitalLogin2() {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [loading, setLoading] = useState<boolean>(false);
+  const { login } = useAuth();
 
   const navigate = useNavigate();
 
@@ -28,15 +30,16 @@ export default function HospitalLogin2() {
     setEmailError("");
     setPasswordError("");
 
-    console.log(values.email, password, "hospital");
-
     try {
       const validation = await validateLogin(
         values.email,
         password,
         "hospital"
       );
-      console.log({ validation });
+      // const success = await login(values.email, password);
+      const success = await login(values.email, password, "hospital");
+
+      console.log({ success });
 
       if (!validation.isValid) {
         if (validation.error === "email") {
@@ -45,9 +48,12 @@ export default function HospitalLogin2() {
           setPasswordError("You have entered an incorrect password");
         }
       } else {
-        // console.log("Hospital login successful:", { email: values.email });
-        notify.success("Login successful!");
-        navigate("/dashboard");
+        if (success) {
+          notify.success("Login successful!");
+          navigate("/dashboard");
+        } else {
+          notify.error("Login failed. Please check your credentials.");
+        }
       }
     } catch (error) {
       console.error("Login validation error:", error);

@@ -4,7 +4,7 @@ import "./Login.css";
 import { validateLogin } from "../data/userCredentials";
 
 // Import images
-import hospitalPicLogin from "../assets/hospital_pic_login.png";
+import hospitalPic"../assets/hospital_pic_login.png";
 import iconGradient1 from "./icon_gradient1.png";
 import backgroundImage from "./Slide1 1.jpg";
 import { notify } from "../utils/notify";

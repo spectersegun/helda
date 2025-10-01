@@ -1,84 +1,100 @@
-import React, { createContext, useContext, useState, useEffect } from 'react'
+import React, { createContext, useContext, useState, useEffect } from "react";
+import { validateLogin } from "../data/userCredentials";
 
 interface User {
-  id: string
-  email: string
-  name: string
+  id: string;
+  email: string;
+  name?: string;
+  role?: "hospital" | "dentist" | "pharmacy";
 }
 
 interface AuthContextType {
-  user: User | null
-  isAuthenticated: boolean
-  login: (email: string, password: string) => Promise<boolean>
-  logout: () => void
-  loading: boolean
+  user: User | null;
+  isAuthenticated: boolean;
+  login: (
+    email: string,
+    password: string,
+    role: "hospital" | "dentist" | "pharmacy"
+  ) => Promise<boolean>;
+  logout: () => void;
+  loading: boolean;
 }
 
-const AuthContext = createContext<AuthContextType | undefined>(undefined)
+const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [user, setUser] = useState<User | null>(null)
-  const [loading, setLoading] = useState(true)
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // Check for stored auth token on app load
-    const storedUser = localStorage.getItem('user')
+    const storedUser = localStorage.getItem("authUser");
     if (storedUser) {
-      setUser(JSON.parse(storedUser))
+      setUser(JSON.parse(storedUser));
     }
-    setLoading(false)
-  }, [])
+    setLoading(false);
+  }, []);
 
-  const login = async (email: string, password: string): Promise<boolean> => {
-    setLoading(true)
+  const login = async (
+    email: string,
+    password: string,
+    role: "hospital" | "dentist" | "pharmacy"
+  ): Promise<boolean> => {
     try {
-      // Simulate API call - replace with actual authentication
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      
-      // Mock successful login for demo purposes
-      if (email && password) {
-        const mockUser: User = {
-          id: '1',
+      // Your login validation logic here
+      const validation = await validateLogin(email, password, role);
+
+      if (validation.isValid) {
+        const userData: User = {
+          id: `${role}-${email}`,
           email,
-          name: email.split('@')[0]
-        }
-        setUser(mockUser)
-        localStorage.setItem('user', JSON.stringify(mockUser))
-        setLoading(false)
-        return true
+          role: role as User["role"],
+          name: email.split("@")[0],
+        };
+
+        // Set auth state
+        setUser(userData);
+
+        // Persist auth state
+        localStorage.setItem("authUser", JSON.stringify(userData));
+        localStorage.setItem("authToken", `token-${Date.now()}`);
+
+        return true;
       }
-      setLoading(false)
-      return false
+
+      return false;
     } catch (error) {
-      setLoading(false)
-      return false
+      console.error("Login error:", error);
+      return false;
     }
-  }
+  };
 
   const logout = () => {
-    setUser(null)
-    localStorage.removeItem('user')
-  }
+    setUser(null);
+    localStorage.removeItem("authUser");
+  };
+
+  const setAuthUser = (userData: User) => {
+    setUser(userData);
+    localStorage.setItem("authUser", JSON.stringify(userData));
+  };
 
   const value = {
     user,
     isAuthenticated: !!user,
     login,
     logout,
-    loading
-  }
+    loading,
+    setAuthUser,
+  };
 
-  return (
-    <AuthContext.Provider value={value}>
-      {children}
-    </AuthContext.Provider>
-  )
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
 export function useAuth() {
-  const context = useContext(AuthContext)
+  const context = useContext(AuthContext);
   if (context === undefined) {
-    throw new Error('useAuth must be used within an AuthProvider')
+    throw new Error("useAuth must be used within an AuthProvider");
   }
-  return context
+  return context;
 }

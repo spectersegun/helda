@@ -16,8 +16,7 @@ export const Image: React.FC<ImageProps> = ({ onAnimationComplete }) => {
     if (!img) return;
 
     const handleLoad = () => {
-      // Estimate animation duration based on typical GIF timing
-      const estimatedDuration = 5500; // 7 seconds - adjust as needed
+      const estimatedDuration = 6000; // 7 seconds - adjust as needed
 
       setTimeout(() => {
         // Start fade out transition
