@@ -45,53 +45,63 @@ function App() {
         <Router>
           <DeviceGuard>
             <div className="app">
-              <Suspense fallback={<LoadingPage />}>
-                <Routes>
-                  <Route path="/" element={<SplashPage />} />
-                  <Route path="/healthcare" element={<HealthcareSector2 />} />
-                  <Route path="/login" element={<LoginPage />} />
-                  <Route path="/hospital-login" element={<HospitalLogin2 />} />
-                  <Route path="/dentist-login" element={<DentistLogin />} />
-                  <Route path="/pharmacy-login" element={<PharmacyLogin />} />
-                  <Route path="/loading" element={<LoadingPage />} />
-                  <Route path="/animations" element={<AnimationShowcase />} />
-                  <Route path="/incompatible" element={<Incompatible />} />
-                  <Route
-                    path="/dashboard2"
-                    element={<ProtectedRoute>{<Dashboard />}</ProtectedRoute>}
-                  />
+              {/* <Suspense fallback={<LoadingPage />}> */}
+              <Routes>
+                {/* <Route path="/" element={<SplashPage />} /> */}
+                <Route
+                  path="/"
+                  element={
+                    localStorage.getItem("splashSeen") === "true" ? (
+                      <Navigate to="/healthcare" replace />
+                    ) : (
+                      <SplashPage />
+                    )
+                  }
+                />
+                <Route path="/healthcare" element={<HealthcareSector2 />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/hospital-login" element={<HospitalLogin2 />} />
+                <Route path="/dentist-login" element={<DentistLogin />} />
+                <Route path="/pharmacy-login" element={<PharmacyLogin />} />
+                <Route path="/loading" element={<LoadingPage />} />
+                <Route path="/animations" element={<AnimationShowcase />} />
+                <Route path="/incompatible" element={<Incompatible />} />
+                <Route
+                  path="/dashboard2"
+                  element={<ProtectedRoute>{<Dashboard />}</ProtectedRoute>}
+                />
 
-                  <Route
-                    path="/dashboard"
-                    element={<ProtectedRoute>{<Dashboard2 />}</ProtectedRoute>}
-                  />
-                  <Route
-                    path="/pricing"
-                    element={<ProtectedRoute>{<Pricing />}</ProtectedRoute>}
-                  />
-                  <Route
-                    path="/revenue"
-                    element={<ProtectedRoute>{<Revenue />}</ProtectedRoute>}
-                  />
-                  <Route
-                    path="/patient"
-                    element={<ProtectedRoute>{<Patient />}</ProtectedRoute>}
-                  />
-                  <Route
-                    path="/ai-assistant"
-                    element={<ProtectedRoute>{<AIAssistant />}</ProtectedRoute>}
-                  />
-                  <Route
-                    path="/settings"
-                    element={<ProtectedRoute>{<Settings />}</ProtectedRoute>}
-                  />
+                <Route
+                  path="/dashboard"
+                  element={<ProtectedRoute>{<Dashboard2 />}</ProtectedRoute>}
+                />
+                <Route
+                  path="/pricing"
+                  element={<ProtectedRoute>{<Pricing />}</ProtectedRoute>}
+                />
+                <Route
+                  path="/revenue"
+                  element={<ProtectedRoute>{<Revenue />}</ProtectedRoute>}
+                />
+                <Route
+                  path="/patient"
+                  element={<ProtectedRoute>{<Patient />}</ProtectedRoute>}
+                />
+                <Route
+                  path="/ai-assistant"
+                  element={<ProtectedRoute>{<AIAssistant />}</ProtectedRoute>}
+                />
+                <Route
+                  path="/settings"
+                  element={<ProtectedRoute>{<Settings />}</ProtectedRoute>}
+                />
 
-                  <Route
-                    path="/profile"
-                    element={<ProtectedRoute>{<Profile />}</ProtectedRoute>}
-                  />
-                </Routes>
-              </Suspense>
+                <Route
+                  path="/profile"
+                  element={<ProtectedRoute>{<Profile />}</ProtectedRoute>}
+                />
+              </Routes>
+              {/* </Suspense> */}
             </div>
           </DeviceGuard>
         </Router>
