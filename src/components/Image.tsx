@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import animationWhiteBgUpd1 from "./animationWhiteBgUpd1.gif";
-import { Frame } from "./Frame";
+// import { Frame } from "./Frame";
 import "./Image.css";
 
 interface ImageProps {
