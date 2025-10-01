@@ -32,7 +32,7 @@ export default function AIAssistant() {
 
   return (
     <>
-      <div className="grid grid-cols-3 gap-5 items-stretch flex-1 ">
+      <div className="grid grid-cols-3 gap-5 items-stretch flex-1 !mt-5">
         <AISide
           withQuestions={withQuestions}
           setWithQuestions={setWithQuestions}
