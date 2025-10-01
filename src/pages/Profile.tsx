@@ -3,7 +3,7 @@ import { LogoutIcon } from "../components/common/Icons";
 export default function Profile() {
   return (
     <>
-      <div className="grid grid-cols-1 gap-5 items-stretch flex-1 !relative !pt-10 overflow-y-auto !pb-40 !bt-5">
+      <div className="grid grid-cols-1 gap-5 items-stretch flex-1 !relative !pt-10 overflow-y-auto !pb-40 !mt-5 hide-native-scrollbar ">
         <div className="!mx-auto  !max-w-[360px] !text-center ">
           <div className="flex flex-col items-center ">
             <img

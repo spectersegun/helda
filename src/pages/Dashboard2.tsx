@@ -164,7 +164,7 @@ export default function Dashboard2() {
           onChange={(k) => setActive(k as TabKey)}
         />
 
-        <div className="flex-1 flex flex-col gap-5">
+        <div className="flex-1 flex flex-col gap-0">
           <WelcomeCard
             name={header.name}
             subtitle={header.subtitle}
