@@ -9,11 +9,11 @@ export default function Settings() {
   const [disableAnimations, setDisableAnimations] = useState(true);
 
   return (
-    <div className="grid grid-cols-2 gap-5 items-stretch flex-1 !relative !pt-10 overflow-y-auto !pb-40 !bt-5 bg-white hide-native-scrollbar mt-5 rounded-[20px] justify-center ">
+    <div className="grid grid-cols-2 gap-5 items-stretch flex-1 !relative !pt-10 overflow-y-auto !pb-20 !bt-5 bg-white hide-native-scrollbar mt-5 rounded-[20px] justify-center ">
       <div className="col-span-1">
-        <LinedHHeaders text="Account Settings" headerClassName="!mb-5" />
+        <LinedHHeaders text="Account Settings" />
 
-        <div className="flex justify-center items-center gap-3 mb-3">
+        <div className="flex justify-center items-center gap-3 mb-3 !mt-6">
           <label
             className="!text-base font-medium text-black w-[190px] !text-center"
             htmlFor="Notifications"
@@ -46,7 +46,7 @@ export default function Settings() {
       <div className="col-span-1">
         <LinedHHeaders text="Dashboard Customization" />
 
-        <div className="flex justify-center items-center gap-3 mb-3">
+        <div className="flex justify-center items-center gap-3 mb-3 !mt-6">
           <label
             className="!text-base font-medium text-black w-[190px] !text-center"
             htmlFor="Notifications"

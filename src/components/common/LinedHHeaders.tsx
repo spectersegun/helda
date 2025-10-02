@@ -16,7 +16,9 @@ function LinedHHeaders({
       <div className="relative flex justify-center items-center">
         <span className="w-[80px] !border-t !border-[#BAB6B6]"></span>
 
-        <h3 className={`!text-lg !font-semibold !p-2.5 min-w-[300px] !border !border-[#BAB6B6] rounded-lg !text-center leading-6 ${headerClassName} `}>
+        <h3
+          className={`!text-lg !font-semibold !p-2.5 min-w-[340px] !border !border-[#BAB6B6] rounded-lg !text-center leading-6 !mb-0 ${headerClassName} `}
+        >
           {text}
         </h3>
 
