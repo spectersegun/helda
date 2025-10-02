@@ -52,7 +52,7 @@ const HEADERS: Record<TabKey, { name: string; subtitle?: string }> = {
       "Your AI partner for instant answers and insights — helping you make faster, smarter healthcare decisions.",
   },
   settings: { name: "Settings", subtitle: "" },
-  profile: { name: "Profile", subtitle: "" },
+  profile: { name: "My Profile", subtitle: "" },
 };
 
 // Map tab -> component

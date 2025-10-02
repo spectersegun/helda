@@ -1,6 +1,9 @@
 import { LogoutIcon } from "../components/common/Icons";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function Profile() {
+  const { logout } = useAuth();
+
   return (
     <>
       <div className="grid grid-cols-1 gap-5 items-stretch flex-1 !relative !pt-10 overflow-y-auto !pb-40 !mt-5 hide-native-scrollbar ">
@@ -24,12 +27,15 @@ export default function Profile() {
             </p>
 
             <div className="w-[256px] ">
-              <button className="!border !border-[#1F664B] !bg-inherit w-full !h-12 !outline-none !mb-4 flex items-center justify-center">
+              <button
+                className="!border !border-[#1F664B] !bg-inherit w-full !h-12 !outline-none !mb-4 flex items-center justify-center"
+                disabled
+              >
                 <span className="text-[#1F664B]">Change Password</span>
               </button>
 
-              <button className="!border !border-[#12428D] !bg-inherit w-full !h-12 !outline-none !mb-4 flex items-center justify-center">
-                <span className="text-[#12428D] flex gap-2 justify-center ">
+              <button className="!border !border-[#12428D] !bg-inherit w-full !h-12 !outline-none !mb-4 flex items-center justify-center" onClick={() => logout()} >
+                <span className="text-[#12428D] flex gap-2 justify-center " >
                   <LogoutIcon /> Log out
                 </span>
               </button>
