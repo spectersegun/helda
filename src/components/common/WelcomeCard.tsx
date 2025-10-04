@@ -8,14 +8,14 @@ type WelcomeCardProps = {
   subtitle?: string;
   avatarSrc?: string;
   className?: string;
-  setActive: () => void;
+  onProfileClick?: () => void;
 };
 
 export default function WelcomeCard({
   name,
   subtitle = "",
   className = "",
-  setActive,
+  onProfileClick,
 }: WelcomeCardProps) {
   return (
     <div
@@ -28,7 +28,7 @@ export default function WelcomeCard({
         <h4 className="!font-light !text-base !mb-0">{subtitle}</h4>
       </div>
 
-      <span onClick={() => setActive()} className="cursor-pointer">
+      <span onClick={onProfileClick} className="cursor-pointer">
         <AvatarCircle src="/images/dp.png" />
       </span>
     </div>

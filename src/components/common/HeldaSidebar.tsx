@@ -615,14 +615,12 @@ export default function HeldaSidebar({
           className,
         ].join(" ")}
       >
-        {/* Brand */}
         <div>
           <div className="brand-row">
             <img src={logoSrc} alt="logo" className="brand-logo" />
             <h2 className="brand-title">{productName}</h2>
           </div>
 
-          {/* Nav */}
           <div className="nav-wrap">
             <div className="indicator" />
             <ul className="nav-list ">
@@ -654,7 +652,6 @@ export default function HeldaSidebar({
           </div>
         </div>
 
-        {/* Settings */}
         <div className="settings-container">
           <span onClick={() => onChange?.("settings")} className="sidebar-link">
             <div className="settings-item">

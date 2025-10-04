@@ -1,5 +1,7 @@
 "use client";
 
+import { useNavigation } from "../../contexts/NavigationContext";
+
 type DeltaDir = "up" | "down" | "flat";
 
 type PricingIntelCardProps = {
@@ -28,20 +30,21 @@ export default function PricingIntelCard({
       ? "text-red-700"
       : "text-gray-500";
 
+  const { navigateToTab } = useNavigation();
+
   return (
     <div
       className={[
-        "relative overflow-hidden rounded-2xl bg-white text-center max-h-[400px]",
-        "!px-3 !pt-4 pb-20 shadow-sm border border-black/5",
+        "relative overflow-hidden rounded-2xl bg-white text-center max-h-[400px] cursor-pointer ",
+        "!px-3 !pt-4 pb-20 shadow-sm border border-[#FCFAFA] hover:shadow-[0_4px_7px_3px_rgba(31,102,75,0.78)]",
         className,
       ].join(" ")}
+      onClick={() => navigateToTab("pricing")}
     >
-      {/* Title */}
       <h3 className="!text-[22px] md:!text-xl !font-semibold text-black !mb-0 ">
         {title}
       </h3>
 
-      {/* Description */}
       <p className="mx-auto mt-0 !mb-0 text-[10.5px] leading-4 text-black !font-light ">
         {description}
       </p>
@@ -64,7 +67,7 @@ export default function PricingIntelCard({
       </div>
 
       <svg
-        className="absolute bottom-[-16px] left-0 w-full h-24 md:h-24 !px-2"
+        className="absolute bottom-[-16px] left-0 w-full h-24 md:h-24 "
         width="404"
         height="87"
         viewBox="0 0 404 87"
