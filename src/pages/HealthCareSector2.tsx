@@ -71,7 +71,7 @@ export const HealthcareSector2 = () => {
                 <button
                   className="
                     !mt-10 flex justify-center items-center w-full !h-10 !rounded-full
-                    !bg-[#1F664B] !text-white !text-sm
+                    !bg-[#1F664B] !text-white !text-sm !font-semibold
                     transition-colors duration-300 ease-out
                     group-hover:!bg-white group-hover:!text-[#1F664B]  !border-2 !border-[#1F664B] !outline-none active:shadow-[0_4px_4px_1px_#1F664B]
                   "
@@ -93,7 +93,7 @@ export const HealthcareSector2 = () => {
                     !w-[140px] !h-auto rounded-2xl !mx-auto
                     !border-2 !border-[#CBDF90]
                     transition-transform duration-300 ease-out
-                    origin-center font-medium
+                    origin-center 
                     group-hover:scale-[1.1]  group-hover:!border-[#CBDF90]  
                   "
                   alt="Dentist image"
@@ -103,10 +103,10 @@ export const HealthcareSector2 = () => {
                 <button
                   className="
                     !mt-10 flex justify-center items-center w-full !h-10 !rounded-full
-                    !bg-[#CBDF90] !text-white !text-sm
-                    transition-colors duration-300 ease-out font-medium
+                    !bg-[#CBDF90] !text-[#1F664B] !text-sm
+                    transition-colors duration-300 ease-out !font-semibold
 
-                    group-hover:!bg-white group-hover:!text-[#CBDF90]  !border-2 !border-[#CBDF90]  !outline-none active:shadow-[0_4px_7.3px_-1px_#1F6633]
+                    group-hover:!bg-white group-hover:!text-[#1F664B]  !border-2 !border-[#CBDF90]  !outline-none active:shadow-[0_4px_7.3px_-1px_#1F6633]
                   "
                 >
                   Pharmacy
@@ -135,8 +135,8 @@ export const HealthcareSector2 = () => {
 
                 <button
                   className="
-                    !mt-10 flex justify-center items-center w-full !h-10 !rounded-full font-medium
-                    !bg-[#12428D] !text-white !text-sm
+                    !mt-10 flex justify-center items-center w-full !h-10 !rounded-full !font-semibold
+                    !bg-[#12428D] !text-white !text-sm 
                     transition-colors duration-300 ease-out
                     group-hover:!bg-white group-hover:!text-[#12428D] !border-2 !border-[#12428D] !outline-none active:shadow-[0_4px_7.3px_-1px_#12428D]
                   "

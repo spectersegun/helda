@@ -19,7 +19,7 @@ export default function AvatarCircle({
       <img
         src={src}
         alt={alt}
-        className={`!w-15 !h-15 !rounded-full object-cover ${imgClassName}`}
+        className={`!w-15 !h-15 !rounded-full object-cover hover:!border-2 cursor-pointer hover:!border-[#1F664BAE] hover:drop-shadow-[0_2px_7px_rgba(31,102,75,0.78)] transition-all duration-200 ${imgClassName}`}
       />
     </div>
   );

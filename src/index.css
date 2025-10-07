@@ -238,3 +238,17 @@ input:focus {
 .font-outfit {
   font-family: "Outfit", sans-serif;
 }
+
+.recharts-wrapper:focus:not(:focus-visible),
+.recharts-surface:focus:not(:focus-visible),
+svg.recharts-surface:focus:not(:focus-visible),
+.recharts-layer:focus:not(:focus-visible),
+.recharts-legend-wrapper:focus:not(:focus-visible),
+.recharts-tooltip-wrapper:focus:not(:focus-visible) {
+  outline: none !important;
+}
+
+/* Kill the blue/gray tap highlight on iOS/Safari */
+.chart-no-focus * {
+  -webkit-tap-highlight-color: transparent;
+}

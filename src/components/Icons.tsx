@@ -45,3 +45,25 @@ export function StarIcon(props: React.SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+
+export function GreenDot(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="13"
+      height="14"
+      viewBox="0 0 13 14"
+      fill="none"
+      {...props}
+    >
+      <circle
+        cx="6.5"
+        cy="7"
+        r="5.5"
+        fill="#1F664B"
+        stroke="#35EB69"
+        stroke-width="2"
+      />
+    </svg>
+  );
+}

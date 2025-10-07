@@ -50,6 +50,7 @@ function App() {
                     )
                   }
                 />
+
                 <Route path="/healthcare" element={<HealthcareSector2 />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/hospital-login" element={<HospitalLogin2 />} />

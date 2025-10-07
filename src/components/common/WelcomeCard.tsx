@@ -28,7 +28,7 @@ export default function WelcomeCard({
         <h4 className="!font-light !text-base !mb-0">{subtitle}</h4>
       </div>
 
-      <span onClick={onProfileClick} className="cursor-pointer">
+      <span onClick={onProfileClick} className="cursor-pointer  ">
         <AvatarCircle src="/images/dp.png" />
       </span>
     </div>
