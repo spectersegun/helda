@@ -4,19 +4,6 @@ import React from "react";
 import { StarIcon } from "../Icons";
 import { SendIcon } from "./Icons";
 
-/**
- * HeldaAssistantCard
- * Pixel-focused replica of the uploaded "Helda AI Assistant" card.
- * - Tailwind + pure React (no external UI libs required)
- * - Rounded container (24px), soft shadow
- * - Title row with small brand mark, headline, subheads
- * - Three suggestion buttons (outlined, pill corners 10px)
- * - Neon orb (CSS radial/linear gradients) — or pass your own image via props
- * - Input with left placeholder and send arrow button
- *
- * Props let you customize title, subtitle, prompts, orb image, and handlers.
- */
-
 export type HeldaAssistantCardProps = {
   heading?: string; // default: "Helda AI Assistant"
   subheadingTop?: string; // default: "Ask about Pricing Data"
@@ -98,7 +85,7 @@ export default function HeldaAssistantCard({
         <img
           src="/images/AINEW.png"
           alt="AINEW"
-          className="max-w-full w-[170px] height-auto !mx-auto !mt-7 !mb-6"
+          className="max-w-full w-[170px] height-auto !mx-auto !mt-7 !mb-8"
         />
       </div>
 

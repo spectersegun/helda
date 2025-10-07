@@ -24,14 +24,14 @@ const DATA = [
   {
     key: "oncology",
     label: "Oncology",
-    value: 40,
+    value: 24,
     color: COLORS.oncology,
     cal: "25-44",
   },
   {
     key: "neurology",
     label: "Neurology",
-    value: 40,
+    value: 15,
     color: COLORS.neurology,
     cal: "65-74",
   },
@@ -39,45 +39,44 @@ const DATA = [
   {
     key: "paediatrics",
     label: "Paediatrics",
-    value: 16,
+    value: 8,
     color: COLORS.paediatrics,
     cal: "75+ ",
   },
   {
-    key: "others",
-    label: "Others",
-    value: 12,
-    color: COLORS.others,
-    cal: "0-17",
-  },
-  {
     key: "orthopedics",
     label: "Orthopedics",
-    value: 20,
+    value: 7,
     color: COLORS.orthopedics,
     cal: "18-24",
   },
+  {
+    key: "others",
+    label: "Others",
+    value: 7,
+    color: COLORS.others,
+    cal: "0-17",
+  },
 ];
 
-export default function MonthlyRevenueDonut({
+export default function MonthlyRevenueDonut2({
   total = 10343,
-  title = "Demographic Breakdown",
+  title = "Monthly Revenue by Department",
 }: {
-  total?: number;
+  total?: number | string;
   title?: string;
 }) {
-  const [active, setActive] = React.useState<number | null>(null); // for tracking hovered slice
+  const [active, setActive] = React.useState<number | null>(null);
 
-  // ⬅️ how the hovered slice should look
   const renderActiveShape = (p: any) => (
     <Sector
       {...p}
       innerRadius={p.innerRadius}
-      outerRadius={p.outerRadius + 1} // grow a bit
+      outerRadius={p.outerRadius + 1}
       cornerRadius={0}
       stroke="#fff"
       strokeWidth={0.5}
-      filter="url(#hoverShadow)" // subtle lift
+      filter="url(#hoverShadow)"
     />
   );
 
@@ -85,12 +84,7 @@ export default function MonthlyRevenueDonut({
 
   return (
     <div className="w-full max-w-[860px] rounded-[24px] bg-white shadow-[0_6px_24px_rgba(16,24,40,0.04)] !px-6 !py-3 pt-2">
-      {/* Title */}
-      {/* <h2 className="text-[22px] leading-[28px] tracking-[-0.02em] font-semibold text-[#0F1A2A] !mb-4">
-        Monthly Revenue by Department
-      </h2> */}
-
-      <MiniHeader className="max-w-[220px]">{title}</MiniHeader>
+      <MiniHeader className="max-w-[280px]">{title}</MiniHeader>
 
       <div className="grid grid-cols-[200px_1fr] items-center gap-6">
         {/* Donut + center label */}
@@ -106,7 +100,7 @@ export default function MonthlyRevenueDonut({
                 innerRadius={45}
                 outerRadius={90}
                 paddingAngle={2}
-                cornerRadius={0} // sharp edges
+                cornerRadius={0}
                 // ⬇️ enable update animation so the grow/shrink is smooth
                 isAnimationActive={false}
                 animationDuration={320}
@@ -119,7 +113,7 @@ export default function MonthlyRevenueDonut({
                   <Cell
                     key={d.key}
                     fill={d.color}
-                    stroke="#FFFFFF" // crisp separators like the mock
+                    stroke="#FFFFFF"
                     strokeWidth={0.5}
                   />
                 ))}
@@ -133,11 +127,8 @@ export default function MonthlyRevenueDonut({
               <div className="text-xs leading-[14px] font-semibold text-[#18181C]">
                 Total
               </div>
-              <div className="text-[30px] leading-[36px] font-semibold text-[#18181C]">
+              <div className="text-[24px] leading-[36px] font-semibold text-[#18181C]">
                 {total}
-              </div>
-              <div className="text-xs leading-[14px] font-semibold text-[#18181C]">
-                Patients
               </div>
             </div>
           </div>
@@ -146,17 +137,19 @@ export default function MonthlyRevenueDonut({
         {/* Legend */}
         <ul className="grid gap-2 !mb-0">
           {DATA.map((d) => (
-            <li key={d.key} className="flex items-center justify-between gap-2">
-              <div className="flex items-center gap-2">
+            <li
+              key={d.key}
+              className="flex items-center justify-between gap-1.5"
+            >
+              <div className="flex items-center gap-3">
                 <span
                   className="inline-block h-3 w-3 rounded-full"
                   style={{ backgroundColor: d.color }}
                 />
+                <span className="text-sm leading-[20px] !font-semibold text-[#99B2C6]">
+                  {d.label}
+                </span>
               </div>
-
-              <span className="text-sm leading-[20px] !font-semibold text-[#99B2C6]">
-                {d.cal}%
-              </span>
 
               <span className="text-sm leading-[20px] !font-semibold text-[#99B2C6]">
                 {d.value}%

@@ -76,7 +76,7 @@ export default function AIAssistant() {
 function ChatRowView({ row }: { row: ChatRow }) {
   return (
     <div className="!mt-8">
-      <div className=" justify-end flex items-center gap-3 cursor-pointer ">
+      <div className=" justify-end flex items-center gap-3 cursor-pointer  ">
         <span className="!text-[#12428D] hover:underline !text-base !font-medium ">
           “{row.suggestion}”
         </span>

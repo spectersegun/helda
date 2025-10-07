@@ -10,28 +10,34 @@ export default function Patient() {
       <div className="grid grid-cols-3 gap-x-7 ">
         <div>
           <div className="flex gap-10 !text-center justify-between">
-            <div className="!p-2 bg-white rounded-[20px] w-[220px] ">
-              <MiniHeader className="!max-w-[150px] !mx-auto">
-                Total Patients Seen
-              </MiniHeader>
+            <div className="!p-2 bg-white rounded-[20px] w-[220px] h-[150px] flex flex-col justify-between">
+              <div>
+                <MiniHeader className="!max-w-[150px] !mx-auto">
+                  Total Patients Seen
+                </MiniHeader>
 
-              <h3 className="!text-2xl !font-semibold text-[#1F664B] !mb-0 ">
-                8,213
-              </h3>
-              <h6 className="text-[#1F664B]  !font-normal !text-base !mb-0">
-                ▲ 4.1% increase from previous month
+                <h3 className="!text-2xl !font-semibold text-[#1F664B] !mb-0 ">
+                  8,213
+                </h3>
+              </div>
+
+              <h6 className="text-[#1F664B]  !font-normal !text-[15px] !mb-0">
+                <span>▲ </span>4.1% increase from previous month
               </h6>
             </div>
 
-            <div className="!p-2 bg-white rounded-[20px] w-[220px] ">
-              <MiniHeader className="!max-w-[150px] !mx-auto">
-                New Patients This Month
-              </MiniHeader>
+            <div className="!p-2 bg-white rounded-[20px] w-[220px] h-[150px]  flex flex-col justify-between">
+              <div>
+                <MiniHeader className="!max-w-[150px] !mx-auto">
+                  New Patients This Month
+                </MiniHeader>
 
-              <h3 className="!text-2xl !font-semibold text-[#1F664B] !mb-0 ">
-                2,731
-              </h3>
-              <h6 className="text-[#1F664B]  !font-normal !text-base !mb-0">
+                <h3 className="!text-2xl !font-semibold text-[#1F664B] !mb-0 ">
+                  2,731
+                </h3>
+              </div>
+
+              <h6 className="text-[#1F664B]  !font-normal !text-[15px] !mb-0">
                 33% of total visits — key for acquisition tracking
               </h6>
             </div>
@@ -50,34 +56,50 @@ export default function Patient() {
 
         <div>
           <div className="flex gap-10 !text-center justify-between">
-            <div className="!p-2 bg-white rounded-[20px] w-[220px] ">
-              <MiniHeader className="!max-w-[150px] !mx-auto">
-                Patient Mix
-              </MiniHeader>
+            <div className="!p-2 bg-white rounded-[20px] w-[220px] h-[150px] flex flex-col justify-between ">
+              <div>
+                <MiniHeader className="!max-w-[150px] !mx-auto">
+                  Patient Mix
+                </MiniHeader>
 
-              <h3 className="!text-2xl !font-semibold text-[#1F664B] !mb-0 ">
-                54%
-              </h3>
-              <h3 className="!text-2xl !font-semibold text-[#1F664B] !mb-0 ">
-                46%
-              </h3>
-              <h6 className="text-[#1F664B] leading-4.5  !font-normal !text-base !mb-0">
+                <h3 className="!text-2xl !font-semibold text-[#1F664B] !mb-0 flex items-center justify-center gap-2">
+                  <img
+                    src="/public/icons/mix1.png"
+                    alt="mix 1"
+                    className="w-5 h-auto"
+                  />
+                  54%
+                </h3>
+                <h3 className="!text-2xl !font-semibold text-[#1F664B] !mb-0 flex items-center justify-center gap-2 ">
+                  <img
+                    src="/public/icons/mix2.png"
+                    alt="mix 2"
+                    className="w-5 h-auto"
+                  />
+                  46%
+                </h3>
+              </div>
+
+              <h6 className="text-[#1F664B] leading-4.5  !font-normal !text-[15px] !mb-0">
                 Based on this quarter&#39;s visit data
               </h6>
             </div>
 
-            <div className="!p-2 bg-white rounded-[20px] w-[220px] ">
-              <MiniHeader className="!max-w-[150px] !mx-auto">
-                Top Postal Code
-              </MiniHeader>
+            <div className="!p-2 bg-white rounded-[20px] w-[220px] h-[150px] flex flex-col justify-between ">
+              <div>
+                <MiniHeader className="!max-w-[150px] !mx-auto">
+                  Top Postal Code
+                </MiniHeader>
 
-              <h3 className="!text-2xl !font-semibold text-[#1F664B] !mb-2 ">
-                9% from
-              </h3>
-              <h3 className="!text-2xl !font-semibold text-[#1F664B] !mb-1.5 ">
-                101241
-              </h3>
-              <h6 className="text-[#1F664B]  !font-normal !text-base !mb-0">
+                <h3 className="!text-2xl !font-semibold text-[#1F664B] !mb-1.5 ">
+                  9% from
+                </h3>
+                <h3 className="!text-2xl !font-semibold text-[#1F664B] !mb-1.5 ">
+                  101241
+                </h3>
+              </div>
+
+              <h6 className="text-[#1F664B]  !font-normal !text-[15px] !mb-0 items-stretch pb-1">
                 Victoria Island
               </h6>
             </div>
