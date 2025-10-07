@@ -10,9 +10,6 @@ export default function Pricing() {
         <div>
           <div className="flex gap-10 !text-center justify-between">
             <div className="!p-2 bg-white rounded-[20px] w-[220px] ">
-              {/* <h5 className="text-black !text-lg !font-semibold !mb-1.5  leading-6 ">
-                Most expensive diagnosis
-              </h5> */}
               <MiniHeader>Most Variable Pricing Diagnosis</MiniHeader>
               <h4 className="text-[#1F664B] !mb-2 !font-normal !text-xl ">
                 Melanoma
@@ -55,7 +52,7 @@ export default function Pricing() {
             </h4>
             <div className="flex gap-1 !mx-auto max-w-[280px]  w-full ">
               <div className="grid grid-cols-1 text-[#1F664B] !text-sm !font-medium !leading-4">
-                <ul className="!mb-0 !pb-1">
+                <ul className="!mb-0 !pb-1 font-semibold">
                   <li className="!mb-0 !text-sm leading-5">
                     <span className="w-[200px] inline-block ">
                       1. Routine Check-up –{" "}
@@ -100,7 +97,6 @@ export default function Pricing() {
           <HeldaAssistantCard onSend={(q) => console.log(q)} />
         </div>
       </div>
-      Most expensive diagnosis
     </div>
   );
 }

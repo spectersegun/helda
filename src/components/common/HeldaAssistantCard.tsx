@@ -30,9 +30,9 @@ export default function HeldaAssistantCard({
   subheadingTop = "Ask about Pricing Data",
   subheadingBottom = "How can I assist you?",
   suggestions = [
-    "What’s our average charge for a knee replacement?",
-    "Which services had the biggest charge variation in April?",
-    "How do our maternity service charges compare to other hospitals?",
+    "Which department contributed the most revenue this quarter?",
+    "Highlight underperforming services by revenue.",
+    "Compare this months revenue to the same month last year.",
   ],
   onSend,
 }: HeldaAssistantCardProps) {
@@ -73,11 +73,14 @@ export default function HeldaAssistantCard({
             className="w-full rounded-[10px] min-h-[50px] !border !border-[#12428D] !bg-white !px-2 !py-1.5 font-semibold !text-[#12428D] shadow-xs hover:!bg-[#12428D] hover:!text-white  text-center !transition-colors !duration-300 !ease-in-out !outline-none"
             onClick={() => setValue(s)}
           >
-            <span className="inline-block  text-sm leading-4.5 ">“{s}”</span>
+            <span className="inline-block  text-sm leading-4.5 mx-auto max-w-[330px]">
+              “{s}”
+            </span>
           </button>
         ))}
       </div>
       {/* Orb */}
+
       {/* <div className="grid place-items-center !mb-2">
         <video
           src="/assets/AIBlob.mp4"
