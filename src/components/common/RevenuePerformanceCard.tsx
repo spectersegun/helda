@@ -1,6 +1,7 @@
 "use client";
 
 import { useNavigation } from "../../contexts/NavigationContext";
+import FilledSparkline from "./FilledSparkline";
 
 type DeltaDir = "up" | "down" | "flat";
 
@@ -33,38 +34,46 @@ export default function RevenuePerformanceCard({
   return (
     <div
       className={[
-        "relative overflow-hidden rounded-2xl bg-white text-center max-h-[400px] cursor-pointer",
-        "!px-3 !pt-4 pb-20 shadow-sm border border-[#FCFAFA] hover:shadow-[0_4px_7px_3px_rgba(31,102,75,0.78)]",
+        "relative overflow-hidden rounded-2xl bg-white text-center max-h-[400px] cursor-pointer flex flex-col justify-between w-full ",
+        "!pt-3 pb-20 shadow-sm border border-[#FCFAFA] hover:shadow-[0_4px_7px_3px_rgba(31,102,75,0.78)] overflow-hidden transition-shadow duration-300 ease-in-out",
         className,
       ].join(" ")}
       onClick={() => navigateToTab("revenue")}
     >
-      {/* Title */}
-      <h3 className="!text-[22px] md:!text-xl !font-semibold text-black !mb-0 ">
-        {title}
-      </h3>
+      <div className="!px-3 ">
+        {/* Title */}
+        <h3 className="!text-[22px] md:!text-xl !font-semibold text-black !mb-0 ">
+          {title}
+        </h3>
 
-      {/* Description */}
-      <p className="mx-auto mt-0 !mb-0 text-[10.5px] leading-4 text-black !font-light ">
-        {description}
-      </p>
+        {/* Description */}
+        <p className="mx-auto mt-0 !mb-0 text-[10.5px] leading-4 text-black !font-light ">
+          {description}
+        </p>
 
-      {/* Metric */}
-      <div className="!mb-16">
-        <div className="flex justify-center items-center gap-3 ">
-          <div className="text-[32px] font-semibold leading-6 text-black">
-            {value}
+        {/* Metric */}
+        <div className="">
+          <div className="flex justify-center items-center gap-3 ">
+            <div className="text-[32px] font-semibold leading-6 text-black">
+              {value}
 
-            <p className="text-black text-xl font-normal !mb-0">this month</p>
-          </div>
-          <div className={`mt-0 text-sm font-medium ${deltaColor}`}>
-            <span className="!mr-0.5 ">▲</span>
-            {deltaText}
+              <p className="text-black text-xl font-normal !mb-0">this month</p>
+            </div>
+            <div className={`mt-0 text-sm font-medium ${deltaColor}`}>
+              <span className="!mr-0.5 ">▲</span>
+              {deltaText}
+            </div>
           </div>
         </div>
       </div>
 
-      <svg
+      {/* <div className="absolute bottom-[0] left-0 !w-full h-auto md:h-24 ">
+      </div> */}
+      <FilledSparkline height={130} />
+
+      {/* <GreenWavesChart /> */}
+
+      {/* <svg
         className="absolute bottom-[0] left-0 !w-full h-auto md:h-24 "
         width="100%"
         // height="184"
@@ -95,7 +104,7 @@ export default function RevenuePerformanceCard({
             <stop offset="1" stop-color="#12428D" stop-opacity="0.37" />
           </linearGradient>
         </defs>
-      </svg>
+      </svg> */}
     </div>
   );
 }

@@ -18,7 +18,7 @@ export default function HomePage() {
 
       <div className="grid grid-cols-3 gap-x-7">
         <div
-          className="bg-white rounded-[18px] !p-2.5 hover:shadow-[0_4px_7px_3px_rgba(31,102,75,0.78)] cursor-pointer"
+          className="bg-white rounded-[18px] !p-2.5 hover:shadow-[0_4px_7px_3px_rgba(31,102,75,0.78)] cursor-pointer transition-shadow duration-300 ease-in-out"
           onClick={() => navigateToTab("assistant")}
         >
           <h2 className="text-[#1F664B] !text-2xl text-center text-medium ">

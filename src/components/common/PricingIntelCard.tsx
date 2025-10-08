@@ -1,6 +1,7 @@
 "use client";
 
 import { useNavigation } from "../../contexts/NavigationContext";
+import GreenWavesChart from "./GreenWavesChart";
 
 type DeltaDir = "up" | "down" | "flat";
 
@@ -36,37 +37,41 @@ export default function PricingIntelCard({
     <div
       className={[
         "relative overflow-hidden rounded-2xl bg-white text-center max-h-[400px] cursor-pointer ",
-        "!px-3 !pt-4 pb-20 shadow-sm border border-[#FCFAFA] hover:shadow-[0_4px_7px_3px_rgba(31,102,75,0.78)]",
+        " !pt-3 pb-20 shadow-sm border border-[#FCFAFA] hover:shadow-[0_4px_7px_3px_rgba(31,102,75,0.78)] overflow-hidden transition-shadow duration-300 ease-in-out flex flex-col justify-between w-full",
         className,
       ].join(" ")}
       onClick={() => navigateToTab("pricing")}
     >
-      <h3 className="!text-[22px] md:!text-xl !font-semibold text-black !mb-0 ">
-        {title}
-      </h3>
+      <div className="!px-3">
+        <h3 className="!text-[22px] md:!text-xl !font-semibold text-black !mb-0 ">
+          {title}
+        </h3>
 
-      <p className="mx-auto mt-0 !mb-0 text-[10.5px] leading-4 text-black !font-light ">
-        {description}
-      </p>
+        <p className="mx-auto mt-0 !mb-0 text-[10.5px] leading-4 text-black !font-light ">
+          {description}
+        </p>
 
-      {/* Metric */}
-      <div className="!mb-20">
-        <div className="text-[18px] md:text-[20px] !font-normal text-black">
-          {metricLabel}
-        </div>
-
-        <div className="flex justify-center items-center gap-3 ">
-          <div className="text-[32px] font-semibold leading-10 text-black">
-            {value}
+        {/* Metric */}
+        <div className="!mb-0">
+          <div className="text-[18px] md:text-[20px] !font-normal text-black">
+            {metricLabel}
           </div>
-          <div className={`mt-1 text-sm font-medium ${deltaColor}`}>
-            <span className="!mr-0.5 ">▲</span>
-            {deltaText}
+
+          <div className="flex justify-center items-center gap-3 ">
+            <div className="text-[32px] font-semibold leading-10 text-black">
+              {value}
+            </div>
+            <div className={`mt-1 text-sm font-medium ${deltaColor}`}>
+              <span className="!mr-0.5 ">▲</span>
+              {deltaText}
+            </div>
           </div>
         </div>
       </div>
 
-      <svg
+      <GreenWavesChart height={90} />
+
+      {/* <svg
         className="absolute bottom-[-16px] left-0 w-full h-24 md:h-24 "
         width="404"
         height="87"
@@ -111,7 +116,7 @@ export default function PricingIntelCard({
             <stop offset="1" stop-color="#B5FF00" />
           </linearGradient>
         </defs>
-      </svg>
+      </svg> */}
     </div>
   );
 }

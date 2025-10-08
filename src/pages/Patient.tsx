@@ -64,7 +64,7 @@ export default function Patient() {
 
                 <h3 className="!text-2xl !font-semibold text-[#1F664B] !mb-0 flex items-center justify-center gap-2">
                   <img
-                    src="/public/icons/mix1.png"
+                    src="/icons/mix1.png"
                     alt="mix 1"
                     className="w-5 h-auto"
                   />
@@ -72,7 +72,7 @@ export default function Patient() {
                 </h3>
                 <h3 className="!text-2xl !font-semibold text-[#1F664B] !mb-0 flex items-center justify-center gap-2 ">
                   <img
-                    src="/public/icons/mix2.png"
+                    src="/icons/mix2.png"
                     alt="mix 2"
                     className="w-5 h-auto"
                   />
