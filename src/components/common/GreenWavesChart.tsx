@@ -93,23 +93,19 @@ export default function GreenWaves({
     <div className="block w-full !p-0">
       <div className="w-full" style={{ height }}>
         <ResponsiveContainer width="100%" height="100%">
-          {/* The chart's `data` can be any array; we draw each series with its own `data` prop */}
           <AreaChart
             data={dataFront}
             margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
           >
             <defs>
-              {/* Back wave gradient */}
               <linearGradient id={idBack} x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stopColor="#1F664B" stopOpacity={0.95} />
                 <stop offset="100%" stopColor="#B7F11D" stopOpacity={0.85} />
               </linearGradient>
-              {/* Mid wave gradient */}
               <linearGradient id={idMid} x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stopColor="#2D7A5D" stopOpacity={0.85} />
                 <stop offset="100%" stopColor="#C8F04A" stopOpacity={0.85} />
               </linearGradient>
-              {/* Front wave gradient */}
               <linearGradient id={idFront} x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0%" stopColor="#C3F227" stopOpacity={0.95} />
                 <stop offset="100%" stopColor="#D6FF2E" stopOpacity={1} />
@@ -123,7 +119,6 @@ export default function GreenWaves({
               />
             )}
 
-            {/* Hidden numeric axes (no padding) so areas touch edges */}
             <XAxis
               type="number"
               dataKey="x"
@@ -134,7 +129,6 @@ export default function GreenWaves({
             />
             <YAxis hide domain={[0, maxY]} yAxisId="y" />
 
-            {/* Draw back → front */}
             <Area
               data={dataBack}
               type="monotone"

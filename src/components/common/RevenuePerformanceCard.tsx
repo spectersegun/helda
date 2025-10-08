@@ -10,7 +10,7 @@ type RevenuePerformanceCardProps = {
   description?: string;
   value?: string | number;
   deltaText?: string;
-  deltaDir?: DeltaDir; // controls color & icon
+  deltaDir?: DeltaDir;
   className?: string;
 };
 
@@ -67,44 +67,7 @@ export default function RevenuePerformanceCard({
         </div>
       </div>
 
-      {/* <div className="absolute bottom-[0] left-0 !w-full h-auto md:h-24 ">
-      </div> */}
       <FilledSparkline height={130} />
-
-      {/* <GreenWavesChart /> */}
-
-      {/* <svg
-        className="absolute bottom-[0] left-0 !w-full h-auto md:h-24 "
-        width="100%"
-        // height="184"
-        viewBox="0 0 433 132"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M79.6896 95.4672C61.7933 101.634 56.6016 62.7517 40.5987 67.5143C24.5959 72.2769 12.2578 95.4672 1.50781 122.639V131.786H431.508V0C423.445 41.9041 412.023 114.643 392.417 120.676C372.81 126.71 369.695 41.9041 353.326 24.9349C336.957 7.96578 330.727 80.8531 314.235 84.2039C297.744 87.5546 289.742 48.2705 275.144 44.7824C260.546 41.2942 252.789 73.6126 236.053 67.8614C219.317 62.1102 213.148 13.6909 196.962 3.10584C180.776 -7.47926 174.18 39.8232 157.871 41.9041C141.563 43.985 132.523 8.44734 118.781 13.6909C105.038 18.9345 97.5859 89.3005 79.6896 95.4672Z"
-          fill="url(#paint0_linear_572_6091)"
-        />
-        <path
-          d="M1.50781 123.668C12.2578 96.4965 24.5959 73.3062 40.5987 68.5436C56.6016 63.781 61.7933 102.663 79.6896 96.4965C97.5859 90.3298 105.038 19.9638 118.781 14.7202C132.523 9.47664 141.563 45.0143 157.871 42.9334C174.18 40.8525 180.776 -6.44996 196.962 4.13514C213.148 14.7202 219.317 63.1395 236.053 68.8907C252.789 74.6419 260.546 42.3235 275.144 45.8117C289.742 49.2998 297.744 88.5839 314.235 85.2332C330.727 81.8824 336.957 8.99507 353.326 25.9642C369.695 42.9334 372.81 127.739 392.417 121.706C412.023 115.672 423.445 42.9334 431.508 1.0293"
-          stroke="#12428D"
-          stroke-width="2"
-          stroke-linejoin="round"
-        />
-        <defs>
-          <linearGradient
-            id="paint0_linear_572_6091"
-            x1="216.508"
-            y1="0"
-            x2="216.508"
-            y2="131.786"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stop-color="#12428D" />
-            <stop offset="1" stop-color="#12428D" stop-opacity="0.37" />
-          </linearGradient>
-        </defs>
-      </svg> */}
     </div>
   );
 }

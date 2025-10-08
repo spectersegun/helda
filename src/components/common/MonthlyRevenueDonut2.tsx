@@ -87,7 +87,6 @@ export default function MonthlyRevenueDonut2({
       <MiniHeader className="max-w-[280px]">{title}</MiniHeader>
 
       <div className="grid grid-cols-[200px_1fr] items-center gap-6">
-        {/* Donut + center label */}
         <div className="relative h-[190px] p-2">
           <ResponsiveContainer>
             <PieChart>
@@ -101,10 +100,8 @@ export default function MonthlyRevenueDonut2({
                 outerRadius={90}
                 paddingAngle={2}
                 cornerRadius={0}
-                // ⬇️ enable update animation so the grow/shrink is smooth
                 isAnimationActive={false}
                 animationDuration={320}
-                // hover handlers
                 onMouseEnter={(_, i) => setActive(i)}
                 onMouseLeave={() => setActive(null)}
                 activeShape={renderActiveShape}

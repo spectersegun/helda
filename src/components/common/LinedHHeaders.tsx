@@ -1,5 +1,3 @@
-// AccountSettingsHeader.jsx
-
 interface LinedHHeadersProps {
   text: string;
   headerClassName?: string;

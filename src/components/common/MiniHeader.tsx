@@ -5,13 +5,6 @@ interface MiniHeaderProps {
   className?: string;
 }
 
-/**
- * A reusable component for a standard, centered, bold heading.
- *
- * @param {MiniHeaderProps} props
- * @returns {JSX.Element}
- */
-
 const MiniHeader: React.FC<MiniHeaderProps> = ({
   children,
   className = "",

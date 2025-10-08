@@ -5,10 +5,10 @@ import { StarIcon } from "../Icons";
 import { SendIcon } from "./Icons";
 
 export type HeldaAssistantCardProps = {
-  heading?: string; // default: "Helda AI Assistant"
-  subheadingTop?: string; // default: "Ask about Pricing Data"
-  subheadingBottom?: string; // default: "How can I assist you?"
-  suggestions?: string[]; // three items by default
+  heading?: string;
+  subheadingTop?: string;
+  subheadingBottom?: string;
+  suggestions?: string[];
   onSend?: (value: string) => void;
 };
 
@@ -68,28 +68,21 @@ export default function HeldaAssistantCard({
       </div>
       {/* Orb */}
 
-      {/* <div className="grid place-items-center !mb-2">
-        <video
-          src="/assets/AIBlob.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="max-w-full w-[180px] height-auto !mx-auto !mt-7 !mb-6"
-        >
-          Your browser does not support the video tag.
-        </video>
-      </div> */}
-
       <div className="grid place-items-center !mb-2">
-        <img
-          src="/images/AINEW.png"
-          alt="AINEW"
-          className="max-w-full w-[170px] height-auto !mx-auto !mt-7 !mb-8"
-        />
+        <div className="w-[220px] ">
+          <video
+            src="/assets/AIBlob.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="max-w-full w-full height-auto !mx-auto !mt-7 !mb-6"
+          >
+            Your browser does not support the video tag.
+          </video>
+        </div>
       </div>
 
-      {/* Input bar */}
       <div className="flex-shrink-0 relative !mb-2">
         <input
           placeholder="Ask me anything"

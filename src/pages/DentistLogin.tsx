@@ -10,13 +10,12 @@ import { useAuth } from "../contexts/AuthContext";
 
 export default function DentistLogin() {
   const [form] = Form.useForm<LoginValues>();
-  const [showPassword, setShowPassword] = useState<boolean>(true);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [loading, setLoading] = useState<boolean>(false);
   const { login } = useAuth();
-
   const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {
@@ -34,7 +33,6 @@ export default function DentistLogin() {
 
     try {
       const validation = await validateLogin(values.email, password, "dentist");
-      // const success = await login(values.email, password);
       const success = await login(values.email, password, "dentist");
 
       console.log({ success });
@@ -56,7 +54,6 @@ export default function DentistLogin() {
     } catch (error) {
       console.error("Login validation error:", error);
 
-      // Handle unexpected errors gracefully
       setEmailError("An error occurred during login. Please try again.");
     } finally {
       setLoading(false);
@@ -70,7 +67,7 @@ export default function DentistLogin() {
           colorPrimary: "#1F664B",
           colorBorder: "#1F664B33",
           colorText: "#0B0B0B",
-          borderRadius: 999, // round inputs nicely
+          borderRadius: 999,
         },
       }}
     >
@@ -148,9 +145,9 @@ export default function DentistLogin() {
                             ? "!border-[#FD0303]"
                             : "focus:!border-[#1F664B] !border-[#1F664B33]"
                         } `}
-                        type={showPassword ? "text" : "password"} // toggle between text and password
+                        type={showPassword ? "text" : "password"}
                         placeholder="Enter your password"
-                        value={password} // always bind to real password state
+                        value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
                       />

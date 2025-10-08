@@ -85,15 +85,9 @@ export default function MonthlyRevenueDonut({
 
   return (
     <div className="w-full max-w-[860px] rounded-[24px] bg-white shadow-[0_6px_24px_rgba(16,24,40,0.04)] !px-6 !py-3 pt-2">
-      {/* Title */}
-      {/* <h2 className="text-[22px] leading-[28px] tracking-[-0.02em] font-semibold text-[#0F1A2A] !mb-4">
-        Monthly Revenue by Department
-      </h2> */}
-
       <MiniHeader className="max-w-[220px]">{title}</MiniHeader>
 
       <div className="grid grid-cols-[200px_1fr] items-center gap-6">
-        {/* Donut + center label */}
         <div className="relative h-[190px] p-2">
           <ResponsiveContainer>
             <PieChart>
@@ -106,11 +100,9 @@ export default function MonthlyRevenueDonut({
                 innerRadius={45}
                 outerRadius={90}
                 paddingAngle={2}
-                cornerRadius={0} // sharp edges
-                // ⬇️ enable update animation so the grow/shrink is smooth
+                cornerRadius={0}
                 isAnimationActive={false}
                 animationDuration={320}
-                // hover handlers
                 onMouseEnter={(_, i) => setActive(i)}
                 onMouseLeave={() => setActive(null)}
                 activeShape={renderActiveShape}
@@ -119,7 +111,7 @@ export default function MonthlyRevenueDonut({
                   <Cell
                     key={d.key}
                     fill={d.color}
-                    stroke="#FFFFFF" // crisp separators like the mock
+                    stroke="#FFFFFF"
                     strokeWidth={0.5}
                   />
                 ))}
@@ -143,7 +135,6 @@ export default function MonthlyRevenueDonut({
           </div>
         </div>
 
-        {/* Legend */}
         <ul className="grid gap-2 !mb-0">
           {DATA.map((d) => (
             <li key={d.key} className="flex items-center justify-between gap-2">

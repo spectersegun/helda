@@ -12,20 +12,18 @@ import {
 } from "recharts";
 import MiniHeader from "./MiniHeader";
 
-// ----- Config
 type Period = "1m" | "6m" | "1y";
 
 const COLORS = {
-  stroke: "#12428D", // line color (deep blue, per mock)
+  stroke: "#12428D",
   grid: "#EDF2F7",
   tick: "#99B2C6",
-  legendDot: "#1F664B", // green dot in legend (as in mock)
+  legendDot: "#1F664B",
   border: "#D9E1E7",
   activeSegBg: "#1F664B",
   activeSegText: "#FFFFFF",
 };
 
-// ----- Demo data (k-units)
 const data6m = [
   { name: "Jul", value: 18 },
   { name: "Aug", value: 14 },
@@ -57,7 +55,6 @@ const data1y = [
   { name: "Dec", value: 12 },
 ];
 
-// ----- UI bits
 function Segmented({
   value,
   onChange,
@@ -120,7 +117,6 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   );
 };
 
-// ----- Main
 export default function RevenueOverTimeCard() {
   const [period, setPeriod] = React.useState<Period>("6m");
   const data = period === "1m" ? data1m : period === "1y" ? data1y : data6m;
@@ -129,12 +125,10 @@ export default function RevenueOverTimeCard() {
     <div className="w-full max-w-[585px] rounded-[24px] bg-white shadow-[0_6px_24px_rgba(16,24,40,0.04)] !px-6 !pt-5 !pb-6">
       <MiniHeader>Revenue over time</MiniHeader>
 
-      {/* Segmented control */}
       <div className="!mb-5 !mt-8">
         <Segmented value={period} onChange={setPeriod} />
       </div>
 
-      {/* Chart */}
       <div className="h-[260px] w-full outline-none">
         <ResponsiveContainer>
           <LineChart
@@ -170,7 +164,7 @@ export default function RevenueOverTimeCard() {
               type="monotone"
               dataKey="value"
               stroke={COLORS.stroke}
-              strokeWidth={3} // smooth, slightly thick line
+              strokeWidth={3}
               dot={false}
               activeDot={{ r: 4 }}
             />
@@ -178,7 +172,6 @@ export default function RevenueOverTimeCard() {
         </ResponsiveContainer>
       </div>
 
-      {/* Legend */}
       <div className="!mt-5">
         <div className="inline-flex items-center gap-2 rounded-[10px] !border !border-[#E6ECF2] bg-white/60 backdrop-blur !px-3 !py-2 text-[12px] text-[#6B7A90]">
           <Dot color={COLORS.legendDot} />

@@ -22,7 +22,7 @@ export default function DeviceGuard({ children }: Props) {
     setChecked(true);
   }, [location.pathname, navigate]);
 
-  if (!checked) return null; // prevent flicker
+  if (!checked) return null;
 
   return <>{children}</>;
 }

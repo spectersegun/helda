@@ -10,7 +10,7 @@ import { useAuth } from "../contexts/AuthContext";
 
 export default function PharmacyLogin() {
   const [form] = Form.useForm<LoginValues>();
-  const [showPassword, setShowPassword] = useState<boolean>(true);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
@@ -38,7 +38,6 @@ export default function PharmacyLogin() {
         password,
         "pharmacy"
       );
-      // const success = await login(values.email, password);
       const success = await login(values.email, password, "pharmacy");
 
       console.log({ success });
@@ -72,7 +71,7 @@ export default function PharmacyLogin() {
           colorPrimary: "#1F664B",
           colorBorder: "#1F664B33",
           colorText: "#0B0B0B",
-          borderRadius: 999, // round inputs nicely
+          borderRadius: 999,
         },
       }}
     >
@@ -86,14 +85,6 @@ export default function PharmacyLogin() {
             />
           </div>
           <div className="!py-12 relative flex justify-center items-center h-full overflow-y-auto hide-native-scrollbar ">
-            {/* <div>
-              <Link
-                to="/healthcare"
-                className=" back-button !absolute !top-12 !left-8 !text-[#1F664B] !font-medium hover:!underline underline-offset-2 "
-              >
-                ← Back
-              </Link>
-            </div> */}
             <div className="text-center !py-6  ">
               <div className="flex justify-center !mb-12">
                 <img
@@ -158,9 +149,9 @@ export default function PharmacyLogin() {
                             ? "!border-[#FD0303]"
                             : "focus:!border-[#1F664B] !border-[#1F664B33]"
                         } `}
-                        type={showPassword ? "text" : "password"} // toggle between text and password
+                        type={showPassword ? "text" : "password"}
                         placeholder="Enter your password"
-                        value={password} // always bind to real password state
+                        value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
                       />

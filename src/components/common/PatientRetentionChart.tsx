@@ -11,25 +11,15 @@ import {
 } from "recharts";
 import MiniHeader from "./MiniHeader";
 
-/**
- * PatientRetentionChart
- * Smooth area/line chart, 0–100% scale, matching the uploaded mock.
- * Tailwind + Recharts, pixel-focused (rounded card, centered title, soft grid).
- */
-
 const COLOR = {
-  // stroke: "#6F69FF", // violet stroke
   stroke: "#8571F4",
-  // fillTop: "rgba(111,105,255,0.28)", // gradient top
   fillTop: "rgba(133,113,244,0.28)",
-  // fillBottom: "rgba(111,105,255,0.04)", // gradient bottom
-  // fillBottom: "rgba(133,113,244,0.04)",
   fillBottom: "rgba(133,113,244,0.06)",
 };
 
 const DATA = [
   { name: "Jul", value: 6 },
-  { name: " ", value: 30 }, // a helper point to create the early bump
+  { name: " ", value: 30 },
   { name: "Aug", value: 20 },
   { name: " ", value: 64 },
   { name: "Sep", value: 72 },
@@ -38,7 +28,7 @@ const DATA = [
   { name: " ", value: 28 },
   { name: "Nov", value: 60 },
   { name: " ", value: 4 },
-  { name: " ", value: 84 }, // end spike
+  { name: " ", value: 84 },
 ];
 
 const ticks = [0, 20, 40, 60, 80, 100];
@@ -69,15 +59,7 @@ export default function PatientRetentionChart({
             data={DATA}
             margin={{ top: 10, right: 12, bottom: 0, left: 0 }}
           >
-            {/* <defs>
-              <linearGradient id="retentionFill" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor={COLOR.fillTop} />
-                <stop offset="100%" stopColor={COLOR.fillBottom} />
-              </linearGradient>
-            </defs> */}
-
             <defs>
-              {/* Match the provided SVG gradient */}
               <linearGradient
                 id="retentionFill"
                 x1="0"

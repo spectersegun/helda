@@ -8,8 +8,6 @@ export default function GreenWrapper({
   return (
     <main
       aria-labelledby="healthcare-heading"
-      // className="bg-[url('/images/HealthBg.jpg')] w-screen h-screen bg-cover bg-center flex flex-col items-center justify-center !py-15 !px-[70px] "
-
       className={`
        bg-[url('/images/HealthBg.jpg')] !w-screen !h-screen bg-cover bg-center flex flex-col items-center justify-center !py-12 !px-12 element-class
       `}
