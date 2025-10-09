@@ -37,9 +37,7 @@ function App() {
         <Router>
           <DeviceGuard>
             <div className="app">
-              {/* <Suspense fallback={<LoadingPage />}> */}
               <Routes>
-                {/* <Route path="/" element={<SplashPage />} /> */}
                 <Route
                   path="/"
                   element={
@@ -65,13 +63,11 @@ function App() {
                   element={<ProtectedRoute>{<Dashboard />}</ProtectedRoute>}
                 />
 
-                {/* 🔑 The whole app lives here as ONE route */}
                 <Route
                   path="/dashboard"
                   element={<ProtectedRoute>{<Dashboard2 />}</ProtectedRoute>}
                 />
               </Routes>
-              {/* </Suspense> */}
             </div>
           </DeviceGuard>
         </Router>

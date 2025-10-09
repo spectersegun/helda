@@ -10,18 +10,15 @@ import {
   type TabKey,
 } from "../contexts/NavigationContext";
 
-// Eager pages
 import HomePage from "./HomePage";
 import Pricing from "./Pricing";
 import Revenue from "./Revenue";
 import Settings from "./Settings";
 import Profile from "./Profile";
 
-// Lazy pages
 const Patient = React.lazy(() => import("./Patient"));
 const AIAssistant = React.lazy(() => import("./AIAssistant"));
 
-// Header configuration following atomic design principles
 const HEADERS: Record<TabKey, { name: string; subtitle?: string }> = {
   home: {
     name: "Welcome Mayowa",
@@ -52,7 +49,6 @@ const HEADERS: Record<TabKey, { name: string; subtitle?: string }> = {
   profile: { name: "My Profile", subtitle: "" },
 };
 
-// Component mapping with proper TypeScript interfaces
 const CONTENT: Record<TabKey, React.ComponentType> = {
   home: HomePage,
   pricing: Pricing,
@@ -63,7 +59,6 @@ const CONTENT: Record<TabKey, React.ComponentType> = {
   profile: Profile,
 };
 
-// Internal Dashboard component that consumes navigation context
 const DashboardContent: React.FC = () => {
   const { activeTab, navigateToTab } = useNavigation();
 
@@ -105,7 +100,6 @@ const DashboardContent: React.FC = () => {
   );
 };
 
-// Main Dashboard component with context provider
 export default function Dashboard2() {
   return (
     <NavigationProvider defaultTab="home">

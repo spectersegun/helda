@@ -33,7 +33,6 @@ export default function HeldaAssistantCard({
 
   return (
     <div className="w-full max-w-[518px] rounded-[24px] bg-white shadow-[0_6px_24px_rgba(16,24,40,0.04)] ring-1 ring-black/5 !px-6 !py-3.5">
-      {/* Brand / Heading */}
       <div className="flex items-start justify-center gap-2.5 !mb-2.5">
         <span className="inline-block align-middle" aria-hidden>
           <StarIcon width={28} height={28} />
@@ -42,7 +41,6 @@ export default function HeldaAssistantCard({
           <h1 className="!text-3xl !font-medium text-[#1F664B] !mb-2.5">
             {heading}
           </h1>
-          {/* Subheads */}
           <p className="text-center text-lg text-black font-semibold !mb-1.5">
             {subheadingTop}
           </p>
@@ -51,7 +49,7 @@ export default function HeldaAssistantCard({
           </p>
         </div>
       </div>
-      {/* Suggestions */}
+
       <div className="flex flex-col gap-3">
         {suggestions.map((s, i) => (
           <button
@@ -66,17 +64,16 @@ export default function HeldaAssistantCard({
           </button>
         ))}
       </div>
-      {/* Orb */}
 
-      <div className="grid place-items-center !mb-2">
-        <div className="w-[220px] ">
+      <div className="grid place-items-center !mb-2 !py-5">
+        <div className="w-[200px] max-w-full h-[200px] aspect-[1/1] overflow-hidden rounded-full !relative">
           <video
-            src="/assets/AIBlob.mp4"
+            src="/assets/AIBlob.web.mp4"
             autoPlay
             loop
             muted
             playsInline
-            className="max-w-full w-full height-auto !mx-auto !mt-7 !mb-6"
+            className="w-[750px] h-auto  object-cover object-center origin-center [transform:scale(4.65)] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
           >
             Your browser does not support the video tag.
           </video>

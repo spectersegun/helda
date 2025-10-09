@@ -4,9 +4,18 @@ import PricingIntelCard from "../components/common/PricingIntelCard";
 import RevenuePerformanceCard from "../components/common/RevenuePerformanceCard";
 import UIHomeCard from "../components/common/UIHomeCard";
 import { useNavigation } from "../contexts/NavigationContext";
+import { animate, motion, useMotionValue, useTransform } from "framer-motion";
 
 export default function HomePage() {
   const { navigateToTab } = useNavigation();
+
+  const count = useMotionValue(0);
+  const rounded = useTransform(() => Math.round(count.get()));
+
+  useEffect(() => {
+    const controls = animate(count, 100, { duration: 5 });
+    return () => controls.stop();
+  }, []);
 
   return (
     <div className="grid grid-cols-1 gap-6 items-stretch flex-1 !relative mt-5 overflow-y-auto !pb-10 !bt-5 hide-native-scrollbar !p-2 ">
@@ -24,11 +33,21 @@ export default function HomePage() {
           <h2 className="text-[#1F664B] !text-2xl text-center text-medium ">
             Helda AI Assistant
           </h2>
-          <img
-            src="/images/AINEW.png"
-            alt="AINEW"
-            className="max-w-full w-[210px] height-auto !mx-auto !mt-7 !mb-6"
-          />
+
+          <div className="grid place-items-center !mb-2 !py-5">
+            <div className="w-[200px] max-w-full h-[200px] aspect-[1/1] overflow-hidden rounded-full !relative">
+              <video
+                src="/assets/AIBlob.web.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-[750px] h-auto  object-cover object-center origin-center [transform:scale(4.65)] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+              >
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
 
           <div className="grid grid-cols-2 gap-4">
             <AIUnderText
@@ -94,4 +113,126 @@ export default function HomePage() {
       </div>
     </div>
   );
+}
+
+("use client");
+
+import React, { useEffect, useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
+
+export function HomeEnterOrchestrator({
+  children,
+  play = true,
+}: {
+  children: React.ReactNode;
+  play?: boolean;
+}) {
+  const scope = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    if (!play || !scope.current) return;
+
+    // Respect reduced motion
+    const prefersReduced =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced) return;
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
+
+      // Initial state
+      gsap.set(
+        [
+          "[data-topcards] > *",
+          "[data-helda]",
+          "[data-helda] [data-suggestions] > *",
+          "[data-divider]",
+          "[data-title]",
+          "[data-grid] > *",
+        ],
+        { opacity: 0, y: 16 }
+      );
+
+      // Video bubble: start tiny & blurred for a premium pop
+      gsap.set("[data-bubble]", {
+        opacity: 0,
+        scale: 0.7,
+        filter: "blur(6px)",
+        transformOrigin: "50% 50%",
+        willChange: "transform, opacity, filter",
+      });
+
+      // Page fade
+      tl.fromTo(scope.current, { opacity: 0 }, { opacity: 1, duration: 0.3 });
+
+      // Row 1 (three KPI cards)
+      tl.to(
+        "[data-topcards] > *",
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          stagger: { each: 0.08, from: "center" },
+        },
+        "+=0.05"
+      );
+
+      // Helda card container in
+      tl.to("[data-helda]", { opacity: 1, y: 0, duration: 0.45 }, "-=0.15");
+
+      // Video bubble pop (scale → settle, blur → sharp)
+      tl.to(
+        "[data-bubble]",
+        {
+          opacity: 1,
+          scale: 1.04,
+          filter: "blur(0px)",
+          duration: 0.55,
+          ease: "back.out(1.6)",
+        },
+        "-=0.2"
+      ).to(
+        "[data-bubble]",
+        { scale: 1, duration: 0.18, ease: "power3.inOut" },
+        "<"
+      );
+
+      // Helda suggestions stagger
+      tl.to(
+        "[data-helda] [data-suggestions] > *",
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.4,
+          stagger: 0.06,
+        },
+        "-=0.1"
+      );
+
+      // Divider line & title
+      tl.to(
+        "[data-divider]",
+        { opacity: 1, y: 0, duration: 0.35 },
+        "-=0.05"
+      ).to("[data-title]", { opacity: 1, y: 0, duration: 0.4 }, "-=0.2");
+
+      // Right grid cards
+      tl.to(
+        "[data-grid] > *",
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          stagger: { each: 0.08, from: "edges" },
+          ease: "power2.out",
+        },
+        "-=0.05"
+      );
+    }, scope);
+
+    return () => ctx.revert();
+  }, [play]);
+
+  return <div ref={scope}>{children}</div>;
 }
