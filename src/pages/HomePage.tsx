@@ -4,18 +4,10 @@ import PricingIntelCard from "../components/common/PricingIntelCard";
 import RevenuePerformanceCard from "../components/common/RevenuePerformanceCard";
 import UIHomeCard from "../components/common/UIHomeCard";
 import { useNavigation } from "../contexts/NavigationContext";
-import { animate, motion, useMotionValue, useTransform } from "framer-motion";
+// import { animate, motion, useMotionValue, useTransform } from "framer-motion";
 
 export default function HomePage() {
   const { navigateToTab } = useNavigation();
-
-  const count = useMotionValue(0);
-  const rounded = useTransform(() => Math.round(count.get()));
-
-  useEffect(() => {
-    const controls = animate(count, 100, { duration: 5 });
-    return () => controls.stop();
-  }, []);
 
   return (
     <div className="grid grid-cols-1 gap-6 items-stretch flex-1 !relative mt-5 overflow-y-auto !pb-10 !bt-5 hide-native-scrollbar !p-2 ">
@@ -117,7 +109,7 @@ export default function HomePage() {
 
 ("use client");
 
-import React, { useEffect, useLayoutEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 
 export function HomeEnterOrchestrator({
@@ -132,7 +124,6 @@ export function HomeEnterOrchestrator({
   useLayoutEffect(() => {
     if (!play || !scope.current) return;
 
-    // Respect reduced motion
     const prefersReduced =
       typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -141,7 +132,6 @@ export function HomeEnterOrchestrator({
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
 
-      // Initial state
       gsap.set(
         [
           "[data-topcards] > *",
@@ -154,7 +144,6 @@ export function HomeEnterOrchestrator({
         { opacity: 0, y: 16 }
       );
 
-      // Video bubble: start tiny & blurred for a premium pop
       gsap.set("[data-bubble]", {
         opacity: 0,
         scale: 0.7,
@@ -163,10 +152,8 @@ export function HomeEnterOrchestrator({
         willChange: "transform, opacity, filter",
       });
 
-      // Page fade
       tl.fromTo(scope.current, { opacity: 0 }, { opacity: 1, duration: 0.3 });
 
-      // Row 1 (three KPI cards)
       tl.to(
         "[data-topcards] > *",
         {
@@ -178,10 +165,8 @@ export function HomeEnterOrchestrator({
         "+=0.05"
       );
 
-      // Helda card container in
       tl.to("[data-helda]", { opacity: 1, y: 0, duration: 0.45 }, "-=0.15");
 
-      // Video bubble pop (scale → settle, blur → sharp)
       tl.to(
         "[data-bubble]",
         {
@@ -198,7 +183,6 @@ export function HomeEnterOrchestrator({
         "<"
       );
 
-      // Helda suggestions stagger
       tl.to(
         "[data-helda] [data-suggestions] > *",
         {
@@ -210,14 +194,12 @@ export function HomeEnterOrchestrator({
         "-=0.1"
       );
 
-      // Divider line & title
       tl.to(
         "[data-divider]",
         { opacity: 1, y: 0, duration: 0.35 },
         "-=0.05"
       ).to("[data-title]", { opacity: 1, y: 0, duration: 0.4 }, "-=0.2");
 
-      // Right grid cards
       tl.to(
         "[data-grid] > *",
         {
