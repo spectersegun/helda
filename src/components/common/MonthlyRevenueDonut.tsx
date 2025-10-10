@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { PieChart, Pie, Cell, ResponsiveContainer, Sector } from "recharts";
 import MiniHeader from "./MiniHeader";

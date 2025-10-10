@@ -1,5 +1,3 @@
-"use client";
-
 type SidebarItem = {
   key: string;
   label: string;

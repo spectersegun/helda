@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { StarIcon } from "../Icons";
 import { SendIcon } from "./Icons";

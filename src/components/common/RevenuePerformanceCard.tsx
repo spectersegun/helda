@@ -1,5 +1,3 @@
-"use client";
-
 import { useNavigation } from "../../contexts/NavigationContext";
 import FilledSparkline from "./FilledSparkline";
 

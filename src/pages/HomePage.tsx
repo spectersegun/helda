@@ -107,8 +107,6 @@ export default function HomePage() {
   );
 }
 
-("use client");
-
 import React, { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 

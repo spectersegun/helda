@@ -1,6 +1,3 @@
-// src/components/WelcomeCard.tsx
-"use client";
-
 import AvatarCircle from "./AvatarCircle";
 
 type WelcomeCardProps = {

@@ -1,5 +1,4 @@
 // src/components/common/AvatarCircle.tsx
-"use client";
 
 type AvatarCircleProps = {
   src: string;

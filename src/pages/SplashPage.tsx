@@ -1,21 +1,18 @@
 import { useCallback, useLayoutEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Image } from "../components/Image";
+import Splash from "../components/Splash";
 
-const SplashPage = () => {
+export default function SplashPage() {
   const navigate = useNavigate();
-
-  // null = not decided yet, true = show splash, false = skip splash
   const [showSplash, setShowSplash] = useState<boolean | null>(null);
   const didNavigate = useRef(false);
 
   useLayoutEffect(() => {
-    // Runs before paint, so no flicker
     try {
       const splashSeen = localStorage.getItem("splashSeen") === "true";
-      const isDesktopOrTablet = window.innerWidth <= 1280; // your logic
+      const isSmallScreen = window.innerWidth <= 1280;
 
-      if (splashSeen || isDesktopOrTablet) {
+      if (splashSeen || isSmallScreen) {
         didNavigate.current = true;
         setShowSplash(false);
         navigate("/healthcare", { replace: true });
@@ -23,25 +20,20 @@ const SplashPage = () => {
         setShowSplash(true);
       }
     } catch {
-      // If localStorage is blocked, just show the splash
       setShowSplash(true);
     }
   }, [navigate]);
 
-  const handleAnimationComplete = useCallback(() => {
-    if (didNavigate.current) return; // guard against double navigation
+  const handleDone = useCallback(() => {
+    if (didNavigate.current) return;
     localStorage.setItem("splashSeen", "true");
     didNavigate.current = true;
-    navigate("/healthcare", { replace: true });
+
+    setTimeout(() => navigate("/healthcare", { replace: true }), 0);
   }, [navigate]);
 
-  // While deciding, render nothing (or a tiny placeholder if you prefer)
   if (showSplash === null) return null;
-
-  // Only render the animation when we decided to show it
   return showSplash ? (
-    <Image onAnimationComplete={handleAnimationComplete} />
+    <Splash onAnimationComplete={handleDone} showFor={3000} />
   ) : null;
-};
-
-export default SplashPage;
+}

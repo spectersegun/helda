@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import GreenWrapper from "../components/common/GreenWrapper";
 import WelcomeCard from "../components/common/WelcomeCard";

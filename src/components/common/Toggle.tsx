@@ -1,6 +1,3 @@
-// Toggle.tsx
-"use client";
-
 type Props = {
   checked: boolean;
   onChange: (v: boolean) => void;
