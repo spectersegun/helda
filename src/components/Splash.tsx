@@ -19,7 +19,7 @@ export default function Splash({ showFor = 3000, onAnimationComplete }: Props) {
       ref={wrapRef}
       className="fixed inset-0 z-[9999] bg-black transition-opacity duration-[400ms]"
     >
-      {/* Reduced motion: static poster */}
+      {/* avif */}
       <div className="h-full w-full motion-safe:hidden">
         <img
           src="/assets/poster.avif"
@@ -28,7 +28,7 @@ export default function Splash({ showFor = 3000, onAnimationComplete }: Props) {
         />
       </div>
 
-      {/* Motion path: video (WebM → MP4) */}
+      {/* MP4 and webp4 for reduced load */}
       <div className="hidden h-full w-full motion-safe:block">
         <video
           autoPlay
