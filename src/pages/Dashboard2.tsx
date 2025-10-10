@@ -7,7 +7,6 @@ import {
   useNavigation,
   type TabKey,
 } from "../contexts/NavigationContext";
-
 import HomePage from "./HomePage";
 import Pricing from "./Pricing";
 import Revenue from "./Revenue";

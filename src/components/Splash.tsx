@@ -4,7 +4,6 @@ type Props = { showFor?: number; onAnimationComplete?: () => void };
 
 export default function Splash({ showFor = 3000, onAnimationComplete }: Props) {
   const wrapRef = useRef<HTMLDivElement>(null);
-  const doneRef = useRef(false);
 
   useEffect(() => {
     const id = window.setTimeout(() => {
