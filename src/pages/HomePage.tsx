@@ -10,7 +10,8 @@ export default function HomePage() {
   const { navigateToTab } = useNavigation();
 
   return (
-    <div className="grid grid-cols-1 gap-6 items-stretch flex-1 !relative mt-5 overflow-y-auto !pb-10 !bt-5 hide-native-scrollbar !p-2 ">
+    // <HomeEnterOrchestrator>
+    <div className="grid grid-cols-1 gap-6 items-stretch flex-1 !relative mt-4 overflow-y-auto !bt-5 hide-native-scrollbar !p-2 ">
       <div className="grid grid-cols-3 gap-x-7 ">
         <PricingIntelCard />
         <RevenuePerformanceCard />
@@ -63,6 +64,7 @@ export default function HomePage() {
             />
           </div>
         </div>
+
         <div className="col-span-2">
           <div>
             <div className="relative flex justify-center items-center">
@@ -104,115 +106,6 @@ export default function HomePage() {
         </div>
       </div>
     </div>
+    // </HomeEnterOrchestrator>
   );
-}
-
-import React, { useLayoutEffect, useRef } from "react";
-import gsap from "gsap";
-
-export function HomeEnterOrchestrator({
-  children,
-  play = true,
-}: {
-  children: React.ReactNode;
-  play?: boolean;
-}) {
-  const scope = useRef<HTMLDivElement>(null);
-
-  useLayoutEffect(() => {
-    if (!play || !scope.current) return;
-
-    const prefersReduced =
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (prefersReduced) return;
-
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
-
-      gsap.set(
-        [
-          "[data-topcards] > *",
-          "[data-helda]",
-          "[data-helda] [data-suggestions] > *",
-          "[data-divider]",
-          "[data-title]",
-          "[data-grid] > *",
-        ],
-        { opacity: 0, y: 16 }
-      );
-
-      gsap.set("[data-bubble]", {
-        opacity: 0,
-        scale: 0.7,
-        filter: "blur(6px)",
-        transformOrigin: "50% 50%",
-        willChange: "transform, opacity, filter",
-      });
-
-      tl.fromTo(scope.current, { opacity: 0 }, { opacity: 1, duration: 0.3 });
-
-      tl.to(
-        "[data-topcards] > *",
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.5,
-          stagger: { each: 0.08, from: "center" },
-        },
-        "+=0.05"
-      );
-
-      tl.to("[data-helda]", { opacity: 1, y: 0, duration: 0.45 }, "-=0.15");
-
-      tl.to(
-        "[data-bubble]",
-        {
-          opacity: 1,
-          scale: 1.04,
-          filter: "blur(0px)",
-          duration: 0.55,
-          ease: "back.out(1.6)",
-        },
-        "-=0.2"
-      ).to(
-        "[data-bubble]",
-        { scale: 1, duration: 0.18, ease: "power3.inOut" },
-        "<"
-      );
-
-      tl.to(
-        "[data-helda] [data-suggestions] > *",
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.4,
-          stagger: 0.06,
-        },
-        "-=0.1"
-      );
-
-      tl.to(
-        "[data-divider]",
-        { opacity: 1, y: 0, duration: 0.35 },
-        "-=0.05"
-      ).to("[data-title]", { opacity: 1, y: 0, duration: 0.4 }, "-=0.2");
-
-      tl.to(
-        "[data-grid] > *",
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.5,
-          stagger: { each: 0.08, from: "edges" },
-          ease: "power2.out",
-        },
-        "-=0.05"
-      );
-    }, scope);
-
-    return () => ctx.revert();
-  }, [play]);
-
-  return <div ref={scope}>{children}</div>;
 }

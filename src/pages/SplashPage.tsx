@@ -34,6 +34,6 @@ export default function SplashPage() {
 
   if (showSplash === null) return null;
   return showSplash ? (
-    <Splash onAnimationComplete={handleDone} showFor={6500} />
+    <Splash onAnimationComplete={handleDone} showFor={6200} />
   ) : null;
 }

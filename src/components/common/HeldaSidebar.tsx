@@ -72,6 +72,7 @@ export default function HeldaSidebar({
     <>
       <style jsx>{`
         .helda-sidebar {
+          height: 100%;
           background: #fcfafa;
           border-radius: 20px;
           padding: 24px 0;
