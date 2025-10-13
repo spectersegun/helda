@@ -1,5 +1,10 @@
 import React from "react";
-import { AreaChart, Area, ResponsiveContainer, Tooltip } from "recharts";
+import {
+  AreaChart,
+  Area,
+  ResponsiveContainer,
+  // Tooltip
+} from "recharts";
 
 type Point = { x: number | string; y: number };
 
@@ -7,7 +12,7 @@ type Props = {
   data?: Point[];
   height?: number;
   color?: string;
-  showTooltip?: boolean;
+  // showTooltip?: boolean;
   animateDurationMs?: number;
 };
 
@@ -24,18 +29,18 @@ const DEFAULT_DATA: Point[] = [
   { x: 9, y: 40 },
 ];
 
-const SparkTooltip = ({ active, payload }: any) =>
-  !active || !payload?.length ? null : (
-    <div className="rounded-md border !border-[#E6ECF2] bg-white/95 !px-2.5 !py-1.5 text-[12px] shadow-sm">
-      <span className="font-medium text-[#0F1A2A]">{payload[0].value}</span>
-    </div>
-  );
+// const SparkTooltip = ({ active, payload }: any) =>
+//   !active || !payload?.length ? null : (
+//     <div className="rounded-md border !border-[#E6ECF2] bg-white/95 !px-2.5 !py-1.5 text-[12px] shadow-sm">
+//       <span className="font-medium text-[#0F1A2A]">{payload[0].value}</span>
+//     </div>
+//   );
 
 export default function FilledSparkline({
   data = DEFAULT_DATA,
   height = 80,
   color = "#12428D",
-  showTooltip = true,
+  // showTooltip = true,
   animateDurationMs = 800,
 }: Props) {
   const gradientId = React.useId();
@@ -66,12 +71,12 @@ export default function FilledSparkline({
               </linearGradient>
             </defs>
 
-            {showTooltip && (
+            {/* {showTooltip && (
               <Tooltip
                 cursor={{ stroke: color, strokeOpacity: 0.12 }}
                 content={<SparkTooltip />}
               />
-            )}
+            )} */}
 
             <Area
               type="monotone"

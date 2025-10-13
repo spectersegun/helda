@@ -3,7 +3,7 @@ import {
   AreaChart,
   Area,
   ResponsiveContainer,
-  Tooltip,
+  // Tooltip,
   YAxis,
   XAxis,
 } from "recharts";
@@ -60,19 +60,19 @@ const D_FRONT: XY[] = [
   { x: 10, y: 15 },
 ];
 
-const WaveTooltip = ({ active, payload, label }: any) =>
-  !active || !payload?.length ? null : (
-    <div className="rounded-md border !border-[#E6ECF2] bg-white/95 !px-2.5 !py-1.5 text-[12px] shadow-sm">
-      <div className="text-[#6B7A90]">{String(label)}</div>
-      <div className="font-medium text-[#0F1A2A]">
-        {payload[0].name ?? "Value"}: {payload[0].value}
-      </div>
-    </div>
-  );
+// const WaveTooltip = ({ active, payload, label }: any) =>
+//   !active || !payload?.length ? null : (
+//     <div className="rounded-md border !border-[#E6ECF2] bg-white/95 !px-2.5 !py-1.5 text-[12px] shadow-sm">
+//       <div className="text-[#6B7A90]">{String(label)}</div>
+//       <div className="font-medium text-[#0F1A2A]">
+//         {payload[0].name ?? "Value"}: {payload[0].value}
+//       </div>
+//     </div>
+//   );
 
 export default function GreenWaves({
   height = 90,
-  showTooltip = true,
+  // showTooltip = true,
   dataBack = D_BACK,
   dataMid = D_MID,
   dataFront = D_FRONT,
@@ -109,13 +109,13 @@ export default function GreenWaves({
                 <stop offset="100%" stopColor="#D6FF2E" stopOpacity={1} />
               </linearGradient>
             </defs>
-
+            {/* 
             {showTooltip && (
               <Tooltip
                 cursor={{ stroke: "#0F5A43", strokeOpacity: 0.12 }}
                 content={<WaveTooltip />}
               />
-            )}
+            )} */}
 
             <XAxis
               type="number"

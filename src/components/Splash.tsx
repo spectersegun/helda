@@ -34,7 +34,7 @@ export default function Splash({ showFor = 3000, onAnimationComplete }: Props) {
           autoPlay
           muted
           playsInline
-          loop
+          // loop
           preload="auto"
           poster="/assets/poster.avif"
           className="h-full w-full object-cover"
