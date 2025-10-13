@@ -1,3 +1,4 @@
+import AIBlobVideo from "../components/common/AIBlob";
 import AIUnderText from "../components/common/AIUnderText";
 import PatientIntelligenceCard from "../components/common/PatientIntelligenceCard";
 import PricingIntelCard from "../components/common/PricingIntelCard";
@@ -27,7 +28,7 @@ export default function HomePage() {
             Helda AI Assistant
           </h2>
 
-          <div className="grid place-items-center !mb-2 !py-5">
+          {/* <div className="grid place-items-center !mb-2 !py-5">
             <div className="w-[200px] max-w-full h-[200px] aspect-[1/1] overflow-hidden rounded-full !relative">
               <video
                 src="/assets/AIBlob.web.mp4"
@@ -40,7 +41,9 @@ export default function HomePage() {
                 Your browser does not support the video tag.
               </video>
             </div>
-          </div>
+          </div> */}
+
+          <AIBlobVideo />
 
           <div className="grid grid-cols-2 gap-4">
             <AIUnderText

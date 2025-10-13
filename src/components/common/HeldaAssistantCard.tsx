@@ -1,6 +1,7 @@
 import React from "react";
 import { StarIcon } from "../Icons";
 import { SendIcon } from "./Icons";
+import { motion } from "framer-motion";
 
 export type HeldaAssistantCardProps = {
   heading?: string;
@@ -53,7 +54,7 @@ export default function HeldaAssistantCard({
           <button
             key={i}
             type="button"
-            className="w-full rounded-[10px] min-h-[50px] !border !border-[#12428D] !bg-white !px-2 !py-1.5 font-semibold !text-[#12428D] shadow-xs hover:!bg-[#12428D] hover:!text-white  text-center !transition-colors !duration-300 !ease-in-out !outline-none"
+            className="cursor-pointer w-full rounded-[10px] min-h-[50px] !border !border-[#12428D] !bg-white !px-2 !py-1.5 font-semibold !text-[#12428D] shadow-xs hover:!bg-[#12428D] hover:!text-white  text-center !transition-colors !duration-300 !ease-in-out !outline-none"
             onClick={() => setValue(s)}
           >
             <span className="inline-block  text-sm leading-4.5 mx-auto max-w-[330px]">
@@ -63,7 +64,12 @@ export default function HeldaAssistantCard({
         ))}
       </div>
 
-      <div className="grid place-items-center !mb-2 !py-5">
+      <motion.div
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+        className="grid place-items-center !mb-2 !py-5"
+      >
         <div className="w-[200px] max-w-full h-[200px] aspect-[1/1] overflow-hidden rounded-full !relative">
           <video
             src="/assets/AIBlob.web.mp4"
@@ -76,7 +82,7 @@ export default function HeldaAssistantCard({
             Your browser does not support the video tag.
           </video>
         </div>
-      </div>
+      </motion.div>
 
       <div className="flex-shrink-0 relative !mb-2">
         <input
