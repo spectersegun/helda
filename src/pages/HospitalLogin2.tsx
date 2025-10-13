@@ -5,7 +5,6 @@ import GreenWrapper from "../components/common/GreenWrapper";
 import type { LoginValues } from "../types";
 import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 import { validateLogin } from "../data/userCredentials";
-import { notify } from "../utils/notify";
 import { useAuth } from "../contexts/AuthContext";
 
 export default function HospitalLogin2() {
@@ -36,6 +35,7 @@ export default function HospitalLogin2() {
         password,
         "hospital"
       );
+
       const success = await login(values.email, password, "hospital");
 
       console.log({ success });
@@ -48,10 +48,7 @@ export default function HospitalLogin2() {
         }
       } else {
         if (success) {
-          notify.success("Login successful!");
           navigate("/loading");
-        } else {
-          notify.error("Login failed. Please check your credentials.");
         }
       }
     } catch (error) {

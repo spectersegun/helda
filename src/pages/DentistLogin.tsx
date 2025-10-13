@@ -5,7 +5,6 @@ import GreenWrapper from "../components/common/GreenWrapper";
 import type { LoginValues } from "../types";
 import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 import { validateLogin } from "../data/userCredentials";
-import { notify } from "../utils/notify";
 import { useAuth } from "../contexts/AuthContext";
 
 export default function DentistLogin() {
@@ -45,10 +44,7 @@ export default function DentistLogin() {
         }
       } else {
         if (success) {
-          notify.success("Login successful!");
           navigate("/loading");
-        } else {
-          notify.error("Login failed. Please check your credentials.");
         }
       }
     } catch (error) {
