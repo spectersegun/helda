@@ -85,7 +85,7 @@ export default function FilledSparkline({
               strokeWidth={2}
               fill={`url(#${gradientId})`}
               dot={false}
-              activeDot={{ r: 3 }}
+              // activeDot={{ r: 3 }}
               // Animation controls
               isAnimationActive={enableAnim}
               animationBegin={0}
@@ -95,6 +95,7 @@ export default function FilledSparkline({
                 didFinishOnce.current = true;
                 setEnableAnim(false);
               }}
+              activeDot={false}
             />
           </AreaChart>
         </ResponsiveContainer>

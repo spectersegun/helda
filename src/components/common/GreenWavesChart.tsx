@@ -134,9 +134,10 @@ export default function GreenWaves({
               stroke="none"
               fill={`url(#${idBack})`}
               isAnimationActive={false}
-              dot={false}
               xAxisId="x"
               yAxisId="y"
+              dot={false}
+              activeDot={false}
             />
             <Area
               data={dataMid}
@@ -145,9 +146,10 @@ export default function GreenWaves({
               stroke="none"
               fill={`url(#${idMid})`}
               isAnimationActive={false}
-              dot={false}
               xAxisId="x"
               yAxisId="y"
+              dot={false}
+              activeDot={false}
             />
             <Area
               data={dataFront}
@@ -156,9 +158,10 @@ export default function GreenWaves({
               stroke="none"
               fill={`url(#${idFront})`}
               isAnimationActive={false}
-              dot={false}
               xAxisId="x"
               yAxisId="y"
+              dot={false}
+              activeDot={false}
             />
           </AreaChart>
         </ResponsiveContainer>

@@ -67,7 +67,11 @@ export default function HeldaAssistantCard({
       <motion.div
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
-        transition={{ duration: 1, ease: "easeOut" }}
+        // transition={{ duration: 1, ease: "easeOut" }}
+        transition={{
+          duration: 1,
+          scale: { type: "spring", visualDuration: 1, bounce: 0.5 },
+        }}
         className="grid place-items-center !mb-2 !py-5"
       >
         <div className="w-[200px] max-w-full h-[200px] aspect-[1/1] overflow-hidden rounded-full !relative">

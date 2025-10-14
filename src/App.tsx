@@ -27,7 +27,7 @@ import Dashboard2 from "./pages/Dashboard2";
 // Protected Route Component
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { isAuthenticated } = useAuth();
-  return isAuthenticated ? <>{children}</> : <Navigate to="/healthcare" />;
+  return isAuthenticated ? <>{children}</> : <Navigate to="/dashboard" />;
 }
 
 function App() {
