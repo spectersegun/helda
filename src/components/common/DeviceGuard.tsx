@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { useAllPageNavigation } from "../../contexts/AllPagesNavigationContext";
 
 interface Props {
   children: React.ReactNode;
 }
 
 export default function DeviceGuard({ children }: Props) {
-  const navigate = useNavigate();
+  const { currentView, navigateTo } = useAllPageNavigation();
   const location = useLocation();
   const [checked, setChecked] = useState(false);
 
@@ -17,10 +18,10 @@ export default function DeviceGuard({ children }: Props) {
 
   useEffect(() => {
     if (isMobileDevice() && location.pathname !== "/incompatible") {
-      navigate("/incompatible", { replace: true });
+      navigateTo("incompatible");
     }
     setChecked(true);
-  }, [location.pathname, navigate]);
+  }, [location.pathname, currentView, isMobileDevice]);
 
   if (!checked) return null;
 

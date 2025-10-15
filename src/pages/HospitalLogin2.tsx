@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { ConfigProvider, Form } from "antd";
 import GreenWrapper from "../components/common/GreenWrapper";
 import type { LoginValues } from "../types";
 import { EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 import { validateLogin } from "../data/userCredentials";
 import { useAuth } from "../contexts/AuthContext";
+import { useAllPageNavigation } from "../contexts/AllPagesNavigationContext";
 
 export default function HospitalLogin2() {
   const [form] = Form.useForm<LoginValues>();
@@ -15,8 +15,7 @@ export default function HospitalLogin2() {
   const [passwordError, setPasswordError] = useState("");
   const [loading, setLoading] = useState<boolean>(false);
   const { login } = useAuth();
-
-  const navigate = useNavigate();
+  const { navigateTo } = useAllPageNavigation();
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -48,7 +47,7 @@ export default function HospitalLogin2() {
         }
       } else {
         if (success) {
-          navigate("/loading");
+          navigateTo("loading");
         }
       }
     } catch (error) {

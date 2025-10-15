@@ -1,39 +1,37 @@
 import { useState } from "react";
 import dentistImage from "./Dentist.png";
 import hospitalImage from "./Hospital image.jpg";
-import { useNavigate } from "react-router-dom";
 import pharmacyImage from "./Pharmacy image.png";
 import "./HealthCareSector2.css";
+import { useAllPageNavigation } from "../contexts/AllPagesNavigationContext";
 
 export const HealthcareSector2 = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const navigate = useNavigate();
+  const { navigateTo } = useAllPageNavigation();
 
   const handleCategoryClick = (category: string) => {
     setSelectedCategory(category);
-    // Navigate to the specific login page based on category
+    // Navigate to the specific login page based on category #segun
     setTimeout(() => {
       switch (category) {
         case "hospital":
-          navigate("/hospital-login");
+          navigateTo("hospital-login");
           break;
         case "dentist":
-          navigate("/dentist-login");
+          navigateTo("dentist-login");
           break;
         case "pharmacy":
-          navigate("/pharmacy-login");
+          navigateTo("pharmacy-login");
           break;
         default:
-          navigate("/login");
+          navigateTo("hospital-login");
       }
-    }, 300); // Small delay to show the click state
+    }, 300); // Small delay to show the click state  #segun
   };
 
   return (
     <main
       aria-labelledby="healthcare-heading"
-      // className="bg-[url('/images/HealthBg.jpg')] w-screen h-screen bg-cover bg-center flex flex-col items-center justify-center !py-15 !px-[70px] "
-
       className={`
        bg-[url('/images/HealthBg.jpg')] w-screen h-screen bg-cover bg-center flex flex-col items-center justify-center !py-14 !px-[60px] element-class 
        animate-fade-in-down delay-200

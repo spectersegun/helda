@@ -1,36 +1,35 @@
 import { useCallback, useLayoutEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Splash from "../components/Splash";
+import { useAllPageNavigation } from "../contexts/AllPagesNavigationContext";
 
 export default function SplashPage() {
-  const navigate = useNavigate();
+  const { currentView, navigateTo } = useAllPageNavigation();
   const [showSplash, setShowSplash] = useState<boolean | null>(null);
   const didNavigate = useRef(false);
 
   useLayoutEffect(() => {
     try {
       const splashSeen = localStorage.getItem("splashSeen") === "true";
-      const isSmallScreen = window.innerWidth <= 1280;
 
-      if (splashSeen || isSmallScreen) {
+      if (splashSeen) {
         didNavigate.current = true;
         setShowSplash(false);
-        navigate("/healthcare", { replace: true });
+        navigateTo("healthcare");
       } else {
         setShowSplash(true);
       }
     } catch {
       setShowSplash(true);
     }
-  }, [navigate]);
+  }, [currentView]);
 
   const handleDone = useCallback(() => {
     if (didNavigate.current) return;
     localStorage.setItem("splashSeen", "true");
     didNavigate.current = true;
 
-    setTimeout(() => navigate("/healthcare", { replace: true }), 0);
-  }, [navigate]);
+    setTimeout(() => navigateTo("healthcare"));
+  }, [currentView]);
 
   if (showSplash === null) return null;
   return showSplash ? (

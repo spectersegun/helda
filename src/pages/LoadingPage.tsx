@@ -1,23 +1,23 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import "./LoadingPage.css";
 
 // Import images
 import backgroundImage from "./Slide1 1.jpg";
 import heldaFullLogo from "./helda_full_logo.png";
+import { useAllPageNavigation } from "../contexts/AllPagesNavigationContext";
 
 const LoadingPage: React.FC = () => {
-  const navigate = useNavigate();
+  const { currentView, navigateTo } = useAllPageNavigation();
 
   useEffect(() => {
-    // Simulate loading time - navigate to dashboard after 3 seconds
+    // Simulate loading time - navigate to dashboard after 3 seconds #segunspecter
     const timer = setTimeout(() => {
-      // Navigate to dashboard (you can update this route as needed)
-      navigate("/dashboard");
+      // Navigate to dashboard when loadin is done #segunspecter
+      navigateTo("dashboard");
     }, 3000);
 
     return () => clearTimeout(timer);
-  }, [navigate]);
+  }, [currentView]);
 
   return (
     <div

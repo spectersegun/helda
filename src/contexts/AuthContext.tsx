@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { validateLogin } from "../data/userCredentials";
+import { useAllPageNavigation } from "./AllPagesNavigationContext";
 
 interface User {
   id: string;
@@ -24,15 +25,16 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
+  const { navigateTo } = useAllPageNavigation();
 
   useEffect(() => {
+    // Check for stored auth token on app load
     const storedUser = localStorage.getItem("authUser");
-    // const storedToken = localStorage.getItem("authToken");
+    const storedToken = localStorage.getItem("authToken");
 
-    // if (storedUser && storedToken) {
-    if (storedUser) {
+    if (storedUser && storedToken) {
       setUser(JSON.parse(storedUser));
       setIsAuthenticated(true);
     }
@@ -74,6 +76,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setIsAuthenticated(false);
     localStorage.removeItem("authUser");
     localStorage.removeItem("authToken");
+    navigateTo("healthcare");
   };
 
   const value = {
