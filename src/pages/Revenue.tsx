@@ -6,7 +6,7 @@ import RevenueOverTimeCard from "../components/common/RevenueOverTimeCard";
 
 export default function Revenue() {
   return (
-    <div className="grid grid-cols-1 gap-5 items-stretch flex-1 !relative !pt-10 overflow-y-auto !pb-40 !bt-5">
+    <div className="grid grid-cols-1 gap-5 items-stretch flex-1 !relative !pt-8 overflow-y-auto !pb-40">
       <div className="grid grid-cols-3 gap-x-7 ">
         <div>
           <div className="flex gap-10 !text-center justify-between">

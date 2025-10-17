@@ -32,14 +32,14 @@ export default function AIAssistant() {
 
   return (
     <>
-      <div className="grid grid-cols-3 gap-5 items-stretch flex-1 !mt-5">
+      <div className="grid grid-cols-3 gap-5 items-stretch flex-1 h-full !pt-8 ">
         <AISide
           withQuestions={withQuestions}
           setWithQuestions={setWithQuestions}
         />
 
-        <div className="col-span-2 bg-white rounded-2xl !px-4 flex flex-col h-full">
-          <div className="!pt-8  flex-1 ">
+        <div className="col-span-2 bg-white rounded-2xl !px-4 flex flex-col h-full flex-1 ">
+          <div className="!pt-8  flex-1">
             <h2 className="text-center !text-4xl !font-semibold  ">
               How can I help?
             </h2>

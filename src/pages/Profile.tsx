@@ -6,7 +6,7 @@ export default function Profile() {
 
   return (
     <>
-      <div className="grid grid-cols-1 gap-5 items-stretch flex-1 !relative !pt-10 overflow-y-auto !pb-40 !mt-5 hide-native-scrollbar ">
+      <div className="grid grid-cols-1 gap-5 items-stretch flex-1 !relative !pt-8 overflow-y-auto !pb-40 hide-native-scrollbar ">
         <div className="!mx-auto  !max-w-[360px] !text-center ">
           <div className="flex flex-col items-center ">
             <img
@@ -34,8 +34,11 @@ export default function Profile() {
                 <span className="text-[#1F664B]">Change Password</span>
               </button>
 
-              <button className="!border !border-[#12428D] !bg-inherit w-full !h-12 !outline-none !mb-4 flex items-center justify-center" onClick={() => logout()} >
-                <span className="text-[#12428D] flex gap-2 justify-center " >
+              <button
+                className="!border !border-[#12428D] !bg-inherit w-full !h-12 !outline-none !mb-4 flex items-center justify-center"
+                onClick={() => logout()}
+              >
+                <span className="text-[#12428D] flex gap-2 justify-center ">
                   <LogoutIcon /> Log out
                 </span>
               </button>

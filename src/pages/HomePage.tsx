@@ -12,7 +12,7 @@ export default function HomePage() {
 
   return (
     // <HomeEnterOrchestrator>
-    <div className="grid grid-cols-1 gap-6 items-stretch flex-1 !relative mt-4 overflow-y-auto !bt-5 hide-native-scrollbar !p-2 ">
+    <div className="grid grid-cols-1 gap-6 items-stretch flex-1 !relative overflow-y-auto hide-native-scrollbar !p-2 !pt-8 ">
       <div className="grid grid-cols-3 gap-x-7 ">
         <PricingIntelCard />
         <RevenuePerformanceCard />

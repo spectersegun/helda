@@ -209,7 +209,7 @@ const DashboardContent: React.FC = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 15 }}
                   transition={{ duration: 0.6, ease: "easeOut" }}
-                  className="flex-1"
+                  className="flex-1 h-full"
                 >
                   <React.Suspense
                     fallback={

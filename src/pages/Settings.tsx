@@ -9,7 +9,7 @@ export default function Settings() {
   const [disableAnimations, setDisableAnimations] = useState(true);
 
   return (
-    <div className="grid grid-cols-2 gap-5 items-stretch flex-1 !relative !pt-10 overflow-y-auto !pb-20 !bt-5 bg-white hide-native-scrollbar mt-5 rounded-[20px] justify-center ">
+    <div className="grid grid-cols-2 gap-5 items-stretch flex-1 !relative !pt-10 overflow-y-auto !pb-20 bg-white hide-native-scrollbar mt-5 rounded-[20px] justify-center ">
       <div className="col-span-1">
         <LinedHHeaders text="Account Settings" />
 
