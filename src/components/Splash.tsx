@@ -37,7 +37,7 @@ export default function Splash({ showFor = 3000, onAnimationComplete }: Props) {
           // loop
           preload="auto"
           poster="/assets/poster.avif"
-          className="h-full w-full object-cover"
+          className="!h-full !w-full object-cover "
         >
           <source src="/assets/animationWhiteBgUpd1.webm" type="video/webm" />
           <source src="/assets/animationWhiteBgUpd1.mp4" type="video/mp4" />

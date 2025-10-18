@@ -33,33 +33,38 @@ export const HealthcareSector2 = () => {
     <main
       aria-labelledby="healthcare-heading"
       className={`
-       bg-[url('/images/HealthBg.jpg')] w-screen h-screen bg-cover bg-center flex flex-col items-center justify-center !py-14 !px-[60px] element-class 
+       bg-[url('/images/HealthBg.jpg')] w-screen h-screen bg-cover bg-center flex flex-col items-center justify-center !py-[3.13vw] !px-[3.64vw] element-class 
        animate-fade-in-down delay-200
        healthcare-sector2
       `}
     >
-      <div className="!text-white bg-white w-full h-full rounded-lg overflow-y-auto !py-12 flex flex-col justify-center ">
+      <div className="!text-white bg-white w-full h-full rounded-lg overflow-y-auto !py-[8.2vw] flex flex-col justify-center ">
         <div className="flex justify-center ">
-          <img src="/images/logo1.png" alt="Logo" className="w-16 h-auto   " />
+          <img
+            src="/images/logo1.png"
+            alt="Logo"
+            className="!h-[6.9vw]  !w-auto"
+          />
         </div>
-        <div className="p-8">
+
+        <div className="">
           <h1
             id="healthcare-heading"
-            className="!text-4xl mb-6 text-center text-black !mt-16 !font-extrabold "
+            className="!text-[2.24vw] !text-center !text-black !mt-[4vw] 2xl:mt-[80px] !font-extrabold  !mb-0"
           >
             Choose your Healthcare Category
           </h1>
 
-          <div className="flex !max-w-3xl !mx-auto gap-24 justify-center !mt-16 ">
+          <div className="flex !max-w-3xl !mx-auto gap-[7.8vw] justify-center !mt-[4.14vw] ">
             <div
               className={`group ${
                 selectedCategory === "hospital" ? "clicked" : ""
               }`}
               onClick={() => handleCategoryClick("hospital")}
             >
-              <div className="w-[200px] cursor-pointer select-none">
+              <div className="!w-[11.7vw] cursor-pointer select-none">
                 <img
-                  className={`!w-[140px] !h-auto rounded-2xl !mx-auto !border-1 !border-[#1F664B] transition-transform duration-300 ease-out origin-center group-hover:scale-[1.1] ${
+                  className={`!w-[8.2vw] !h-auto rounded-2xl !mx-auto !border-1 !border-[#1F664B] transition-transform duration-300 ease-out origin-center group-hover:scale-[1.1] ${
                     selectedCategory === "hospital" ? "" : ""
                   }`}
                   alt="Hospital image"
@@ -68,8 +73,8 @@ export const HealthcareSector2 = () => {
 
                 <button
                   className="
-                    !mt-10 flex justify-center items-center w-full !h-10 !rounded-full
-                    !bg-[#1F664B] !text-white !text-sm !font-semibold
+                    !mt-[2vw] flex justify-center items-center w-full !h-[2.42vw] !rounded-full
+                    !bg-[#1F664B] !text-white !text-sm 2xl:text-base !font-semibold
                     transition-colors duration-300 ease-out
                     group-hover:!bg-white group-hover:!text-[#1F664B]  !border-2 !border-[#1F664B] !outline-none active:shadow-[0_4px_4px_1px_#1F664B]
                   "
@@ -85,10 +90,10 @@ export const HealthcareSector2 = () => {
               }`}
               onClick={() => handleCategoryClick("pharmacy")}
             >
-              <div className="w-[200px] cursor-pointer select-none">
+              <div className="!w-[11.7vw] cursor-pointer select-none">
                 <img
                   className="
-                    !w-[140px] !h-auto rounded-2xl !mx-auto
+                    !w-[8.2vw] !h-auto rounded-2xl !mx-auto
                     !border-2 !border-[#CBDF90]
                     transition-transform duration-300 ease-out
                     origin-center 
@@ -100,8 +105,8 @@ export const HealthcareSector2 = () => {
 
                 <button
                   className="
-                    !mt-10 flex justify-center items-center w-full !h-10 !rounded-full
-                    !bg-[#CBDF90] !text-[#1F664B] !text-sm
+                    !mt-[2vw] flex justify-center items-center w-full !h-[2.42vw] !rounded-full
+                    !bg-[#CBDF90] !text-[#1F664B] !text-sm 2xl:text-base
                     transition-colors duration-300 ease-out !font-semibold
 
                     group-hover:!bg-white group-hover:!text-[#1F664B]  !border-2 !border-[#CBDF90]  !outline-none active:shadow-[0_4px_7.3px_-1px_#1F6633]
@@ -118,10 +123,10 @@ export const HealthcareSector2 = () => {
               }`}
               onClick={() => handleCategoryClick("dentist")}
             >
-              <div className="w-[200px] cursor-pointer select-none">
+              <div className="!w-[11.7vw] cursor-pointer select-none">
                 <img
                   className="
-                    !w-[140px] !h-auto rounded-2xl !mx-auto
+                    !w-[8.2vw] !h-auto rounded-2xl !mx-auto
                     !border-2 !border-[#12428D]
                     transition-transform duration-300 ease-out
                     origin-center
@@ -133,8 +138,8 @@ export const HealthcareSector2 = () => {
 
                 <button
                   className="
-                    !mt-10 flex justify-center items-center w-full !h-10 !rounded-full !font-semibold
-                    !bg-[#12428D] !text-white !text-sm 
+                    !mt-6 lg:!mt-8 xl:!mt-9 3xl:!mt-[2vw] flex justify-center items-center w-full !h-[2.42vw] !rounded-full !font-semibold
+                    !bg-[#12428D] !text-white !text-sm 2xl:text-base
                     transition-colors duration-300 ease-out
                     group-hover:!bg-white group-hover:!text-[#12428D] !border-2 !border-[#12428D] !outline-none active:shadow-[0_4px_7.3px_-1px_#12428D]
                   "

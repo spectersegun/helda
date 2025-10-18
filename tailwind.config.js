@@ -61,6 +61,15 @@ export default {
         "helda-rail":
           "linear-gradient(270deg, rgba(31,102,75,0.16) -2.61%, rgba(31,102,75,0.05) 100%)",
       },
+      screens: {
+        sm: "640px",
+        md: "768px",
+        lg: "1024px",
+        xl: "1280px",
+        "2xl": "1536px",
+        "3xl": "1800px",
+        "4xl": "2560px",
+      },
     },
   },
   plugins: [],
