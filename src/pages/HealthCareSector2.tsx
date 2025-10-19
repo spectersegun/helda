@@ -50,7 +50,7 @@ export const HealthcareSector2 = () => {
         <div className="">
           <h1
             id="healthcare-heading"
-            className="!text-[2.24vw] !text-center !text-black !mt-[4vw] 2xl:mt-[80px] !font-extrabold  !mb-0"
+            className="!text-[2.24vw] !text-center !text-black !mt-[4vw] !font-bold  !mb-0"
           >
             Choose your Healthcare Category
           </h1>

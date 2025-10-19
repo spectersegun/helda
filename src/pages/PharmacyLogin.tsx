@@ -72,30 +72,34 @@ export default function PharmacyLogin() {
       }}
     >
       <GreenWrapper>
-        <div className="grid grid-cols-2 gap-16 !px-20 h-full  ">
-          <div className="!w-full !h-full !py-12  ">
+        <div className="grid grid-cols-24 gap-[3.3] !p-[4.2vw] h-full ">
+          <div className="!w-full !h-full col-span-12 ">
             <img
               src="/images/PharmacyLogin.png"
               alt="hospitalLogin"
-              className="!w-full !h-full object-cover rounded-[20px]"
+              className="!w-full !h-full object-cover rounded-[1vw]"
             />
           </div>
-          <div className="!py-12 relative flex justify-center items-center h-full overflow-y-auto hide-native-scrollbar ">
+          <div className="col-span-12 relative flex justify-center items-center h-full overflow-y-auto hide-native-scrollbar ">
             <div className="text-center !py-6  ">
-              <div className="flex justify-center !mb-12">
+              <div className="flex justify-center">
                 <img
                   src="/images/logo1.png"
                   alt="Logo"
-                  className="w-16 h-auto   "
+                  className="!h-[6.9vw]  !w-auto"
                 />
               </div>
 
               <div>
-                <h2 className="!text-[42px] font-extrabold login-title !mb-4 ">
+                <h1
+                  id="healthcare-heading"
+                  className="!text-[2.24vw] !text-center !text-black !mt-[4vw] !font-bold  !mb-[1vw] "
+                >
                   Welcome to Helda Insights
-                </h2>
+                </h1>
+
                 <div className="flex justify-center ">
-                  <p className="!mb-10 text-[#5B5B5B]  !text-base">
+                  <p className="!mb-[1.6vw] text-[#5B5B5B]  !text-[1vw]">
                     Enter your email and password to access your account
                   </p>
                 </div>
@@ -109,15 +113,17 @@ export default function PharmacyLogin() {
                   requiredMark={false}
                   onFinish={onFinish}
                   autoComplete="off"
-                  className="space-y-3 !max-w-[420px] !mx-auto "
+                  className="!max-w-[21vw] !mx-auto "
                 >
                   <Form.Item
-                    label={<span className="text-sm text-black">Email</span>}
+                    label={
+                      <span className="text-[0.9vw] text-black">Email</span>
+                    }
                     name="email"
-                    className={emailError ? "!mb-0" : ""}
+                    className={emailError ? "!mb-0" : "!mb-[2vw"}
                   >
                     <input
-                      className={`!h-12 text-base  placeholder-[#ACACAC]  !w-full !outline-none !py-4 !px-7 !border !text-black !rounded-[40px]  !transition !duration-200 ${
+                      className={`!h-[2.7vw] !text-[0.8vw]  placeholder-[#ACACAC]  !w-full !outline-none !py-4 !px-[1.4vw] !border !text-black !rounded-[1.9vw]  !transition !duration-200 ${
                         emailError
                           ? "!border-[#FD0303]"
                           : "focus:!border-[#1F664B] !border-[#1F664B33]"
@@ -128,19 +134,21 @@ export default function PharmacyLogin() {
                     />
                   </Form.Item>
                   {emailError && (
-                    <div className="!pl-7 !text-[#FD0303] !mt-1.5 font-medium flex !mb-3">
+                    <div className="!pl-[1.4vw] !text-[#FD0303] !mt-1.5 font-medium flex !mb-3">
                       {emailError}
                     </div>
                   )}
 
                   <Form.Item
-                    label={<span className="text-sm text-black">Password</span>}
+                    label={
+                      <span className="text-[0.9vw] text-black">Password</span>
+                    }
                     name="password"
-                    className={passwordError ? "!mb-0" : ""}
+                    className={passwordError ? "!mb-0" : "!mb-0"}
                   >
                     <div className="relative !w-full">
                       <input
-                        className={`!h-12 text-base !border-[#1F664B33] placeholder-[#ACACAC] focus:!border-[#1F664B] !w-full !outline-none !py-4 !px-7 !border  !text-black !rounded-[40px] !transition !duration-200 ${
+                        className={`!h-[2.7vw] !text-[0.8vw] !border-[#1F664B33] placeholder-[#ACACAC] focus:!border-[#1F664B] !w-full !outline-none !py-4 !px-[1.4vw] !border  !text-black !rounded-[1.9vw] !transition !duration-200 ${
                           passwordError
                             ? "!border-[#FD0303]"
                             : "focus:!border-[#1F664B] !border-[#1F664B33]"
@@ -164,7 +172,7 @@ export default function PharmacyLogin() {
                       </span>
                     </div>
                     {passwordError && (
-                      <div className="!pl-7 !text-[#FD0303] !mt-1.5 font-medium flex ">
+                      <div className="!pl-[1.4vw] !text-[#FD0303] !mt-1.5 font-medium flex ">
                         {passwordError}
                       </div>
                     )}
@@ -175,8 +183,8 @@ export default function PharmacyLogin() {
                       disabled={loading}
                       type="submit"
                       className="
-                    !mt-8 flex justify-center items-center w-[232px] !h-12 !rounded-full !outline-none
-                    !bg-[#1F664B] !text-white !text-base font-medium
+                    !mt-[3.5vw] flex justify-center items-center w-[11.7vw] !h-[2.4vw] !rounded-full !outline-none
+                    !bg-[#1F664B] !text-white !text-[0.8vw] font-medium
                     transition-colors duration-300 ease-out
                     hover:!bg-white hover:!text-[#1F664B] !border-2 !border-[#1F664B] 
                     active:!shadow-[0_4px_7.3px_-1px_#1F664B]
