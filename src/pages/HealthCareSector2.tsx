@@ -38,7 +38,7 @@ export const HealthcareSector2 = () => {
        healthcare-sector2
       `}
     >
-      <div className="!text-white bg-white w-full h-full rounded-lg overflow-y-auto !py-[8.2vw] flex flex-col justify-center ">
+      <div className="!text-white bg-white w-full h-full rounded-lg overflow-y-auto flex flex-col justify-center ">
         <div className="flex justify-center ">
           <img
             src="/images/logo1.png"
