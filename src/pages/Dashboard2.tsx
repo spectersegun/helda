@@ -162,7 +162,7 @@ const DashboardContent: React.FC = () => {
 
   return (
     <GreenWrapper>
-      <div className="!p-6 !h-full bg-[#f3f3ee] flex gap-5 font-outfit ">
+      <div className="!p-[3vh] !h-full bg-[#f3f3ee] flex gap-5 font-outfit ">
         <AnimatePresence>
           {showSidebar && (
             <motion.div

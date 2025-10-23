@@ -80,6 +80,7 @@ export default function PharmacyLogin() {
               className="!w-full !h-full object-cover rounded-[1vw]"
             />
           </div> */}
+
           <div className="col-span-12 bg-[url('/images/PharmacyLogin.png')] !h-full !w-full bg-no-repeat bg-cover rounded-[1vw] "></div>
 
           <div className="col-span-12 relative flex justify-center items-start h-full overflow-y-auto hide-native-scrollbar ">
