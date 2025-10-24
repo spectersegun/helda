@@ -90,19 +90,9 @@ export default function PatientIntelligenceCard({
           </g>
         </svg>
 
-        <div className="text-[3.2vw] absolute bottom-[2.7vh] text-black font-medium   ">
+        <div className="text-[3.2vw] absolute bottom-[5.7vh] text-black font-medium   ">
           {/* 68% */}
-          {/* <div className="counter">
-            <div className="digit">
-              <div className="numbers">
-                0<br />
-                /1
-                <br />2<br />3<br />4<br />5<br />6<br />7<br />8<br />9
-              </div>
-            </div>
-          </div> */}
-
-          <RollingNumber value={68} />
+          <RollingNumber value={68} height={80} duration={9500} />
         </div>
 
         <p className="text-black text-[1.2vw] !mb-0 ">

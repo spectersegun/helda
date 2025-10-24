@@ -3,70 +3,62 @@
 import React, { useEffect, useRef } from "react";
 
 type RollingNumberProps = {
-  value: number; // The target number (e.g. 68)
-  height?: number; // Height of each digit box in px
-  delay?: number; // Delay between each digit animation
+  value: number;
+  height?: number;
+  duration?: number;
 };
 
 const RollingNumber: React.FC<RollingNumberProps> = ({
   value,
-  height = 90,
-  delay = 200,
+  height = 100,
+  duration = 2000,
 }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const numbersRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!containerRef.current) return;
+    if (!numbersRef.current) return;
+    const target = numbersRef.current;
 
-    const digits = String(value).split("").map(Number);
-    const digitElements = containerRef.current.querySelectorAll(".numbers");
-
-    digitElements.forEach((el, i) => {
-      const digit = digits[i];
-      if (el instanceof HTMLElement) {
-        setTimeout(() => {
-          el.style.transform = `translateY(-${digit * height}px)`;
-        }, 500 + i * delay);
-      }
-    });
-  }, [value, height, delay]);
-
-  const digits = String(value).split("").map(Number);
+    // Smooth scroll DOWN to the final value
+    target.style.transition = `transform ${duration}ms cubic-bezier(0.3, 0.05, 0.3, 1)`;
+    target.style.transform = `translateY(${value * height}px)`;
+  }, [value, height, duration]);
 
   return (
-    <div className="flex gap-2 justify-center" ref={containerRef}>
-      {digits.map((_, i) => (
-        <div
-          key={i}
-          className="digit"
-          style={{
-            position: "relative",
-            width: `${height * 0.7}px`,
-            height: `${height}px`,
-            overflow: "hidden",
-            borderRadius: "10px",
-            // boxShadow: "inset 0 0 10px #00ff90",
-            color: "black",
-            fontWeight: "bold",
-            fontSize: `${height / 3}px`,
-            textAlign: "center",
-            lineHeight: `${height}px`,
-          }}
-        >
+    <div
+      style={{
+        height: `${height}px`,
+        overflow: "hidden",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        color: "black",
+        fontSize: `${height * 0.5}px`,
+        width: "7.6vw",
+        background: "inherit",
+      }}
+    >
+      <div
+        ref={numbersRef}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        {Array.from({ length: value + 8 }).map((_, i) => (
           <div
-            className="numbers"
+            key={i}
             style={{
-              position: "absolute",
-              top: 0,
-              transition: "transform 1s cubic-bezier(0.4, 0, 0.2, 1)",
+              height: `${height}px`,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
             }}
           >
-            {Array.from({ length: 10 }).map((_, j) => (
-              <div key={j}>{j}</div>
-            ))}
+            {i <= value ? i : value}
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };
