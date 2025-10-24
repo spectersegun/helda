@@ -1,4 +1,7 @@
 import { useNavigation } from "../../contexts/NavigationContext";
+import Heading24 from "./Heading24";
+import RollingNumber from "./RollingNumbers";
+import Text13 from "./Text13";
 
 type PatientIntelligenceCardProps = {
   title?: string;
@@ -16,30 +19,25 @@ export default function PatientIntelligenceCard({
   return (
     <div
       className={[
-        "relative overflow-hidden rounded-2xl bg-white text-center max-h-[400px] cursor-pointer opacity-0 animate-[fadeInTop_0.6s_ease-out_forwards_0.7s]",
-        "!pt-3 pb-20 shadow-sm border border-[#FCFAFA] hover:shadow-[0_4px_7px_3px_rgba(31,102,75,0.78)] overflow-hidden transition-shadow duration-300 ease-in-out flex justify-between flex-col w-full",
+        "relative overflow-hidden rounded-2xl bg-white text-center max-h-[26vh] h-[25.9vh] cursor-pointer opacity-0 animate-[fadeInRight_0.6s_ease-out_forwards_0.7s]",
+        "!pt-3 shadow-sm border border-[#FCFAFA] hover:shadow-[0_4px_7px_3px_rgba(31,102,75,0.78)] overflow-hidden transition-shadow duration-300 ease-in-out flex justify-between flex-col w-full",
         className,
       ].join(" ")}
       onClick={() => navigateToTab("patient")}
     >
-      <div className="!px-3">
-        <h3 className="!text-[22px] md:!text-xl !font-semibold text-black !mb-0 ">
-          {title}
-        </h3>
-
-        <p className="mx-auto mt-0 !mb-0 text-[10.5px] leading-4 text-black !font-light ">
-          {description}
-        </p>
+      <div className="!px-[0.6vw] ">
+        <Heading24 text={title} />
+        <Text13>{description}</Text13>
       </div>
 
       <div className="absolute bottom-[0] left-0 right-0 !w-full !pb-1.5 flex flex-col items-center">
         <svg
-          width="252"
-          height="114"
+          // width="252"
+          // height="114"
           viewBox="0 0 262 137"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="max-w-full h-auto"
+          className="max-w-full w-[13.23vw] h-[12.7vh] "
         >
           <defs>
             <clipPath id="reveal-1">
@@ -92,11 +90,14 @@ export default function PatientIntelligenceCard({
           </g>
         </svg>
 
-        <div className="text-5xl absolute bottom-10 text-black font-medium  ">
+        <div className="text-[3.2vw] absolute bottom-[5.7vh] text-black font-medium   ">
           68%
+          {/* <RollingNumber value={68} height={80} duration={9500} /> */}
         </div>
 
-        <p className="text-black text-xl !mb-0 ">New vs Returning patients</p>
+        <p className="text-black text-[1.2vw] !mb-0 ">
+          New vs Returning patients
+        </p>
       </div>
     </div>
   );

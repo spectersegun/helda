@@ -1,5 +1,8 @@
 import { useNavigation } from "../../contexts/NavigationContext";
 import GreenWavesChart from "./GreenWavesChart";
+import Heading24 from "./Heading24";
+import Heading36 from "./Heading36";
+import Text13 from "./Text13";
 
 type DeltaDir = "up" | "down" | "flat";
 
@@ -34,31 +37,24 @@ export default function PricingIntelCard({
   return (
     <div
       className={[
-        "relative overflow-hidden rounded-2xl bg-white text-center max-h-[400px] cursor-pointer opacity-0 animate-[fadeInTop_0.6s_ease-out_forwards_0.3s] ",
-        " !pt-3 pb-20 shadow-sm border border-[#FCFAFA] hover:shadow-[0_4px_7px_3px_rgba(31,102,75,0.78)] overflow-hidden transition-shadow duration-300 ease-in-out flex flex-col justify-between w-full",
+        "relative overflow-hidden rounded-2xl bg-white text-center max-h-[26vh] h-[25.9vh] cursor-pointer opacity-0 animate-[fadeInTop_0.6s_ease-out_forwards_0.3s] ",
+        " !pt-[0.8vw] shadow-sm border border-[#FCFAFA] hover:shadow-[0_4px_7px_3px_rgba(31,102,75,0.78)] overflow-hidden transition-shadow duration-300 ease-in-out flex flex-col justify-between w-full",
         className,
       ].join(" ")}
       onClick={() => navigateToTab("pricing")}
     >
-      <div className="!px-3">
-        <h3 className="!text-[22px] md:!text-xl !font-semibold text-black !mb-0 ">
-          {title}
-        </h3>
+      <div className="!px-[0.7vw]">
+        <Heading24 className="!leading-[2.8vh]" text={title} />
+        <Text13>{description}</Text13>
 
-        <p className="mx-auto mt-0 !mb-0 text-[10.5px] leading-4 text-black !font-light ">
-          {description}
-        </p>
-
-        <div className="!mb-0">
-          <div className="text-[18px] md:text-[20px] !font-normal text-black">
+        <div className="!mb-0 relative top-[-0.30vh]">
+          <div className="text-[1.2vw] leading-[2.0vh] !font-normal text-black ">
             {metricLabel}
           </div>
 
           <div className="flex justify-center items-center gap-3 ">
-            <div className="text-[32px] font-semibold leading-10 text-black">
-              {value}
-            </div>
-            <div className={`mt-1 text-sm font-medium ${deltaColor}`}>
+            <Heading36>{value}</Heading36>
+            <div className={`text-[1vw] font-medium ${deltaColor}`}>
               <span className="!mr-0.5 ">▲</span>
               {deltaText}
             </div>
@@ -66,7 +62,10 @@ export default function PricingIntelCard({
         </div>
       </div>
 
-      <GreenWavesChart height={90} />
+      {/* <GreenWavesChart height={"5.57vw"} /> */}
+      <div className="chart-animate">
+        <GreenWavesChart height={"5.57vw"} />
+      </div>
     </div>
   );
 }

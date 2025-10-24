@@ -125,3 +125,49 @@ a:focus-visible {
   outline: 2px solid #667eea;
   outline-offset: 2px;
 }
+
+.loggingin .ant-form-item-vertical .ant-form-item-label {
+}
+
+@keyframes slideUpBlurFade {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+    filter: blur(10px);
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+.chart-animate {
+  animation: slideUpBlurFade 0.8s ease-out 0.4s forwards;
+  opacity: 0; /* ensures it starts invisible before animation */
+}
+
+.counter {
+  display: flex;
+  gap: 8px;
+}
+
+.digit {
+  position: relative;
+  width: 50px;
+  height: 70px;
+  overflow: hidden;
+  border-radius: 8px;
+  /* background: #222; */
+  color: black;
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.numbers {
+  position: absolute;
+  top: 0;
+  animation: roll 2s ease-in-out infinite;
+}
+1

@@ -11,7 +11,7 @@ import {
 type XY = { x: number; y: number };
 
 type Props = {
-  height?: number;
+  height?: number | string;
   showTooltip?: boolean;
   dataBack?: XY[];
   dataMid?: XY[];
