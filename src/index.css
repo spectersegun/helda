@@ -276,6 +276,17 @@ svg.recharts-surface:focus:not(:focus-visible),
     }
   }
 
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
   @keyframes fadeInBottom {
     from {
       opacity: 0;
@@ -297,4 +308,22 @@ svg.recharts-surface:focus:not(:focus-visible),
       transform: scale(1);
     }
   }
+}
+
+@keyframes roll {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-700px); /* 10 digits × 70px each */
+  }
+}
+
+/* Optional smooth stopping effect */
+.digit:nth-child(2) .numbers {
+  animation-delay: 0.2s;
+}
+
+.digit:nth-child(3) .numbers {
+  animation-delay: 0.4s;
 }

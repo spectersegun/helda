@@ -129,6 +129,24 @@ a:focus-visible {
 .loggingin .ant-form-item-vertical .ant-form-item-label {
 }
 
+@keyframes slideUpBlurFade {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+    filter: blur(10px);
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+.chart-animate {
+  animation: slideUpBlurFade 0.8s ease-out 0.4s forwards;
+  opacity: 0; /* ensures it starts invisible before animation */
+}
+
 .counter {
   display: flex;
   gap: 8px;
@@ -152,21 +170,4 @@ a:focus-visible {
   top: 0;
   animation: roll 2s ease-in-out infinite;
 }
-
-@keyframes roll {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-700px); /* 10 digits × 70px each */
-  }
-}
-
-/* Optional smooth stopping effect */
-.digit:nth-child(2) .numbers {
-  animation-delay: 0.2s;
-}
-
-.digit:nth-child(3) .numbers {
-  animation-delay: 0.4s;
-}
+1

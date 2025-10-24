@@ -62,7 +62,10 @@ export default function PricingIntelCard({
         </div>
       </div>
 
-      <GreenWavesChart height={"5.57vw"} />
+      {/* <GreenWavesChart height={"5.57vw"} /> */}
+      <div className="chart-animate">
+        <GreenWavesChart height={"5.57vw"} />
+      </div>
     </div>
   );
 }

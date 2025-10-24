@@ -19,7 +19,7 @@ export default function PatientIntelligenceCard({
   return (
     <div
       className={[
-        "relative overflow-hidden rounded-2xl bg-white text-center max-h-[26vh] h-[25.9vh] cursor-pointer opacity-0 animate-[fadeInTop_0.6s_ease-out_forwards_0.7s]",
+        "relative overflow-hidden rounded-2xl bg-white text-center max-h-[26vh] h-[25.9vh] cursor-pointer opacity-0 animate-[fadeInRight_0.6s_ease-out_forwards_0.7s]",
         "!pt-3 shadow-sm border border-[#FCFAFA] hover:shadow-[0_4px_7px_3px_rgba(31,102,75,0.78)] overflow-hidden transition-shadow duration-300 ease-in-out flex justify-between flex-col w-full",
         className,
       ].join(" ")}
