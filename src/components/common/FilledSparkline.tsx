@@ -10,7 +10,7 @@ type Point = { x: number | string; y: number };
 
 type Props = {
   data?: Point[];
-  height?: number;
+  height?: number | string;
   color?: string;
   // showTooltip?: boolean;
   animateDurationMs?: number;

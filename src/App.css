@@ -128,3 +128,45 @@ a:focus-visible {
 
 .loggingin .ant-form-item-vertical .ant-form-item-label {
 }
+
+.counter {
+  display: flex;
+  gap: 8px;
+}
+
+.digit {
+  position: relative;
+  width: 50px;
+  height: 70px;
+  overflow: hidden;
+  border-radius: 8px;
+  /* background: #222; */
+  color: black;
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.numbers {
+  position: absolute;
+  top: 0;
+  animation: roll 2s ease-in-out infinite;
+}
+
+@keyframes roll {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-700px); /* 10 digits × 70px each */
+  }
+}
+
+/* Optional smooth stopping effect */
+.digit:nth-child(2) .numbers {
+  animation-delay: 0.2s;
+}
+
+.digit:nth-child(3) .numbers {
+  animation-delay: 0.4s;
+}

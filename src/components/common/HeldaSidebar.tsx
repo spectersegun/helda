@@ -61,7 +61,7 @@ export default function HeldaSidebar({
   logoSrc = "/images/logo1.png",
   productName = "Helda Insights",
 }: HeldaSidebarProps) {
-  const ITEM_H = 56;
+  const ITEM_H = "3.3vw";
   const expanded = activeKey === "home";
   const activeIndex = Math.max(
     0,
@@ -74,8 +74,8 @@ export default function HeldaSidebar({
         .helda-sidebar {
           height: 100%;
           background: #fcfafa;
-          border-radius: 20px;
-          padding: 24px 0;
+          border-radius: 1vw;
+          padding: 1.2vw 0;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
@@ -90,10 +90,10 @@ export default function HeldaSidebar({
         }
         /* Width toggles */
         .sidebar--expanded {
-          width: 250px;
+          width: 13.48vw;
         }
         .sidebar--compact {
-          width: 84px;
+          width: 4.2vw;
         }
 
         /* Brand row */
@@ -101,21 +101,20 @@ export default function HeldaSidebar({
           display: flex;
           align-items: center;
           gap: 8px;
-          margin-bottom: 40px;
+          margin-bottom: 2vw;
           transition: margin 250ms ease;
         }
         .sidebar--expanded .brand-row {
-          margin-left: 36px;
+          margin-left: 1.82vw;
           justify-content: flex-start;
         }
         .sidebar--compact .brand-row {
           margin-left: 0;
           justify-content: center;
         }
-
         .brand-logo {
-          width: 24px;
-          height: 24px;
+          width: 1.21vw;
+          height: 1.21vw;
           object-fit: contain;
           transition: transform 0.5s ease-in-out;
         }
@@ -125,7 +124,7 @@ export default function HeldaSidebar({
 
         .brand-title {
           color: #1f664b;
-          font-size: 20px;
+          font-size: 1.2vw;
           font-weight: 700;
           margin: 0;
           white-space: nowrap;
@@ -137,7 +136,7 @@ export default function HeldaSidebar({
         }
         .sidebar--expanded .brand-title {
           opacity: 1;
-          max-width: 160px;
+          max-width: 8vw;
         }
 
         /* Nav + indicator */
@@ -148,11 +147,11 @@ export default function HeldaSidebar({
           position: absolute;
           left: 0;
           top: 0;
-          width: 4px;
-          height: ${ITEM_H}px;
+          width: 0.2vw;
+          height: ${ITEM_H};
           background: #1f664b;
           // border-radius: 0 3px 3px 0;
-          transform: translateY(${activeIndex * ITEM_H}px);
+          transform: translateY(calc(${activeIndex} * ${ITEM_H}));
           transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -169,7 +168,7 @@ export default function HeldaSidebar({
         .sidebar-item {
           position: relative;
           overflow: visible;
-          height: ${ITEM_H}px;
+          height: ${ITEM_H};
           display: flex;
           align-items: center;
         }
@@ -193,9 +192,9 @@ export default function HeldaSidebar({
         .sidebar-link-content {
           display: flex;
           align-items: center;
-          gap: 8px;
+          gap: 0.4vw;
           height: 100%;
-          padding-right: 12px;
+          padding-right: 0.6vw;
           transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
             padding-left 250ms ease;
           will-change: transform;
@@ -207,18 +206,18 @@ export default function HeldaSidebar({
           transform: translateX(4px);
         }
         .sidebar--expanded .sidebar-link-content {
-          padding-left: 36px;
+          padding-left: 1.82vw;
         }
         .sidebar--compact .sidebar-link-content {
-          padding-left: 24px;
+          padding-left: 1.2vw;
           justify-content: center;
         }
 
         .sidebar-icon {
-          width: 28px;
-          height: 28px;
+          width: 1.65vw;
+          height: 1.65vw;
           object-fit: contain;
-          flex: 0 0 28px;
+          flex: 0 0 1.4vw;
           transition: transform 0.2s ease, filter 0.2s ease;
         }
         .sidebar-item:hover .sidebar-icon {
@@ -233,7 +232,7 @@ export default function HeldaSidebar({
         .sidebar-text {
           color: #1f664b;
           font-weight: 500;
-          font-size: 16px;
+          font-size: 0.8vw;
           white-space: nowrap;
           overflow: hidden;
           opacity: 0;
@@ -244,23 +243,23 @@ export default function HeldaSidebar({
         }
         .sidebar--expanded .sidebar-text {
           opacity: 1;
-          max-width: 180px;
-          margin-left: 6px;
+          max-width: 9vw;
+          margin-left: 0.3vw;
         }
 
         /* Tooltips for compact mode */
         .sidebar--compact .sidebar-item[data-tooltip]:hover::after {
           content: attr(data-tooltip);
           position: absolute;
-          left: 64px;
+          left: 3.23vw;
           top: 50%;
           transform: translateY(-50%);
           background: #1f664b;
           color: #fff;
-          font-size: 12px;
-          padding: 6px 8px;
-          border-radius: 6px;
-          box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+          font-size: 0.6vw;
+          padding: 0.3vw 0.2vw;
+          border-radius: 0.3vw;
+          box-shadow: 0 0.3vw 0.8vw rgba(0, 0, 0, 0.12);
           pointer-events: none;
           white-space: nowrap;
         }
@@ -269,9 +268,9 @@ export default function HeldaSidebar({
         .settings-container {
           transition: margin 250ms ease;
         }
-        .sidebar--expanded .settings-container {
-          margin-left: 48px;
-        }
+        // .sidebar--expanded .settings-container {
+        //   margin-left: 2.42vw;
+        // }
         .sidebar--compact .settings-container {
           margin-left: 0;
           display: flex;
@@ -285,9 +284,9 @@ export default function HeldaSidebar({
         }
         .settings-link-content {
           display: flex;
-          gap: 6px;
+          gap: 0.3vw;
           align-items: center;
-          padding: 16px 0 16px 36px;
+          padding: 16px 0 0.8vw 1.82vw;
         }
         .sidebar--compact .settings-link-content {
           padding-left: 0;

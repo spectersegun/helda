@@ -12,14 +12,14 @@ export default function HomePage() {
 
   return (
     // <HomeEnterOrchestrator>
-    <div className="grid grid-cols-1 gap-6 items-stretch flex-1 !relative overflow-y-auto hide-native-scrollbar !p-2 !pt-8 ">
-      <div className="grid grid-cols-3 gap-x-7 ">
+    <div className="grid grid-cols-1 gap-[2.4vh] items-stretch flex-1 !relative overflow-y-auto hide-native-scrollbar !px-2 !pt-[2.5vh] ">
+      <div className="grid grid-cols-3 gap-x-[2vw] ">
         <PricingIntelCard />
         <RevenuePerformanceCard />
         <PatientIntelligenceCard />
       </div>
 
-      <div className="grid grid-cols-3 gap-x-7">
+      <div className="grid grid-cols-3 gap-x-[2vw]">
         <div
           className="bg-white rounded-[18px] !p-2.5 hover:shadow-[0_4px_7px_3px_rgba(31,102,75,0.78)] cursor-pointer transition-shadow duration-300 ease-in-out"
           onClick={() => navigateToTab("assistant")}
