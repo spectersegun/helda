@@ -19,7 +19,6 @@ const RollingNumber: React.FC<RollingNumberProps> = ({
     if (!numbersRef.current) return;
     const target = numbersRef.current;
 
-    // Smooth scroll DOWN to the final value
     target.style.transition = `transform ${duration}ms cubic-bezier(0.3, 0.05, 0.3, 1)`;
     target.style.transform = `translateY(${value * height}px)`;
   }, [value, height, duration]);
