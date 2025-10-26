@@ -10,7 +10,7 @@ const MiniHeader: React.FC<MiniHeaderProps> = ({
   className = "",
 }) => {
   const defaultClasses =
-    "text-black !text-lg !font-semibold !mb-1.5 leading-6 max-w-[170px] !mx-auto text-center";
+    "text-black !text-[1vw] !font-semibold !mb-[0.74vh] leading-6 max-w-[8vw] !mx-auto text-center";
 
   return <h5 className={`${defaultClasses} ${className}`}>{children}</h5>;
 };

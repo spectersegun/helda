@@ -136,12 +136,9 @@ export default function MonthlyAverageChargeChart() {
 
   return (
     <div className="w-full max-w-[585px] rounded-[24px] bg-white !p-6 shadow-[0_6px_24px_rgba(16,24,40,0.04)]">
-      {/* Title */}
-      <div className="!mb-5">
-        <h2 className="text-center  text-[22px]  tracking-[-0.02em] text-[#17181A] !text-lg !font-semibold !mb-1.5  leading-6">
-          Monthly Average
-          <br />
-          <span className="block">Charge</span>
+      <div className="!mb-[2.42vh] flex justify-center">
+        <h2 className="text-center mx-auto w-[12vw] leading-[2.6vh]  tracking-[-0.02em] text-[#17181A] !text-[1.2vw] !font-semibold !mb-0">
+          Monthly Average Charge
         </h2>
       </div>
 
