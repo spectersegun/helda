@@ -70,10 +70,10 @@ export default function HomePage() {
 
         <div className="col-span-2">
           <div>
-            <div className="relative flex justify-center items-center">
-              <span className="absolute w-full !border-t !border-[#BAB6B6]"></span>
+            <div className="relative flex justify-center items-center h-[5vh]">
+              <span className="absolute w-full !border-t !border-[#BAB6B6] "></span>
               <h3
-                className={`relative z-10 !text-lg !font-semibold !p-2.5 min-w-[340px] !border !border-[#BAB6B6] rounded-lg !text-center leading-6 !mb-0 bg-white `}
+                className={`relative z-10 !text-[1.2vw] !font-semibold w-[22vw] h-full !border flex items-center justify-center !border-[#BAB6B6] rounded-lg !text-center leading-6 !mb-0 bg-white `}
               >
                 Unified Intelligence
               </h3>
@@ -81,7 +81,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-7 !mt-7 ">
+          <div className="grid grid-cols-2 gap-x-[3.7vw] gap-y-[3.7vh] !mt-[3vh] ">
             <UIHomeCard
               title="Patient Volume vs Revenue"
               subtitle="Diabetes Checkups grew 30%"
