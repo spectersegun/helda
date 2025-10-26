@@ -12,7 +12,7 @@ export default function HomePage() {
 
   return (
     // <HomeEnterOrchestrator>
-    <div className="grid grid-cols-1 gap-[2.4vh] items-stretch flex-1 !relative overflow-y-auto hide-native-scrollbar !px-2 !pt-[2.5vh] ">
+    <div className="grid grid-cols-1 gap-[2.4vh] items-stretch flex-1 !relative overflow-y-auto hide-native-scrollbar !p-2 !pt-[2.5vh] ">
       <div className="grid grid-cols-3 gap-x-[2vw] ">
         <PricingIntelCard />
         <RevenuePerformanceCard />
@@ -21,10 +21,10 @@ export default function HomePage() {
 
       <div className="grid grid-cols-3 gap-x-[2vw]">
         <div
-          className="bg-white rounded-[18px] !p-2.5 hover:shadow-[0_4px_7px_3px_rgba(31,102,75,0.78)] cursor-pointer transition-shadow duration-300 ease-in-out"
+          className="bg-white rounded-[1vw] !p-[0.93vh] hover:shadow-[0_4px_7px_3px_rgba(31,102,75,0.78)] cursor-pointer transition-shadow duration-300 ease-in-out"
           onClick={() => navigateToTab("assistant")}
         >
-          <h2 className="text-[#1F664B] !text-2xl text-center text-medium ">
+          <h2 className="text-[#1F664B] !text-[1.62vw] text-center text-medium mb=[1.11vw] ">
             Helda AI Assistant
           </h2>
 
@@ -45,7 +45,7 @@ export default function HomePage() {
 
           <AIBlobVideo />
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-x-[1.2vw] g-y-[1.11vh]">
             <AIUnderText
               text="“What are the top 3 services"
               subText="driving revenue this month?”"
@@ -70,10 +70,10 @@ export default function HomePage() {
 
         <div className="col-span-2">
           <div>
-            <div className="relative flex justify-center items-center">
-              <span className="absolute w-full !border-t !border-[#BAB6B6]"></span>
+            <div className="relative flex justify-center items-center h-[5vh]">
+              <span className="absolute w-full !border-t !border-[#BAB6B6] "></span>
               <h3
-                className={`relative z-10 !text-lg !font-semibold !p-2.5 min-w-[340px] !border !border-[#BAB6B6] rounded-lg !text-center leading-6 !mb-0 bg-white `}
+                className={`relative z-10 !text-[1.2vw] !font-semibold w-[22vw] h-full !border flex items-center justify-center !border-[#BAB6B6] rounded-lg !text-center leading-6 !mb-0 bg-white `}
               >
                 Unified Intelligence
               </h3>
@@ -81,7 +81,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-7 !mt-7 ">
+          <div className="grid grid-cols-2 gap-x-[3.7vw] gap-y-[3.7vh] !mt-[3vh] ">
             <UIHomeCard
               title="Patient Volume vs Revenue"
               subtitle="Diabetes Checkups grew 30%"
