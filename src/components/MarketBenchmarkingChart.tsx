@@ -9,7 +9,8 @@ import {
 } from "recharts";
 
 import { GreenDot } from "./Icons";
-import MiniHeader from "./common/MiniHeader";
+// import MiniHeader from "./common/MiniHeader";
+import SectionTitle from "./common/SectionTitle";
 
 const COLORS = {
   hospital: "#1F664B",
@@ -101,7 +102,15 @@ export default function MarketBenchmarkingChart({
 
   return (
     <div className="w-full max-w-[491px] rounded-[24px] bg-white !p-6 shadow-[0_6px_24px_rgba(16,24,40,0.04)]">
-      <MiniHeader className="max-w-[200px]">{title}</MiniHeader>
+      {/* <MiniHeader className="max-w-[200px]">{title}</MiniHeader> */}
+
+      <div className="!mb-[2.42vh] flex justify-center">
+        <SectionTitle
+          title={title}
+          className="min-h-[5.74vh]  "
+          width="w-[12vw]"
+        />
+      </div>
 
       <div className="h-[310px] !mt-10 w-full">
         <ResponsiveContainer>

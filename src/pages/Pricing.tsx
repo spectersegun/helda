@@ -5,33 +5,30 @@ import MonthlyAverageChargeChart from "../components/MonthlyAverageChargeChart";
 
 export default function Pricing() {
   return (
-    <div className="grid grid-cols-1 gap-5 items-stretch flex-1 !relative !pt-8 overflow-y-auto !pb-40 ">
+    <div className="grid grid-cols-1 gap-5 items-stretch flex-1 !relative overflow-y-auto !pt-[2.5vh] ">
       <div className="grid grid-cols-3 gap-x-7 ">
         <div>
-          <div className="flex gap-10 !text-center justify-between">
-            <div className="!p-2 bg-white rounded-[20px] w-[220px] ">
-              <MiniHeader>Most Variable Pricing Diagnosis</MiniHeader>
-              <h4 className="text-[#1F664B] !mb-2 !font-normal !text-xl ">
+          <div className="gap-[2.4vw] !text-center grid grid-cols-2  ">
+            <div className="!p-[0.74vh] bg-white rounded-[1vw] h-[13.9vh] ">
+              <MiniHeader>Most expensive diagnosis</MiniHeader>
+              <h4 className="text-[#1F664B] !mb-[0.74vh] !font-normal !text-[1.2vw] ">
                 Melanoma
               </h4>
-              <h3 className="!text-2xl !font-semibold text-[#1F664B] ">
+              <h3 className="!text-[1.57vw] leading-[1.57vw] !font-semibold text-[#1F664B] !mb-0 ">
                 ₦400,000
               </h3>
             </div>
 
-            <div className="!p-2 bg-white rounded-[20px] w-[220px] ">
-              {/* <h5 className="text-black !text-lg !font-semibold !mb-1.5  leading-6 max-w-[170px] !mx-auto text-center ">
-                Most Variable Pricing Diagnosis
-              </h5> */}
+            <div className="!p-[0.74vh bg-white rounded-[1vw] h-[13.9vh] ">
               <MiniHeader>Most Variable Pricing Diagnosis</MiniHeader>
-              <h4 className="text-[#1F664B] !mb-2 !font-normal !text-xl ">
+              <h4 className="text-[#1F664B] !mb-[0.74vh] !font-normal !text-[1.2vw] ">
                 Liver Cancer
               </h4>
-              <h3 className="!text-2xl !font-semibold text-[#1F664B] flex items-center justify-center gap-1 ">
+              <h3 className="!text-[1.57vw] leading-[1.57vw] !font-semibold text-[#1F664B] flex items-center justify-center gap-1 !mb-0 ">
                 <span>
                   <img
                     src="/icons/liverCancerIcon.png"
-                    className="w-6 !h-auto"
+                    className="w-[1.36vw] !h-auto"
                     alt="Liver Cancer"
                   />
                 </span>
@@ -46,45 +43,30 @@ export default function Pricing() {
         </div>
 
         <div>
-          <div className="!p-2 bg-white rounded-[20px]  mx-auto">
-            <h4 className="text-center text-black !text-lg !font-semibold !mb-1.5  leading-6  ">
+          <div className="!py-[0.74vh] !px-[] bg-white rounded-[20px] h-[13.9vh] ">
+            <h4 className="text-center text-black !text-[1vw] !font-semibold !mb-[0.74vh]  leading-[1.2vw]  ">
               Top 5 Diagnosis by Volume
             </h4>
-            <div className="flex gap-1 !mx-auto max-w-[280px]  w-full ">
-              <div className="grid grid-cols-1 text-[#1F664B] !text-sm !font-medium !leading-4">
-                <ul className="!mb-0 !pb-1 font-semibold">
-                  <li className="!mb-0 !text-sm leading-5">
-                    <span className="w-[200px] inline-block ">
-                      1. Routine Check-up –{" "}
+            <div className="!mx-auto !max-w-[16.77vw]">
+              <ul className="!mb-0 !pb-0 font-semibold">
+                {[
+                  { id: 1, name: "Routine Check-up", volume: 214 },
+                  { id: 2, name: "Diabetes Monitoring", volume: 189 },
+                  { id: 3, name: "Hypertension Screening", volume: 176 },
+                  { id: 4, name: "Flu Test", volume: 165 },
+                  { id: 5, name: "General Consultation", volume: 152 },
+                ].map((item) => (
+                  <li
+                    key={item.id}
+                    className="!mb-0 !text-[0.85vw] leading-[1.05vw] text-[#1F664B] "
+                  >
+                    <span className="w-[11vw] inline-block">
+                      {item.id}. {item.name} &#45;{" "}
                     </span>
-                    <span>214</span>
+                    <span>{item.volume}</span>
                   </li>
-                  <li className="!mb-0 !text-sm leading-5">
-                    <span className="w-[200px] inline-block">
-                      2. Diabetes Monitoring –{" "}
-                    </span>
-                    <span>189</span>
-                  </li>
-                  <li className="!mb-0 !text-sm leading-5">
-                    <span className="w-[200px] inline-block">
-                      3. Hypertension Screening –{" "}
-                    </span>
-                    <span>176</span>
-                  </li>
-                  <li className="!mb-0 !text-sm leading-5">
-                    <span className="w-[200px] inline-block">
-                      4. Flu Test –{" "}
-                    </span>
-                    <span>165</span>
-                  </li>
-                  <li className="!mb-0 !text-sm leading-5 ">
-                    <span className="w-[200px] inline-block">
-                      5. General Consultation –{" "}
-                    </span>
-                    <span>152</span>
-                  </li>
-                </ul>
-              </div>
+                ))}
+              </ul>
             </div>
           </div>
 

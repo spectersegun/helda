@@ -32,17 +32,18 @@ export default function AIAssistant() {
 
   return (
     <>
-      <div className="grid grid-cols-3 gap-5 items-stretch flex-1 h-full !pt-8 ">
+      <div className="grid grid-cols-3 gap-[1.5vw] items-stretch flex-1 h-full !pt-[2.87vh] ">
         <AISide
           withQuestions={withQuestions}
           setWithQuestions={setWithQuestions}
         />
 
-        <div className="col-span-2 bg-white rounded-2xl !px-4 flex flex-col h-full flex-1 ">
-          <div className="!pt-8  flex-1">
-            <h2 className="text-center !text-4xl !font-semibold  ">
+        <div className="col-span-2 bg-white rounded-[1vw] !px-[0.8vw] flex flex-col h-full flex-1 ">
+          <div className="!pt-[4.26vh]  flex-1">
+            <h2 className="text-center !text-[5.93vh] text-black !font-semibold !mb-0 ">
               How can I help?
             </h2>
+
             {!withQuestions ? (
               <EmptyQuestion />
             ) : (
@@ -54,17 +55,17 @@ export default function AIAssistant() {
             )}
           </div>
 
-          <div className="flex-shrink-0 !mb-3 relative">
+          <div className="flex-shrink-0 !mb-[2.1vh] relative">
             <input
               placeholder="Ask me anything"
               type="text"
-              className="!pl-3 !rounded-lg border !p-2  w-full !h-12 text-base !border-[#1F664B33] placeholder-[#ACACAC] focus:!border-[#1F664B] !outline-none"
+              className="!pl-[0.8vw] !rounded-[0.5vw] border  w-full !h-[4.9vh] !text-[0.8vw] !border-[#1F664B33] placeholder-[#ACACAC] focus:!border-[#1F664B] !outline-none"
             />
             <button
-              className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-lg !bg-white !outline-none"
+              className="absolute right-2 top-1/2 -translate-y-1/2 p-[0.8vh] rounded-lg !bg-white !outline-none"
               onClick={() => setWithQuestions(!withQuestions)}
             >
-              <SendIcon />
+              <SendIcon className="!h-[2.5vh] !w-auto" />
             </button>
           </div>
         </div>
