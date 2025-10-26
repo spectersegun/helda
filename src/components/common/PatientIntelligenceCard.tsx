@@ -1,6 +1,6 @@
 import { useNavigation } from "../../contexts/NavigationContext";
 import Heading24 from "./Heading24";
-import RollingNumber from "./RollingNumbers";
+// import RollingNumber from "./RollingNumbers";
 import Text13 from "./Text13";
 
 type PatientIntelligenceCardProps = {
