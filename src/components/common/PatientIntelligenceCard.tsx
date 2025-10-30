@@ -90,7 +90,7 @@ export default function PatientIntelligenceCard({
           </g>
         </svg>
 
-        <div className="text-[3.2vw] absolute bottom-[5.7vh] text-black font-medium   ">
+        <div className="text-[3.2vw] absolute bottom-[4.0vh] text-black font-medium   ">
           68%
           {/* <RollingNumber value={68} height={80} duration={9500} /> */}
         </div>

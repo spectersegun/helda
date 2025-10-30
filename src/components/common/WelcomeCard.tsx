@@ -16,7 +16,7 @@ export default function WelcomeCard({
 }: WelcomeCardProps) {
   return (
     <div
-      className={`!px-5 !pt-2 !pb-2.5 bg-[#FCFAFA] rounded-[20px]  !shadow-md flex justify-between items-center ${className}`}
+      className={`!pl-[1.667vw] !pr-[1.414vw] !pt-[0.556vh] !pb-[1.056vh] min-h-[10vh] bg-[#FCFAFA] rounded-[20px]  !shadow-md flex justify-between items-center ${className}`}
     >
       <div>
         <h1 className="!font-semibold !text-black !mb-1 !text-[1.8vw] font-outfit ">
