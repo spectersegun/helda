@@ -1,10 +1,7 @@
 import React, { useEffect } from "react";
 import "./LoadingPage.css";
-
-// Import images
-import backgroundImage from "./Slide1 1.jpg";
-import heldaFullLogo from "./helda_full_logo.png";
 import { useAllPageNavigation } from "../contexts/AllPagesNavigationContext";
+import GreenWrapper from "../components/common/GreenWrapper";
 
 const LoadingPage: React.FC = () => {
   const { currentView, navigateTo } = useAllPageNavigation();
@@ -20,19 +17,11 @@ const LoadingPage: React.FC = () => {
   }, [currentView]);
 
   return (
-    <div
-      className="loading-container"
-      style={{
-        backgroundImage: `url(${backgroundImage})`,
-        backgroundPosition: "center center",
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-      }}
-    >
+    <GreenWrapper className="loading-container">
       <div className="loading-rectangle">
         <div className="loading-content">
           <img
-            src={heldaFullLogo}
+            src="/public/images/heldaFullLogo.png"
             alt="Helda Full Logo"
             className="helda-full-logo"
           />
@@ -44,7 +33,7 @@ const LoadingPage: React.FC = () => {
           </div>
         </div>
       </div>
-    </div>
+    </GreenWrapper>
   );
 };
 

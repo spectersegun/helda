@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { HealthcareSector2 } from "./pages/HealthCareSector2";
 import SplashPage from "./pages/SplashPage";
-import Dashboard2 from "./pages/Dashboard2";
+import Dashboard from "./pages/Dashboard";
 import HospitalLogin2 from "./pages/HospitalLogin2";
 import DentistLogin from "./pages/DentistLogin";
 import PharmacyLogin from "./pages/PharmacyLogin";
@@ -15,7 +15,7 @@ const AllPages: React.FC = () => {
   const { currentView, navigateTo } = useAllPageNavigation();
   const { isAuthenticated, loading } = useAuth();
 
-  const ProtectedDashboard = ProtectedRoute(Dashboard2);
+  const ProtectedDashboard = ProtectedRoute(Dashboard);
 
   const publicViews = [
     "healthcare",

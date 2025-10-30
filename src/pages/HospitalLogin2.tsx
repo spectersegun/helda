@@ -72,14 +72,6 @@ export default function HospitalLogin2() {
     >
       <GreenWrapper>
         <div className="grid grid-cols-24 gap-[3.3] !p-[4.2vw] h-full  ">
-          {/* <div className="!w-full !h-full col-span-12  ">
-            <img
-              src="/images/hospital_pic_login.png"
-              alt="hospitalLogin"
-              className="!w-full !h-full object-cover rounded-[1vw]"
-            />
-          </div> */}
-
           <div className="col-span-12 bg-[url('/images/hospital_pic_login.png')] !h-full !w-full bg-no-repeat bg-cover rounded-[1vw] "></div>
 
           <div className="col-span-12 relative flex justify-center items-start h-full overflow-y-auto hide-native-scrollbar ">

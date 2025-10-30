@@ -1,33 +1,4 @@
-/* .healthcare-sector2 {
-  opacity: 0;
-  animation: fadeIn 0.8s ease-in forwards;
-  overflow: hidden;
-  position: relative;
-  overflow-y: hidden;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.element-class {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.element-class::-webkit-scrollbar {
-  display: none;
-} */
-
 .healthcare-sector2 {
-  /* your animation */
   opacity: 0;
   animation: fadeIn 0.8s ease-in forwards;
 
@@ -37,7 +8,6 @@
   position: relative;
   overflow: hidden !important;
 
-  /* hide scrollbars across browsers */
   -ms-overflow-style: none; /* IE/Edge */
   scrollbar-width: none; /* Firefox */
 }
@@ -46,7 +16,6 @@
   height: 0;
 }
 
-/* Optional: ensure the inner card never shows its own scrollbars */
 .healthcare-sector2 .no-scroll {
   overflow: hidden !important;
 }
