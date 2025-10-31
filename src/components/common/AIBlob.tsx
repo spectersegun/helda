@@ -12,7 +12,7 @@ const AIBlobVideo = ({
       initial={{ scale: 0 }}
       animate={{ scale: 1 }}
       transition={{ duration: 1, ease: "easeOut" }}
-      className={`grid place-items-center !mb-2 !py-5 ${classNameWrapper}`}
+      className={`grid place-items-center !mb-[0.741vh] !py-[1.852vh] ${classNameWrapper}`}
     >
       <div className="w-[10vw] max-w-full h-[18vh] aspect-[1/1] overflow-hidden rounded-full relative">
         <video

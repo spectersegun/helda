@@ -8,7 +8,7 @@ export default function Pricing() {
     <div className="grid grid-cols-1 gap-5 items-stretch flex-1 !relative overflow-y-auto !pt-[2.5vh] ">
       <div className="grid grid-cols-3 gap-x-7 ">
         <div>
-          <div className="gap-[2.4vw] !text-center grid grid-cols-2  ">
+          <div className="gap-[2.4vw] !text-center grid grid-cols-2">
             <div className="!p-[0.74vh] bg-white rounded-[1vw] h-[13.9vh] ">
               <MiniHeader>Most expensive diagnosis</MiniHeader>
               <h4 className="text-[#1F664B] !mb-[0.74vh] !font-normal !text-[1.2vw] ">
@@ -19,7 +19,7 @@ export default function Pricing() {
               </h3>
             </div>
 
-            <div className="!p-[0.74vh bg-white rounded-[1vw] h-[13.9vh] ">
+            <div className="!p-[0.74vh] bg-white rounded-[1vw] h-[13.9vh] ">
               <MiniHeader>Most Variable Pricing Diagnosis</MiniHeader>
               <h4 className="text-[#1F664B] !mb-[0.74vh] !font-normal !text-[1.2vw] ">
                 Liver Cancer
@@ -37,16 +37,17 @@ export default function Pricing() {
             </div>
           </div>
 
-          <div className="!mt-5">
+          <div className="!mt-[1.852vh]">
             <MonthlyAverageChargeChart />
           </div>
         </div>
 
         <div>
-          <div className="!py-[0.74vh] !px-[] bg-white rounded-[20px] h-[13.9vh] ">
-            <h4 className="text-center text-black !text-[1vw] !font-semibold !mb-[0.74vh]  leading-[1.2vw]  ">
+          <div className="!py-[0.74vh] bg-white rounded-[1vw] h-[13.9vh] ">
+            <h4 className="text-center text-black !text-[1vw] !font-semibold !mb-[0.74vh] leading-[1.2vw] ">
               Top 5 Diagnosis by Volume
             </h4>
+
             <div className="!mx-auto !max-w-[16.77vw]">
               <ul className="!mb-0 !pb-0 font-semibold">
                 {[
@@ -70,7 +71,7 @@ export default function Pricing() {
             </div>
           </div>
 
-          <div className="!mt-5">
+          <div className="!mt-[1.852vh] ">
             <MarketBenchmarkingChart />
           </div>
         </div>

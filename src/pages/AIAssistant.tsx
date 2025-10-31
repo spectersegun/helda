@@ -62,10 +62,10 @@ export default function AIAssistant() {
               className="!pl-[0.8vw] !rounded-[0.5vw] border  w-full !h-[4.9vh] !text-[0.8vw] !border-[#1F664B33] placeholder-[#ACACAC] focus:!border-[#1F664B] !outline-none"
             />
             <button
-              className="absolute right-2 top-1/2 -translate-y-1/2 p-[0.8vh] rounded-lg !bg-white !outline-none"
+              className="absolute right-[1.010vw] top-1/2 -translate-y-1/2 p-[0.8vh] rounded-lg !bg-white !outline-none"
               onClick={() => setWithQuestions(!withQuestions)}
             >
-              <SendIcon className="!h-[2.5vh] !w-auto" />
+              <SendIcon className="!h-[2.870vh] !w-auto" />
             </button>
           </div>
         </div>
