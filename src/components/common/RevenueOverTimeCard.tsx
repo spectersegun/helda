@@ -8,7 +8,7 @@ import {
   ResponsiveContainer,
   Tooltip,
 } from "recharts";
-import MiniHeader from "./MiniHeader";
+import SectionTitle from "./SectionTitle";
 
 type Period = "1m" | "6m" | "1y";
 
@@ -61,11 +61,11 @@ function Segmented({
   onChange: (p: Period) => void;
 }) {
   const base =
-    "rounded-[10px] border !border-[#D9E1E7] !px-4 !py-2 text-sm font-medium transition-colors leading-6 !min-w-[80px] !outline-none";
+    "!rounded-[0.5vw] border !border-[#D9E1E7] !px-[1vw] !py-[1vh] !font-semibold transition-colors !outline-none";
   const idle = "!bg-white text-[#17181A]";
   const active = "!bg-[#1F664B] !text-white border-transparent";
   return (
-    <div className="inline-flex gap-2">
+    <div className="inline-flex gap-[0.505vw] text-[0.808vw] ">
       <button
         type="button"
         onClick={() => onChange("1m")}
@@ -94,7 +94,7 @@ function Segmented({
 function Dot({ color }: { color: string }) {
   return (
     <span
-      className="inline-block h-3 w-3 rounded-full"
+      className="inline-block h-[0.606vw] w-[0.606vw] rounded-full"
       style={{ backgroundColor: color }}
     />
   );
@@ -103,8 +103,8 @@ function Dot({ color }: { color: string }) {
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (!active || !payload?.length) return null;
   return (
-    <div className="rounded-md border !border-[#E6ECF2] bg-white/95 !px-3 !py-2 text-[12px] shadow-sm">
-      <div className="font-semibold text-[#0F1A2A] mb-1">{label}</div>
+    <div className="rounded-md border !border-[#E6ECF2] bg-white/95 !px-[0.606vw] !py-[0.741vh] text-[0.606vw] shadow-xs">
+      <div className="font-semibold text-[#0F1A2A] mb-[0.370vh]">{label}</div>
       <div className="text-[#4A5568]">
         Revenue:{" "}
         <span className="font-medium text-[#0F1A2A]">
@@ -120,14 +120,20 @@ export default function RevenueOverTimeCard() {
   const data = period === "1m" ? data1m : period === "1y" ? data1y : data6m;
 
   return (
-    <div className="w-full max-w-[585px] rounded-[24px] bg-white shadow-[0_6px_24px_rgba(16,24,40,0.04)] !px-6 !pt-5 !pb-6">
-      <MiniHeader>Revenue over time</MiniHeader>
+    <div className="w-full rounded-[1vw] bg-white shadow-[0_6px_24px_rgba(16,24,40,0.04)] !px-[1.112vw] !pt-[1.296vh] !pb-[1.667vh] ">
+      <div className="!mb-[3.611vh] flex justify-center">
+        <SectionTitle
+          title="Revenue over time"
+          className="min-h-[5.74vh]  "
+          width="w-[12vw]"
+        />
+      </div>
 
-      <div className="!mb-5 !mt-8">
+      <div className="!mb-[3.611vh] ">
         <Segmented value={period} onChange={setPeriod} />
       </div>
 
-      <div className="h-[260px] w-full outline-none">
+      <div className="w-full h-[26.056vh] ">
         <ResponsiveContainer>
           <LineChart
             data={data}
@@ -143,7 +149,7 @@ export default function RevenueOverTimeCard() {
               interval={0}
               tickLine={false}
               axisLine={false}
-              tick={{ fill: COLORS.tick, fontSize: 12, fontWeight: 700 }}
+              tick={{ fill: COLORS.tick, fontSize: "0.758vw", fontWeight: 600 }}
             />
             <YAxis
               domain={[0, 60]}
@@ -152,7 +158,7 @@ export default function RevenueOverTimeCard() {
               tickLine={false}
               axisLine={false}
               width={36}
-              tick={{ fill: COLORS.tick, fontSize: 12, fontWeight: 700 }}
+              tick={{ fill: COLORS.tick, fontSize: "0.758vw", fontWeight: 600 }}
             />
             <Tooltip
               cursor={{ stroke: COLORS.stroke, strokeOpacity: 0.1 }}
@@ -170,8 +176,8 @@ export default function RevenueOverTimeCard() {
         </ResponsiveContainer>
       </div>
 
-      <div className="!mt-5">
-        <div className="inline-flex items-center gap-2 rounded-[10px] !border !border-[#E6ECF2] bg-white/60 backdrop-blur !px-3 !py-2 text-[12px] text-[#6B7A90]">
+      <div className="!mt-[2.778vh] gap-[0.404vw] grid grid-cols-3">
+        <div className="inline-flex items-center font-semibold gap-[0.606vw] rounded-[0.404vw] !border !border-[#E6ECF2] bg-white/60 backdrop-blur !px-[0.606vw] !py-[0.741vh] text-[0.707vw] text-[#809FB8]">
           <Dot color={COLORS.legendDot} />
           <span>Revenue</span>
         </div>

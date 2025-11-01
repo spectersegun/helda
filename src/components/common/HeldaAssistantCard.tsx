@@ -31,16 +31,16 @@ export default function HeldaAssistantCard({
   };
 
   return (
-    <div className="w-full rounded-[1.2vw] bg-white  !px-[1.162vw] !py-[1.3vh] ">
+    <div className="w-full rounded-[1.2vw] bg-white  !px-[1.162vw] !py-[1.6vh] ">
       <div className="flex items-start justify-center gap-[0.619vw] !mb-[2.5vh]">
         <span className="inline-block align-middle" aria-hidden>
           <StarIcon width={28} height={28} className="!h-[3.24vh] !w-auto " />
         </span>
         <div>
-          <h1 className="!text-[1.62vw] !font-medium text-[#1F664B] !mb-[1.01vh] ">
+          <h1 className="!text-[1.62vw] !font-medium text-[#1F664B] !mb-[1.2vh] ">
             {heading}
           </h1>
-          <p className="text-center text-[1.010vw] text-black font-semibold h-[3.52vh] !mb-0 ">
+          <p className="text-center text-[1.010vw] text-black font-semibold h-[3.7vh] !mb-0 ">
             {subheadingTop}
           </p>
           <p className="text-center text-[#18181C] !font-normal text-[1.010vw] leading-[2vh] h-[2.22vh] !mb-0">
@@ -64,7 +64,7 @@ export default function HeldaAssistantCard({
         ))}
       </div>
 
-      <div className="!py-[1.2vh] ">
+      <div className="!py-[1.6vh] ">
         <AIBlobVideo />
       </div>
 

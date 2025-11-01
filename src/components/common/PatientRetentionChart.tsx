@@ -7,7 +7,7 @@ import {
   ResponsiveContainer,
   Tooltip,
 } from "recharts";
-import MiniHeader from "./MiniHeader";
+import SectionTitle from "./SectionTitle";
 
 const COLOR = {
   stroke: "#8571F4",
@@ -34,7 +34,7 @@ const ticks = [0, 20, 40, 60, 80, 100];
 const CustomTooltip = ({ active, payload }: any) => {
   if (!active || !payload?.length) return null;
   return (
-    <div className="rounded-lg border border-[#E6ECF2] bg-white/95 !px-2.5 !py-1.5 text-[12px] shadow-sm text-[#0F1A2A]">
+    <div className="rounded-lg border border-[#E6ECF2] bg-white/95 !px-[0.606vw] !py-[0.741vh] text-[0.606vw] shadow-xs text-[#0F1A2A]">
       {payload[0].value}%
     </div>
   );
@@ -46,12 +46,10 @@ export default function PatientRetentionChart({
   title?: string;
 }) {
   return (
-    <div className="w-full max-w-[702px] rounded-[24px] bg-white shadow-[0_6px_24px_rgba(16,24,40,0.04)] !px-3 !pt-2 !pb-2">
-      {/* Title */}
+    <div className="w-full rounded-[1vw] bg-white shadow-[0_6px_24px_rgba(16,24,40,0.04)] !pt-[1.296vh] !pb-[0.667vh] !px-[0.5vw] ">
+      <SectionTitle title={title} className="!max-w-full " width="w-full" />
 
-      <MiniHeader className="max-w-[260px]">{title}</MiniHeader>
-
-      <div className="h-[180px] w-full">
+      <div className="h-[11.091vw] w-full">
         <ResponsiveContainer>
           <AreaChart
             data={DATA}
@@ -77,12 +75,18 @@ export default function PatientRetentionChart({
               strokeDasharray="3 3"
             />
 
+            {/* <CartesianGrid
+              vertical={false}
+              stroke="#EDF2F7"
+              strokeDasharray={`${s(3)} ${s(3)}`}
+            /> */}
+
             <XAxis
               dataKey="name"
               tickLine={false}
               axisLine={false}
               interval={0}
-              tick={{ fill: "#809FB8", fontSize: 12, fontWeight: 600 }}
+              tick={{ fill: "#809FB8", fontSize: "0.758vw", fontWeight: 600 }}
             />
 
             <YAxis
@@ -92,7 +96,7 @@ export default function PatientRetentionChart({
               tickLine={false}
               axisLine={false}
               width={44}
-              tick={{ fill: "#809FB8", fontSize: 12, fontWeight: 600 }}
+              tick={{ fill: "#809FB8", fontSize: "0.758vw", fontWeight: 600 }}
             />
 
             <Tooltip
