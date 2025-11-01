@@ -7,7 +7,7 @@ import {
   ResponsiveContainer,
   Tooltip,
 } from "recharts";
-import MiniHeader from "./MiniHeader";
+import SectionTitle from "./SectionTitle";
 
 type Point = { name: string; actual: number; gap?: number; top?: number };
 type Props = {
@@ -81,12 +81,18 @@ export default function DepartmentGapsVsTarget({
 
   return (
     <div
-      className="w-full max-w-[832px] rounded-[24px] bg-white shadow-[0_6px_24px_rgba(16,24,40,0.04)] !px-8 !py-2 !pb-0"
+      className="w-full max-w-[832px] rounded-[24px] bg-white shadow-[0_6px_24px_rgba(16,24,40,0.04)] !pt-[1.296vh] !pb-[0.667vh] !px-[0.5vw]"
       style={{ backgroundColor: cardBg }}
     >
-      <MiniHeader className="max-w-[320px]">{title}</MiniHeader>
+      {/* <MiniHeader className="max-w-[320px]">{title}</MiniHeader> */}
 
-      <div className="h-[190px] w-full">
+      <SectionTitle
+        title={title}
+        className="w-full text-center"
+        width="w-[19.798vw]"
+      />
+
+      <div className="h-[20.519vh] w-full">
         <ResponsiveContainer>
           <BarChart
             data={filled}
@@ -104,7 +110,7 @@ export default function DepartmentGapsVsTarget({
               interval={0}
               tickLine={false}
               axisLine={false}
-              tick={{ fill: COLORS.tick, fontSize: 12, fontWeight: 700 }}
+              tick={{ fill: COLORS.tick, fontSize: "0.758vw", fontWeight: 600 }}
             />
             <YAxis
               domain={[0, target]}
@@ -113,7 +119,7 @@ export default function DepartmentGapsVsTarget({
               tickLine={false}
               axisLine={false}
               width={40}
-              tick={{ fill: COLORS.tick, fontSize: 12, fontWeight: 700 }}
+              tick={{ fill: COLORS.tick, fontSize: "0.758vw", fontWeight: 600 }}
             />
 
             <Tooltip

@@ -1,19 +1,12 @@
-/* Import Figma animations library */
-@import "./styles/figma-animations.css";
 @import "tailwindcss";
 @import "tailwindcss/preflight";
 
 /* @import "tailwindcss"; */
 
-/* Import Google Fonts - Outfit family for Figma integration */
-/* @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"); */
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-/* replace this line: 
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
-*/
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
-/* Outfit already includes 100–900 — no change needed */
+/* @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"); */
+/* @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"); */
 
 /* @tailwind utilities; */
 

@@ -11,6 +11,7 @@ import {
 import { GreenDot } from "./Icons";
 // import MiniHeader from "./common/MiniHeader";
 import SectionTitle from "./common/SectionTitle";
+import { useEffect, useState } from "react";
 
 const COLORS = {
   hospital: "#1F664B",
@@ -28,7 +29,7 @@ const DATA = [
 function Dot({ color }: { color: string }) {
   return (
     <span
-      className="inline-block h-3 w-3 rounded-full"
+      className="inline-block h-[1.396vh] w-[1.396vh] rounded-full"
       style={{ backgroundColor: color }}
     />
   );
@@ -41,7 +42,7 @@ const XTick = (props: any) => {
     <g transform={`translate(${x},${y})`}>
       <text
         fill="#8FA0B6"
-        fontSize={12}
+        fontSize={"0.707vw"}
         fontWeight={600}
         textAnchor="middle"
         dy={18}
@@ -63,7 +64,9 @@ type LegendLabels = {
 
 type Props = {
   title?: string;
-  legendLabels?: LegendLabels; // <-- new
+  legendLabels?: LegendLabels;
+  designWidth?: number;
+  designHeight?: number;
 };
 
 export default function MarketBenchmarkingChart({
@@ -72,23 +75,47 @@ export default function MarketBenchmarkingChart({
     hospital: "My Hospital",
     benchmark: "Industry Benchmark",
   },
+  designWidth = 2016,
+  designHeight = 1142,
 }: Props) {
   const labels = {
     hospital: legendLabels.hospital ?? "My Hospital",
     benchmark: legendLabels.benchmark ?? "Industry Benchmark",
   };
 
+  const [scale, setScale] = useState<number>(1);
+
+  useEffect(() => {
+    const compute = () => {
+      if (typeof window === "undefined") {
+        setScale(1);
+        return;
+      }
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      const s = Math.min(w / designWidth, h / designHeight);
+      // clamp scale so things don't become unreadable on tiny screens
+      setScale(Math.max(0.45, Math.min(s, 1.3)));
+    };
+    compute();
+    window.addEventListener("resize", compute);
+    return () => window.removeEventListener("resize", compute);
+  }, [designWidth, designHeight]);
+
+  const s = (px: number, min = 2, max = 9999) =>
+    Math.round(Math.max(min, Math.min(px * scale, max)));
+
   const CustomTooltip = ({ active, payload }: any) => {
     if (!active || !payload?.length) return null;
     return (
-      <div className="rounded-lg border border-[#E6ECF2] bg-white/90 !px-3 !py-2 text-[12px] shadow-sm">
+      <div className="rounded-lg border border-[#E6ECF2] bg-white/90 !px-[0.606vw] !py-[0.404vw] text-[0.606vw] shadow-sm">
         {payload.map((p: any) => (
           <div
             key={p.dataKey}
-            className="flex items-center gap-2 text-[#4A5568]"
+            className="flex items-center gap-[0.404vw] text-[#4A5568]"
           >
             <Dot color={p.fill} />
-            <span className="capitalize !min-w-[52px]">
+            <span className="capitalize !min-w-[2.626vw]">
               {p.dataKey === "hospital" ? labels.hospital : labels.benchmark}
             </span>
             <span className="font-semibold text-[#0F1A2A]">
@@ -101,32 +128,44 @@ export default function MarketBenchmarkingChart({
   };
 
   return (
-    <div className="w-full max-w-[491px] rounded-[24px] bg-white !p-6 shadow-[0_6px_24px_rgba(16,24,40,0.04)]">
-      {/* <MiniHeader className="max-w-[200px]">{title}</MiniHeader> */}
-
+    <div className="max-w-full  rounded-[1.2vw] bg-white !p-[1.212vw] shadow-[0_6px_24px_rgba(16,24,40,0.04)]">
       <div className="!mb-[2.42vh] flex justify-center">
         <SectionTitle
           title={title}
-          className="min-h-[5.74vh]  "
+          className="min-h-[5.74vh] "
           width="w-[12vw]"
         />
       </div>
 
-      <div className="h-[310px] !mt-10 w-full">
+      {/* <div className="h-[35.704vh] !mt-[3.704vh] w-full"> */}
+      <div
+        style={{
+          height: `${Math.round((35.704 / 100) * window.innerHeight)}px`,
+          marginTop: `${Math.round((3.704 / 100) * window.innerHeight)}px`,
+          width: "100%",
+        }}
+      >
         <ResponsiveContainer>
           <BarChart
-            barSize={18}
-            maxBarSize={32}
+            barSize={s(28, 8)} // scaled bar width
+            maxBarSize={s(32, 10)}
             data={DATA}
-            barCategoryGap={10}
-            barGap={6}
-            margin={{ top: 8, right: 12, bottom: 0, left: 4 }}
+            barCategoryGap={s(10, 4)}
+            barGap={s(6, 2)}
+            margin={{ top: s(8, 4), right: s(12, 4), bottom: 0, left: s(4, 2) }}
           >
-            <CartesianGrid
+            {/* <CartesianGrid
               vertical={false}
               stroke="#EDF2F7"
               strokeDasharray="3 3"
+            /> */}
+
+            <CartesianGrid
+              vertical={false}
+              stroke="#EDF2F7"
+              strokeDasharray={`${s(3)} ${s(3)}`}
             />
+
             <XAxis
               dataKey="name"
               interval={0}
@@ -136,6 +175,7 @@ export default function MarketBenchmarkingChart({
               tickMargin={10}
               tick={<XTick />}
             />
+
             <YAxis
               domain={[0, 60]}
               ticks={[0, 10, 20, 30, 40, 50, 60]}
@@ -143,8 +183,9 @@ export default function MarketBenchmarkingChart({
               tickLine={false}
               axisLine={false}
               width={36}
-              tick={{ fill: "#8FA0B6", fontSize: 12, fontWeight: 600 }}
+              tick={{ fill: "#8FA0B6", fontSize: "0.707vw", fontWeight: 600 }}
             />
+
             <Tooltip
               cursor={{ fill: "transparent" }}
               content={<CustomTooltip />}
@@ -154,27 +195,30 @@ export default function MarketBenchmarkingChart({
               dataKey="hospital"
               fill={COLORS.hospital}
               stroke="#35EB69"
-              strokeWidth={2}
-              radius={[8, 8, 0, 0]}
+              // strokeWidth={2}
+              strokeWidth={Math.max(1, Math.round(3 * scale))}
+              radius={[Math.round(8 * scale), Math.round(12 * scale), 0, 0]}
             />
             <Bar
               dataKey="benchmark"
               fill={COLORS.benchmark}
-              radius={[8, 8, 0, 0]}
+              // radius={[8, 8, 0, 0]}
+              radius={[Math.round(8 * scale), Math.round(8 * scale), 0, 0]}
             />
           </BarChart>
         </ResponsiveContainer>
       </div>
 
-      {/* Legend */}
-      <div className="flex flex-wrap gap-2 !mb-0">
-        <div className="flex items-center gap-2 rounded-[8px] !border !border-[#F1F4F9] bg-white !px-3 !py-2 !text-xs font-medium text-[#809FB8]">
+      {/* </div> */}
+
+      <div className="flex flex-wrap gap-[0.404vw] !mb-0">
+        <div className="flex items-center gap-[0.404vw] rounded-[0.404vw] !border !border-[#F1F4F9] bg-white !px-[0.606vw] !py-[0.404vw] !text-[0.758vw] font-semibold text-[#809FB8]">
           <span>
-            <GreenDot />
+            <GreenDot className="!h-[1.496vh] !w-auto " />
           </span>
           <span>{labels.hospital}</span>
         </div>
-        <div className="flex items-center gap-2 rounded-[8px] !border !border-[#F1F4F9] bg-white !px-3 !py-2 !text-xs font-medium text-[#809FB8]">
+        <div className="flex items-center gap-[0.404vw] rounded-[0.404vw] !border !border-[#F1F4F9] bg-white !px-[0.606vw] !py-[0.404vw] !text-[0.758vw] font-semibold text-[#809FB8]">
           <Dot color={COLORS.benchmark} />
           <span>{labels.benchmark}</span>
         </div>

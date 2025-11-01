@@ -1,9 +1,7 @@
 import { useState } from "react";
-import dentistImage from "./Dentist.png";
-import hospitalImage from "./Hospital image.jpg";
-import pharmacyImage from "./Pharmacy image.png";
 import "./HealthCareSector2.css";
 import { useAllPageNavigation } from "../contexts/AllPagesNavigationContext";
+import GreenWrapper from "../components/common/GreenWrapper";
 
 export const HealthcareSector2 = () => {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -30,14 +28,7 @@ export const HealthcareSector2 = () => {
   };
 
   return (
-    <main
-      aria-labelledby="healthcare-heading"
-      className={`
-       bg-[url('/images/HealthBg.jpg')] w-screen h-screen bg-cover bg-center flex flex-col items-center justify-center !py-[3.13vw] !px-[3.64vw] element-class 
-       animate-fade-in-down delay-200
-       healthcare-sector2
-      `}
-    >
+    <GreenWrapper className="animate-fade-in-down delay-200 healthcare-sector2">
       <div className="!text-white bg-white w-full h-full rounded-lg overflow-y-auto flex flex-col justify-center ">
         <div className="flex justify-center ">
           <img
@@ -64,17 +55,15 @@ export const HealthcareSector2 = () => {
             >
               <div className="!w-[11.7vw] cursor-pointer select-none">
                 <img
-                  className={`!w-[8.2vw] !h-auto rounded-2xl !mx-auto !border-1 !border-[#1F664B] transition-transform duration-300 ease-out origin-center group-hover:scale-[1.1] ${
-                    selectedCategory === "hospital" ? "" : ""
-                  }`}
+                  className={`!w-[8.2vw] !h-auto rounded-[1vw] !mx-auto !border-1 !border-[#1F664B] transition-all duration-300 ease-out origin-center group-hover:shadow-[0_4px_4px_0_rgba(0,0,0,0.5)] `}
                   alt="Hospital image"
-                  src={hospitalImage}
+                  src="/images/DoctorsStethoscope.jpg"
                 />
 
                 <button
                   className="
-                    !mt-[2vw] flex justify-center items-center w-full !h-[2.42vw] !rounded-full
-                    !bg-[#1F664B] !text-white !text-sm 2xl:text-base !font-semibold
+                    !mt-[2vw] flex justify-center items-center w-full !h-[5.463vh] !rounded-full
+                    !bg-[#1F664B] !text-white !text-[0.808vw] !font-semibold
                     transition-colors duration-300 ease-out
                     group-hover:!bg-white group-hover:!text-[#1F664B]  !border-2 !border-[#1F664B] !outline-none active:shadow-[0_4px_4px_1px_#1F664B]
                   "
@@ -93,20 +82,20 @@ export const HealthcareSector2 = () => {
               <div className="!w-[11.7vw] cursor-pointer select-none">
                 <img
                   className="
-                    !w-[8.2vw] !h-auto rounded-2xl !mx-auto
+                    !w-[8.2vw] !h-auto rounded-[1vw] !mx-auto
                     !border-2 !border-[#CBDF90]
-                    transition-transform duration-300 ease-out
+                    transition-all duration-300 ease-out
                     origin-center 
-                    group-hover:scale-[1.1]  group-hover:!border-[#CBDF90]  
+                    group-hover:shadow-[0_4px_4px_0_rgba(0,0,0,0.5)]  group-hover:!border-[#CBDF90]  
                   "
                   alt="Dentist image"
-                  src={pharmacyImage}
+                  src="/images/PharmacyDrugs.png"
                 />
 
                 <button
                   className="
-                    !mt-[2vw] flex justify-center items-center w-full !h-[2.42vw] !rounded-full
-                    !bg-[#CBDF90] !text-[#1F664B] !text-sm 2xl:text-base
+                    !mt-[2vw] flex justify-center items-center w-full !h-[5.463vh] !rounded-full
+                    !bg-[#CBDF90] !text-[#1F664B] !text-[0.808vw]
                     transition-colors duration-300 ease-out !font-semibold
 
                     group-hover:!bg-white group-hover:!text-[#1F664B]  !border-2 !border-[#CBDF90]  !outline-none active:shadow-[0_4px_7.3px_-1px_#1F6633]
@@ -126,20 +115,20 @@ export const HealthcareSector2 = () => {
               <div className="!w-[11.7vw] cursor-pointer select-none">
                 <img
                   className="
-                    !w-[8.2vw] !h-auto rounded-2xl !mx-auto
+                    !w-[8.2vw] !h-auto rounded-[1vw] !mx-auto
                     !border-2 !border-[#12428D]
-                    transition-transform duration-300 ease-out
+                    transition-all duration-300 ease-out
                     origin-center
-                    group-hover:scale-[1.1] group-hover:!border-2 group-hover:!border-[#12428D]
+                    group-hover:shadow-[0_4px_4px_0_rgba(0,0,0,0.5)] group-hover:!border-2 group-hover:!border-[#12428D]
                   "
                   alt="Dentist image"
-                  src={dentistImage}
+                  src="/images/Dentist.png"
                 />
 
                 <button
                   className="
-                    !mt-6 lg:!mt-8 xl:!mt-9 3xl:!mt-[2vw] flex justify-center items-center w-full !h-[2.42vw] !rounded-full !font-semibold
-                    !bg-[#12428D] !text-white !text-sm 2xl:text-base
+                    !mt-6 lg:!mt-8 xl:!mt-9 3xl:!mt-[2vw] flex justify-center items-center w-full !h-[5.463vh] !rounded-full !font-semibold
+                    !bg-[#12428D] !text-white !text-[0.808vw] 
                     transition-colors duration-300 ease-out
                     group-hover:!bg-white group-hover:!text-[#12428D] !border-2 !border-[#12428D] !outline-none active:shadow-[0_4px_7.3px_-1px_#12428D]
                   "
@@ -151,6 +140,6 @@ export const HealthcareSector2 = () => {
           </div>
         </div>
       </div>
-    </main>
+    </GreenWrapper>
   );
 };

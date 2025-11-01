@@ -19,10 +19,10 @@ export default function WelcomeCard({
       className={`!pl-[1.667vw] !pr-[1.414vw] !pt-[0.556vh] !pb-[1.056vh] min-h-[10vh] bg-[#FCFAFA] rounded-[20px]  !shadow-md flex justify-between items-center ${className}`}
     >
       <div>
-        <h1 className="!font-semibold !text-black !mb-1 !text-[1.8vw] font-outfit ">
+        <h1 className="!font-semibold !text-black !mb-[0.555vh] !text-[1.8vw] font-outfit ">
           {name}
         </h1>
-        <h4 className="!font-light !text-[1.2vw] !mb-0">{subtitle}</h4>
+        <h4 className="!font-light !text-[1vw] !mb-0">{subtitle}</h4>
       </div>
 
       <span onClick={onProfileClick} className="cursor-pointer  ">

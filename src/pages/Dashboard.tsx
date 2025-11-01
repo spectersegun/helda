@@ -1,201 +1,132 @@
-import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { 
-  BarChart3, 
-  Users, 
-  TrendingUp, 
-  DollarSign, 
-  Bell, 
-  Settings, 
-  LogOut, 
-  Menu,
-  X
-} from 'lucide-react'
-import { useAuth } from '../contexts/AuthContext'
-import './Dashboard.css'
+import React from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import GreenWrapper from "../components/common/GreenWrapper";
+import WelcomeCard from "../components/common/WelcomeCard";
+import HeldaSidebar from "../components/common/HeldaSidebar";
+import {
+  NavigationProvider,
+  useNavigation,
+  type TabKey,
+} from "../contexts/NavigationContext";
+import HomePage from "./HomePage";
+import Pricing from "./Pricing";
+import Revenue from "./Revenue";
+import Settings from "./Settings";
+import Profile from "./Profile";
+import { HEADERS } from "../constant";
 
-const Dashboard = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(false)
-  const { user, logout } = useAuth()
+const Patient = React.lazy(() => import("./Patient"));
+const AIAssistant = React.lazy(() => import("./AIAssistant"));
 
-  const stats = [
-    { icon: Users, title: 'Total Users', value: '12,345', change: '+12%' },
-    { icon: DollarSign, title: 'Revenue', value: '$45,678', change: '+8%' },
-    { icon: TrendingUp, title: 'Growth', value: '23.5%', change: '+3%' },
-    { icon: BarChart3, title: 'Analytics', value: '89.2%', change: '+5%' }
-  ]
+const CONTENT: Record<TabKey, React.ComponentType> = {
+  home: HomePage,
+  pricing: Pricing,
+  revenue: Revenue,
+  patient: Patient,
+  assistant: AIAssistant,
+  settings: Settings,
+  profile: Profile,
+};
 
-  const handleLogout = () => {
-    logout()
-  }
+const DashboardContent: React.FC = () => {
+  const { activeTab, navigateToTab } = useNavigation();
+  const header = React.useMemo(() => HEADERS[activeTab], [activeTab]);
+  const ActivePage = React.useMemo(
+    () => CONTENT[activeTab] ?? HomePage,
+    [activeTab]
+  );
+
+  // Animation state control
+  const [showSidebar, setShowSidebar] = React.useState(false);
+  const [showHeader, setShowHeader] = React.useState(false);
+  const [showContent, setShowContent] = React.useState(false);
+
+  React.useEffect(() => {
+    const sidebarTimer = setTimeout(() => setShowSidebar(true), 300);
+    const headerTimer = setTimeout(() => setShowHeader(true), 600);
+    const contentTimer = setTimeout(() => setShowContent(true), 900);
+
+    return () => {
+      clearTimeout(sidebarTimer);
+      clearTimeout(headerTimer);
+      clearTimeout(contentTimer);
+    };
+  }, []);
 
   return (
-    <div className="dashboard">
-      {/* Sidebar */}
-      <motion.div 
-        className={`sidebar ${sidebarOpen ? 'open' : ''}`}
-        initial={{ x: -250 }}
-        animate={{ x: sidebarOpen ? 0 : -250 }}
-        transition={{ duration: 0.3 }}
-      >
-        <div className="sidebar-header">
-          <h2>Helda V2</h2>
-          <button 
-            className="close-sidebar"
-            onClick={() => setSidebarOpen(false)}
-          >
-            <X size={24} />
-          </button>
-        </div>
-        
-        <nav className="sidebar-nav">
-          <ul>
-            <li><a href="#" className="active">Dashboard</a></li>
-            <li><a href="#">Analytics</a></li>
-            <li><a href="#">Users</a></li>
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">Reports</a></li>
-          </ul>
-        </nav>
-        
-        <div className="sidebar-footer">
-          <button onClick={handleLogout} className="logout-btn">
-            <LogOut size={20} />
-            Logout
-          </button>
-        </div>
-      </motion.div>
-
-      {/* Main Content */}
-      <div className="main-content">
-        {/* Header */}
-        <header className="dashboard-header">
-          <div className="header-left">
-            <button 
-              className="menu-toggle"
-              onClick={() => setSidebarOpen(true)}
+    <GreenWrapper>
+      <div className="!p-[3vh] !h-full bg-[#f3f3ee] flex gap-[1.2vw] font-outfit ">
+        <AnimatePresence>
+          {showSidebar && (
+            <motion.div
+              className="!h-full"
+              initial={{ x: -60, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: -60, opacity: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
             >
-              <Menu size={24} />
-            </button>
-            <h1>Dashboard</h1>
-          </div>
-          
-          <div className="header-right">
-            <button className="notification-btn">
-              <Bell size={20} />
-              <span className="notification-badge">3</span>
-            </button>
-            <button className="settings-btn">
-              <Settings size={20} />
-            </button>
-            <div className="user-profile">
-              <div className="user-avatar">
-                {user?.name?.charAt(0).toUpperCase() || 'U'}
-              </div>
-              <span className="user-name">{user?.name || 'User'}</span>
-            </div>
-          </div>
-        </header>
-
-        {/* Dashboard Content */}
-        <div className="dashboard-content">
-          <div className="welcome-section">
-            <motion.div 
-              className="welcome-card"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2>Welcome back, {user?.name || 'User'}!</h2>
-              <p>Here's what's happening with your business today.</p>
+              <HeldaSidebar
+                activeKey={activeTab}
+                onChange={(key: string) => navigateToTab(key as TabKey)}
+              />
             </motion.div>
-          </div>
+          )}
+        </AnimatePresence>
 
-          {/* Stats Grid */}
-          <div className="stats-grid">
-            {stats.map((stat, index) => (
+        <div className="flex-1 flex flex-col gap-0">
+          <AnimatePresence>
+            {showHeader && (
               <motion.div
-                key={stat.title}
-                className="stat-card"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
+                initial={{ y: -40, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -40, opacity: 0 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
               >
-                <div className="stat-icon">
-                  <stat.icon size={24} />
-                </div>
-                <div className="stat-content">
-                  <h3>{stat.title}</h3>
-                  <div className="stat-value">{stat.value}</div>
-                  <div className="stat-change positive">{stat.change}</div>
-                </div>
+                <WelcomeCard
+                  name={header.name}
+                  subtitle={header.subtitle}
+                  avatarSrc="/images/dp.png"
+                  className="!shadow-[0_1px_2px_rgba(0,0,0,0.06),0_2px_6px_rgba(0,0,0,0.05)]"
+                  onProfileClick={() => navigateToTab("profile")}
+                />
               </motion.div>
-            ))}
-          </div>
+            )}
+          </AnimatePresence>
 
-          {/* Charts Section */}
-          <div className="charts-section">
-            <motion.div
-              className="chart-card"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
-              <h3>Analytics Overview</h3>
-              <div className="chart-placeholder">
-                <BarChart3 size={48} />
-                <p>Chart visualization would go here</p>
-                <p className="chart-note">
-                  Connect your Figma designs to replace this placeholder
-                </p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="activity-card"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-            >
-              <h3>Recent Activity</h3>
-              <div className="activity-list">
-                <div className="activity-item">
-                  <div className="activity-dot"></div>
-                  <div className="activity-content">
-                    <p>New user registered</p>
-                    <span>2 minutes ago</span>
-                  </div>
-                </div>
-                <div className="activity-item">
-                  <div className="activity-dot"></div>
-                  <div className="activity-content">
-                    <p>Revenue milestone reached</p>
-                    <span>1 hour ago</span>
-                  </div>
-                </div>
-                <div className="activity-item">
-                  <div className="activity-dot"></div>
-                  <div className="activity-content">
-                    <p>System update completed</p>
-                    <span>3 hours ago</span>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+          {/* Main content animation */}
+          <div className="flex-1 overflow-y-auto">
+            <AnimatePresence>
+              {showContent && (
+                <motion.div
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 15 }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  className="flex-1 h-full"
+                >
+                  <React.Suspense
+                    fallback={
+                      <div className="flex items-center justify-center p-8  ">
+                        <div className="w-8 h-8 border-2 border-nigeria-green border-t-transparent rounded-full animate-spin" />
+                      </div>
+                    }
+                  >
+                    <ActivePage />
+                  </React.Suspense>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
       </div>
+    </GreenWrapper>
+  );
+};
 
-      {/* Sidebar Overlay */}
-      {sidebarOpen && (
-        <div 
-          className="sidebar-overlay"
-          onClick={() => setSidebarOpen(false)}
-        />
-      )}
-    </div>
-  )
+export default function Dashboard() {
+  return (
+    <NavigationProvider defaultTab="home">
+      <DashboardContent />
+    </NavigationProvider>
+  );
 }
-
-export default Dashboard

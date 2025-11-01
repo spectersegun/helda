@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { PieChart, Pie, Cell, ResponsiveContainer, Sector } from "recharts";
-import MiniHeader from "./MiniHeader";
+import SectionTitle from "./SectionTitle";
 
 const COLORS = {
   cardiology: "#1F664B",
@@ -33,13 +33,12 @@ const DATA = [
     color: COLORS.neurology,
     cal: "65-74",
   },
-
   {
     key: "paediatrics",
     label: "Paediatrics",
     value: 8,
     color: COLORS.paediatrics,
-    cal: "75+ ",
+    cal: "75+",
   },
   {
     key: "orthopedics",
@@ -60,20 +59,49 @@ const DATA = [
 export default function MonthlyRevenueDonut2({
   total = 10343,
   title = "Monthly Revenue by Department",
+  designWidth = 2016,
+  designHeight = 1142,
 }: {
   total?: number | string;
   title?: string;
+  designWidth?: number;
+  designHeight?: number;
 }) {
+  const [scale, setScale] = useState<number>(1);
+  useEffect(() => {
+    const compute = () => {
+      if (typeof window === "undefined") return setScale(1);
+      const s = Math.min(
+        window.innerWidth / designWidth,
+        window.innerHeight / designHeight
+      );
+      setScale(Math.max(0.45, Math.min(s, 1.3)));
+    };
+    compute();
+    window.addEventListener("resize", compute);
+    return () => window.removeEventListener("resize", compute);
+  }, [designWidth, designHeight]);
+
+  const s = (px: number, min = 2, max = 9999) =>
+    Math.round(Math.max(min, Math.min(px * scale, max)));
+
+  const innerRadius = s(50, 10);
+  const outerRadius = s(85, innerRadius + 8);
+  const paddingAngle = Math.max(0, Math.round(1 * scale));
+  const strokeW = Math.max(0.5, Math.round(0.5 * scale * 10) / 10);
+
+  const leftColPx = s(270, 130);
+
   const [active, setActive] = React.useState<number | null>(null);
 
   const renderActiveShape = (p: any) => (
     <Sector
       {...p}
       innerRadius={p.innerRadius}
-      outerRadius={p.outerRadius + 1}
+      outerRadius={p.outerRadius + Math.max(2, Math.round(4 * scale))}
       cornerRadius={0}
       stroke="#fff"
-      strokeWidth={0.5}
+      strokeWidth={strokeW}
       filter="url(#hoverShadow)"
     />
   );
@@ -81,11 +109,52 @@ export default function MonthlyRevenueDonut2({
   console.log({ active });
 
   return (
-    <div className="w-full max-w-[860px] rounded-[24px] bg-white shadow-[0_6px_24px_rgba(16,24,40,0.04)] !px-6 !py-3 pt-2">
-      <MiniHeader className="max-w-[280px]">{title}</MiniHeader>
+    <div className="w-full max-w-full rounded-[1vw] !pt-[1.852vh] bg-white shadow-[0_6px_24px_rgba(16,24,40,0.04)] !px-[1.2vw] !pb-[0.185vh]">
+      <SectionTitle
+        title={title}
+        className="w-full text-center"
+        width="w-[19.798vw]"
+      />
 
-      <div className="grid grid-cols-[200px_1fr] items-center gap-6">
-        <div className="relative h-[190px] p-2">
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: `${leftColPx}px 1fr`,
+          gap: `${Math.round(6 * scale)}px`,
+          alignItems: "center",
+        }}
+      >
+        <div
+          className="relative"
+          style={{
+            height: `${Math.round(
+              (19.259 / 100) * window.innerHeight || Math.round(19.259 * 8)
+            )}px`,
+            padding: `${Math.round(
+              (0.104 * (window?.innerWidth ?? 1000)) / 100
+            )}px`,
+          }}
+        >
+          <svg style={{ position: "absolute", width: 0, height: 0 }}>
+            <defs>
+              <filter
+                id="hoverShadow"
+                x="-50%"
+                y="-50%"
+                width="240%"
+                height="200%"
+              >
+                <feDropShadow
+                  dx="0"
+                  dy="2"
+                  stdDeviation={Math.max(2, Math.round(2 * scale))}
+                  floodColor="#000"
+                  floodOpacity="0.08"
+                />
+              </filter>
+            </defs>
+          </svg>
+
           <ResponsiveContainer>
             <PieChart>
               <Pie
@@ -94,9 +163,9 @@ export default function MonthlyRevenueDonut2({
                 nameKey="label"
                 startAngle={90}
                 endAngle={-270}
-                innerRadius={45}
-                outerRadius={90}
-                paddingAngle={2}
+                innerRadius={innerRadius}
+                outerRadius={outerRadius}
+                paddingAngle={paddingAngle}
                 cornerRadius={0}
                 isAnimationActive={false}
                 animationDuration={320}
@@ -109,44 +178,42 @@ export default function MonthlyRevenueDonut2({
                     key={d.key}
                     fill={d.color}
                     stroke="#FFFFFF"
-                    strokeWidth={0.5}
+                    strokeWidth={strokeW}
                   />
                 ))}
               </Pie>
             </PieChart>
           </ResponsiveContainer>
 
-          {/* Center label */}
           <div className="pointer-events-none absolute inset-0 grid place-items-center">
             <div className="text-center">
-              <div className="text-xs leading-[14px] font-semibold text-[#18181C]">
+              <div className="text-[0.707vw] leading-[1.381vh] font-semibold text-[#18181C]">
                 Total
               </div>
-              <div className="text-[24px] leading-[36px] font-semibold text-[#18181C]">
+              <div className="text-[1.45vw] font-semibold text-[#18181C]">
                 {total}
               </div>
             </div>
           </div>
         </div>
 
-        {/* Legend */}
-        <ul className="grid gap-2 !mb-0">
+        <ul className="grid gap-[0.741vh] !mb-0">
           {DATA.map((d) => (
             <li
               key={d.key}
               className="flex items-center justify-between gap-1.5"
             >
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-[0.606vw]">
                 <span
-                  className="inline-block h-3 w-3 rounded-full"
+                  className="inline-block h-[0.606vw] w-[0.606vw] rounded-full"
                   style={{ backgroundColor: d.color }}
                 />
-                <span className="text-sm leading-[20px] !font-semibold text-[#99B2C6]">
+                <span className="text-[0.808vw] leading-[1.08vw] !font-semibold text-[#99B2C6]">
                   {d.label}
                 </span>
               </div>
 
-              <span className="text-sm leading-[20px] !font-semibold text-[#99B2C6]">
+              <span className="text-[0.808vw] leading-[1.08vw] !font-semibold text-[#99B2C6]">
                 {d.value}%
               </span>
             </li>

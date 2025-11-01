@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import {
   LineChart,
   Line,
@@ -51,10 +51,10 @@ function Segmented({
   onChange: (p: Period) => void;
 }) {
   return (
-    <div className="inline-flex  !bg-white  overflow-hidden text-[14px] leading-[20px] font-medium">
+    <div className="inline-flex  !bg-white  overflow-hidden text-[14px] font-medium">
       <button
         onClick={() => onChange("6m")}
-        className={`!px-3 !py-2 hover:!bg-[#F8FAFD] !border-r-0 !rounded-tr-[0px] !rounded-br-[0px] transition-colors !outline-none !bg-white !border  !border-[#D9E1E7]  ${
+        className={`!px-[1vw] !py-[1.250vh] hover:!bg-[#F8FAFD] !text-[0.808vw] !font-semibold !border-r-0 !rounded-tr-[0px] !rounded-br-[0px] transition-colors !outline-none !bg-white !border  !border-[#D9E1E7]  ${
           value === "6m" ? "text-[#17181A]" : "!text-[#809FB8] "
         }`}
       >
@@ -62,7 +62,7 @@ function Segmented({
       </button>
       <button
         onClick={() => onChange("30d")}
-        className={`!px-3 !py-2 hover:!bg-[#F8FAFD] border-l !bg-white !border  !border-[#D9E1E7] !rounded-none  transition-colors !outline-none ${
+        className={`!px-[1vw] !py-[1.250vh] hover:!bg-[#F8FAFD] !text-[0.808vw] !font-semibold border-l !bg-white !border  !border-[#D9E1E7] !rounded-none  transition-colors !outline-none ${
           value === "30d" ? "!bg-white text-[#17181A]" : "!text-[#809FB8] "
         }`}
       >
@@ -75,7 +75,7 @@ function Segmented({
 function Dot({ color }: { color: string }) {
   return (
     <span
-      className="inline-block h-3 w-3 rounded-full mr-2"
+      className="inline-block h-[0.606vw] w-[0.606vw] rounded-full mr-[0.404vw]"
       style={{ backgroundColor: color }}
     />
   );
@@ -83,7 +83,7 @@ function Dot({ color }: { color: string }) {
 
 function LegendPill({ color, label }: { color: string; label: string }) {
   return (
-    <div className="flex items-center gap-2 rounded-[8px] !border !border-[#E6ECF2] bg-white !px-2 !py-2 !pr-0.5 text-[12px] !text-[#809FB8] backdrop-blur !text-xs font-medium">
+    <div className="flex items-center gap-x-[0.606vw] rounded-[0.404vw] !border !border-[#E6ECF2] bg-white !pl-[0.404vw] !py-[0.741vh] !pr-0.5 text-[0.707vw] !text-[#809FB8] backdrop-blur font-semibold ">
       <Dot color={color} />
       <span className="whitespace-nowrap">{label}</span>
     </div>
@@ -97,12 +97,15 @@ function KFormatter(v: number) {
 const CustomTooltip = ({ active, payload, label }: any) => {
   if (!active || !payload?.length) return null;
   return (
-    <div className="rounded-lg border border-[#E6ECF2] bg-white/90 !px-3 !py-2 text-[12px] shadow-sm">
-      <div className="mb-1 text-[#0F1A2A] font-semibold">{label}</div>
+    <div className="rounded-lg border border-[#E6ECF2] bg-white/90 !px-[0.606vw] !py-[0.741vh] text-[0.706vw] shadow-xs">
+      <div className="mb-[0.370vh] text-[#0F1A2A] font-semibold">{label}</div>
       {payload.map((p: any) => (
-        <div key={p.dataKey} className="flex items-center gap-2 text-[#4A5568]">
+        <div
+          key={p.dataKey}
+          className="flex items-center gap-[0.404vw] text-[#4A5568]"
+        >
           <Dot color={p.stroke} />
-          <span className="min-w-[120px] capitalize">
+          <span className="min-w-[6.061vw] capitalize">
             {labelForKey(p.dataKey)}
           </span>
           <span className="font-medium text-[#0F1A2A]">
@@ -132,16 +135,12 @@ function labelForKey(k: string) {
 }
 
 export default function MonthlyAverageChargeChart() {
-  const [period, setPeriod] = React.useState<Period>("6m");
+  const [period, setPeriod] = useState<Period>("6m");
   const data = period === "6m" ? data6m : data30d;
 
   return (
-    <div className="w-full max-w-[585px] rounded-[24px] bg-white !p-6 shadow-[0_6px_24px_rgba(16,24,40,0.04)]">
-      <div className="!mb-[2.42vh] flex justify-center">
-        {/* <h2 className="text-center mx-auto w-[12vw] leading-[2.6vh]  tracking-[-0.02em] text-[#17181A] !text-[1.2vw] !font-semibold !mb-0">
-          
-        </h2> */}
-
+    <div className="w-full rounded-[1.3vw] bg-white !px-[1.212vw] !pt-[1.296vh] !pb-[1.667vh] shadow-[0_6px_24px_rgba(16,24,40,0.04)]">
+      <div className="!mb-[2.778vh] flex justify-center">
         <SectionTitle
           title="Monthly Average Charge"
           className="min-h-[5.74vh]  "
@@ -150,12 +149,12 @@ export default function MonthlyAverageChargeChart() {
       </div>
 
       {/* Segmented control */}
-      <div className="mb-4">
+      <div className="!mb-[2.778vh]">
         <Segmented value={period} onChange={setPeriod} />
       </div>
 
       {/* Chart */}
-      <div className="h-[200px] chart-no-focus  w-full">
+      <div className="w-full h-[26.056vh] ">
         <ResponsiveContainer>
           <LineChart
             data={data}
@@ -170,7 +169,7 @@ export default function MonthlyAverageChargeChart() {
               dataKey="name"
               tickLine={false}
               axisLine={false}
-              tick={{ fill: "#8FA0B6", fontSize: 12, fontWeight: 600 }}
+              tick={{ fill: "#8FA0B6", fontSize: "0.758vw", fontWeight: 600 }}
               interval={0}
             />
 
@@ -180,9 +179,10 @@ export default function MonthlyAverageChargeChart() {
               tickFormatter={(v: number) => (v === 0 ? "0" : `${v}k`)}
               tickLine={false}
               axisLine={false}
-              tick={{ fill: "#8FA0B6", fontSize: 12, fontWeight: 600 }}
+              tick={{ fill: "#8FA0B6", fontSize: "0.758vw", fontWeight: 600 }}
               width={36}
             />
+
             <Tooltip content={<CustomTooltip />} />
 
             <Line
@@ -225,7 +225,7 @@ export default function MonthlyAverageChargeChart() {
       </div>
 
       {/* Legend */}
-      <div className="!mt-1 grid grid-cols-2 gap-2 sm:grid-cols-3">
+      <div className="gap-[0.404vw] grid grid-cols-3 ">
         <LegendPill color={COLORS.routine} label="Routine Check" />
         <LegendPill color={COLORS.flu} label="Flu Test" />
         <LegendPill color={COLORS.cancer} label="Cancer check.." />
