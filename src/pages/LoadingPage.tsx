@@ -21,7 +21,7 @@ const LoadingPage: React.FC = () => {
       <div className="loading-rectangle">
         <div className="loading-content">
           <img
-            src="/public/images/heldaFullLogo.png"
+            src="/images/heldaFullLogo.png"
             alt="Helda Full Logo"
             className="helda-full-logo"
           />
