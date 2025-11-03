@@ -272,7 +272,7 @@ svg.recharts-surface:focus:not(:focus-visible),
   @keyframes fadeInRight {
     from {
       opacity: 0;
-      transform: translateX(2000px);
+      transform: translateX(200px);
     }
     to {
       opacity: 1;
@@ -283,7 +283,7 @@ svg.recharts-surface:focus:not(:focus-visible),
   @keyframes fadeInBottom {
     from {
       opacity: 0;
-      transform: translateY(2000px);
+      transform: translateY(200px);
     }
     to {
       opacity: 1;

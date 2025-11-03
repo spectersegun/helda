@@ -19,8 +19,8 @@ export default function PatientIntelligenceCard({
   return (
     <div
       className={[
-        "relative overflow-hidden rounded-2xl bg-white text-center max-h-[26vh] h-[25.9vh] cursor-pointer opacity-0 animate-[fadeInRight_0.6s_ease-out_forwards_0.7s]",
-        "!pt-3 shadow-sm border border-[#FCFAFA] hover:shadow-[0_4px_7px_3px_rgba(31,102,75,0.78)] overflow-hidden transition-shadow duration-300 ease-in-out flex justify-between flex-col w-full",
+        "relative overflow-hidden rounded-2xl bg-white text-center max-h-[26vh] h-[25.9vh] cursor-pointer opacity-0 animate-[fadeInRight_0.6s_ease-out_forwards_0.3s] ",
+        " !pt-[0.8vw] shadow-sm border border-[#FCFAFA] hover:shadow-[0_4px_7px_3px_rgba(31,102,75,0.78)] overflow-hidden transition-shadow duration-300 ease-in-out flex flex-col justify-between w-full",
         className,
       ].join(" ")}
       onClick={() => navigateToTab("patient")}
@@ -30,14 +30,12 @@ export default function PatientIntelligenceCard({
         <Text13>{description}</Text13>
       </div>
 
-      <div className="absolute bottom-[0] left-0 right-0 !w-full !pb-1.5 flex flex-col items-center">
+      <div className="absolute bottom-[0] left-0 right-0 !w-full !pb-[0.556vh] flex flex-col items-center">
         <svg
-          // width="252"
-          // height="114"
           viewBox="0 0 262 137"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="max-w-full w-[13.23vw] h-[12.7vh] "
+          className="max-w-full 2xl:w-[13.23vw] 2xl:h-[12.7vh] w-[11.46vw] h-[11vh] "
         >
           <defs>
             <clipPath id="reveal-1">
@@ -90,12 +88,12 @@ export default function PatientIntelligenceCard({
           </g>
         </svg>
 
-        <div className="text-[3.2vw] absolute bottom-[4.0vh] text-black font-medium   ">
+        <div className="text-[2.7vw] absolute bottom-[4.0vh] text-black font-medium   ">
           68%
           {/* <RollingNumber value={68} height={80} duration={9500} /> */}
         </div>
 
-        <p className="text-black text-[1.2vw] !mb-0 ">
+        <p className="text-black text-[1.15vw] !mb-0 ">
           New vs Returning patients
         </p>
       </div>
