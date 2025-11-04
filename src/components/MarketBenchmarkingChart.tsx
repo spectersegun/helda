@@ -137,7 +137,6 @@ export default function MarketBenchmarkingChart({
         />
       </div>
 
-      {/* <div className="h-[35.704vh] !mt-[3.704vh] w-full"> */}
       <div
         style={{
           height: `${Math.round((35.704 / 100) * window.innerHeight)}px`,
@@ -154,12 +153,6 @@ export default function MarketBenchmarkingChart({
             barGap={s(6, 2)}
             margin={{ top: s(8, 4), right: s(12, 4), bottom: 0, left: s(4, 2) }}
           >
-            {/* <CartesianGrid
-              vertical={false}
-              stroke="#EDF2F7"
-              strokeDasharray="3 3"
-            /> */}
-
             <CartesianGrid
               vertical={false}
               stroke="#EDF2F7"
@@ -198,18 +191,24 @@ export default function MarketBenchmarkingChart({
               // strokeWidth={2}
               strokeWidth={Math.max(1, Math.round(3 * scale))}
               radius={[Math.round(8 * scale), Math.round(12 * scale), 0, 0]}
+              isAnimationActive={true}
+              animationDuration={1300}
+              animationBegin={200}
+              animationEasing="ease-out"
             />
             <Bar
               dataKey="benchmark"
               fill={COLORS.benchmark}
               // radius={[8, 8, 0, 0]}
               radius={[Math.round(8 * scale), Math.round(8 * scale), 0, 0]}
+              isAnimationActive={true}
+              animationDuration={1000}
+              animationBegin={200}
+              animationEasing="ease-out"
             />
           </BarChart>
         </ResponsiveContainer>
       </div>
-
-      {/* </div> */}
 
       <div className="flex flex-wrap gap-[0.404vw] !mb-0">
         <div className="flex items-center gap-[0.404vw] rounded-[0.404vw] !border !border-[#F1F4F9] bg-white !px-[0.606vw] !py-[0.404vw] !text-[0.758vw] font-semibold text-[#809FB8]">
