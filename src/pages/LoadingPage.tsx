@@ -8,7 +8,7 @@ const LoadingPage: React.FC = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      // navigateTo("dashboard");
+      navigateTo("dashboard");
     }, 3000);
 
     return () => clearTimeout(timer);
