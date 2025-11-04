@@ -16,7 +16,7 @@ const LoadingPage: React.FC = () => {
 
   return (
     <GreenWrapper className="relative ">
-      <div className="max-w-[1778px] w-[90vw] max-h-[955px] !mx-auto h-[85vh] flex-shrink-0 rounded-[20px] bg-[#fcfafa] flex items-center justify-center">
+      <div className="lg:!max-w-[55.000vw] max-w-[1778px] w-[90vw] max-h-[955px] !mx-auto h-[85vh] flex-shrink-0 flex items-center justify-center">
         <div className="flex flex-col justify-center items-center gap-[7.4vh] p-[2vw] ">
           <img
             src="/images/heldaFullLogo.png"
