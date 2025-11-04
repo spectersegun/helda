@@ -79,16 +79,16 @@ export function LogoutIcon(props: React.SVGProps<SVGSVGElement>) {
       <path
         d="M4.4705 11.561C5.33916 7.97347 8.23068 5.17231 11.9339 4.3308C14.6083 3.72307 17.3917 3.72307 20.0661 4.3308C23.7693 5.17231 26.6608 7.97347 27.5295 11.561C28.1568 14.1518 28.1568 16.8482 27.5295 19.439C26.6608 23.0265 23.7693 25.8277 20.0661 26.6692C17.3917 27.2769 14.6083 27.2769 11.9339 26.6692C8.23068 25.8277 5.33917 23.0265 4.4705 19.439C3.84317 16.8482 3.84317 14.1518 4.4705 11.561Z"
         fill="#12428D"
-        fill-opacity="0.3"
+        fillOpacity="0.3"
         stroke="#12428D"
-        stroke-width="1.5"
+        strokeWidth="1.5"
       />
       <path
         d="M20.666 15.4994L11.3327 15.4994M11.3327 15.4994L14.666 18.7285M11.3327 15.4994L14.666 12.2702"
         stroke="#12428D"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );

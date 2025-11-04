@@ -121,7 +121,7 @@ export default function DentistLogin() {
                       } `}
                       type="email"
                       placeholder="Enter your email"
-                      required
+                      // required
                     />
                   </Form.Item>
                   {emailError && (
@@ -148,7 +148,7 @@ export default function DentistLogin() {
                         placeholder="Enter your password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        required
+                        // required
                       />
 
                       <span

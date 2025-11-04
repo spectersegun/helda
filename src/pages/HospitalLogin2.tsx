@@ -124,7 +124,7 @@ export default function HospitalLogin2() {
                       } `}
                       type="email"
                       placeholder="Enter your email"
-                      required
+                      // required
                     />
                   </Form.Item>
 
@@ -152,7 +152,7 @@ export default function HospitalLogin2() {
                         placeholder="Enter your password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        required
+                        // required
                       />
 
                       <span

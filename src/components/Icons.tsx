@@ -62,7 +62,7 @@ export function GreenDot(props: React.SVGProps<SVGSVGElement>) {
         r="5.5"
         fill="#1F664B"
         stroke="#35EB69"
-        stroke-width="2"
+        strokeWidth="2"
       />
     </svg>
   );
