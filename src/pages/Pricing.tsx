@@ -79,7 +79,14 @@ export default function Pricing() {
         </div>
 
         <div>
-          <HeldaAssistantCard onSend={(q) => console.log(q)} />
+          <HeldaAssistantCard
+            suggestions={[
+              "What's our average charge for a knee replacement?",
+              "Which services had the biggest charge variation in April?",
+              "How do our maternity service charges compare to other hospitals?",
+            ]}
+            onSend={(q) => console.log(q)}
+          />
         </div>
       </div>
     </div>

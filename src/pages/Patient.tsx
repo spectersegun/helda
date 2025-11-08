@@ -110,7 +110,14 @@ export default function Patient() {
         </div>
 
         <div>
-          <HeldaAssistantCard onSend={(q) => console.log(q)} />
+          <HeldaAssistantCard
+            suggestions={[
+              "How many new vs. returning patients did we have last quarter?",
+              "Which patient demographic brings in the most revenue?",
+              "Show me the trend in patient retention over the past year.",
+            ]}
+            onSend={(q) => console.log(q)}
+          />
         </div>
       </div>
     </div>

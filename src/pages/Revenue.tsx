@@ -89,7 +89,14 @@ export default function Revenue() {
         </div>
 
         <div>
-          <HeldaAssistantCard onSend={(q) => console.log(q)} />
+          <HeldaAssistantCard
+            suggestions={[
+              "Which department contributed the most revenue this quarter?",
+              "Highlight underperforming services by revenue.",
+              "Compare this months revenue to the same month last year.",
+            ]}
+            onSend={(q) => console.log(q)}
+          />
         </div>
       </div>
     </div>
