@@ -11,13 +11,14 @@ const QUESTIONS = [
 export default function EmptyQuestion({ onSelect }: Props) {
   return (
     <div className="max-w-[23vw] min-h-[5.18vh] !space-y-[1vw] !mx-auto text-[#12428D] !mt-[10.18vh]">
-      {QUESTIONS.map((q) => (
+      {QUESTIONS.map((q, index) => (
         <div
+          key={index}
           onClick={() => onSelect?.(q)}
           className="min-h-[5.18vh] flex items-center justify-center !py-2 !border !border-[#12428D] rounded-lg cursor-pointer text-[#12428D] shadow-xs hover:!bg-[#12428D] hover:text-white !transition-colors !duration-300 !ease-in-out"
         >
           <p className="!text-center !mb-0 !font-medium text-[0.81vw] leading-[1.1vw] max-w-[17.07vw] !mx-auto">
-            "How do our maternity service charges compare to other hospitals?"
+            "{q}"
           </p>
         </div>
       ))}

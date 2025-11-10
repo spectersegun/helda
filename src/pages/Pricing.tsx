@@ -2,11 +2,25 @@ import HeldaAssistantCard from "../components/common/HeldaAssistantCard";
 import MiniHeader from "../components/common/MiniHeader";
 import MarketBenchmarkingChart from "../components/MarketBenchmarkingChart";
 import MonthlyAverageChargeChart from "../components/MonthlyAverageChargeChart";
+import { useChatHistory } from "../contexts/ChatHistoryContext";
 
 export default function Pricing() {
+  const { addToHistory } = useChatHistory();
+
+  const handleAIResponse = (question: string, response: string) => {
+    // Save to global history
+    addToHistory(question, response, 'pricing');
+  };
+
+  const pricingSuggestions = [
+    "What are the most expensive services offered?",
+    "Compare our pricing to market benchmarks.",
+    "Which diagnoses have the highest variability in charges?",
+  ];
+
   return (
-    <div className="grid grid-cols-1 gap-[1.212vw] items-stretch flex-1 !relative overflow-y-auto !pt-[2.5vh] ">
-      <div className="grid grid-cols-3 gap-x-7 ">
+    <div className="grid grid-cols-1 gap-[1.212vw] flex-1 !relative overflow-hidden !pt-[2.5vh] h-full">
+      <div className="grid grid-cols-3 gap-x-7 h-full items-stretch">
         <div>
           <div className="gap-[2.4vw] !text-center grid grid-cols-2">
             <div className="!p-[0.74vh] bg-white rounded-[1vw] h-[13.9vh] ">
@@ -79,7 +93,15 @@ export default function Pricing() {
         </div>
 
         <div>
-          <HeldaAssistantCard onSend={(q) => console.log(q)} />
+          <HeldaAssistantCard 
+            heading="Helda AI Assistant"
+            subheadingTop="Ask about Pricing Intelligence"
+            subheadingBottom="How can I assist you?"
+            suggestions={pricingSuggestions}
+            onResponse={handleAIResponse}
+            pageContext="pricing"
+            userAvatarSrc="/images/dp.png"
+          />
         </div>
       </div>
     </div>
