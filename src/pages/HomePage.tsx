@@ -1,22 +1,147 @@
 import AIBlobVideo from "../components/common/AIBlob";
-import AIUnderText from "../components/common/AIUnderText";
 import PatientIntelligenceCard from "../components/common/PatientIntelligenceCard";
 import PricingIntelCard from "../components/common/PricingIntelCard";
 import RevenuePerformanceCard from "../components/common/RevenuePerformanceCard";
 import UIHomeCard from "../components/common/UIHomeCard";
+import { useAuth } from "../contexts/AuthContext";
 import { useNavigation } from "../contexts/NavigationContext";
+import AIUnderText from "../components/common/AIUnderText";
 // import { animate, motion, useMotionValue, useTransform } from "framer-motion";
 
 export default function HomePage() {
   const { navigateToTab } = useNavigation();
+  const { user } = useAuth();
+
+  console.log({ user });
+
+  const UserText = {
+    Descriptions: {
+      pricingIntelligence:
+        user?.sector == "hospital"
+          ? "Pricing Intelligence shows how your service prices trend over time and compare to the market. It helps identify under- or overpricing, enabling smarter decisions to boost revenue and patient satisfaction."
+          : user?.sector == "dentist"
+          ? "Pricing Intelligence shows how your treatment fees trend over time and compare to local practices. It helps identify under- or overpricing, enabling smarter decisions to boost revenue and patient satisfaction"
+          : user?.sector == "pharmacy"
+          ? "Pricing Intelligence shows how your drug prices trend over time and compare to the local market. It helps identify under- or overpricing, enabling smarter purchasing, stocking, and customer satisfaction."
+          : "Pricing Intelligence shows how your service prices trend over time and compare to the market. It helps identify under- or overpricing, enabling smarter decisions to boost revenue and patient satisfaction.",
+      revenueIntelligence:
+        user?.sector == "hospital"
+          ? "Revenue Performance tracks your income by service, department, or payer — helping you quickly spot growth opportunities and underperforming areas."
+          : user?.sector == "dentist"
+          ? "Revenue Performance tracks your income by treatment type, provider, or payer — helping you quickly spot growth opportunities and underperforming services."
+          : user?.sector == "pharmacy"
+          ? "Revenue Performance tracks your income by drug category, prescription vs. OTC sales, or payer — helping you quickly spot growth opportunities and underperforming products."
+          : "Revenue Performance tracks your income by service, department, or payer — helping you quickly spot growth opportunities and underperforming areas.",
+      patientIntelligence:
+        user?.sector == "hospital"
+          ? "Patient Intelligence reveals patterns in new, returning, and repeat patients — helping you track loyalty, churn, and revenue impact to better tailor care and engagement."
+          : user?.sector == "dentist"
+          ? "Patient Intelligence reveals patterns in new, repeat, and loyalty-program customers — helping you monitor adherence, retention, and revenue impact to better tailor services."
+          : user?.sector == "pharmacy"
+          ? "Patient Intelligence reveals patterns in new, returning, and repeat patients — helping you track loyalty, missed appointments, and revenue impact to better tailor care and engagement."
+          : "Patient Intelligence reveals patterns in new, returning, and repeat patients — helping you track loyalty, churn, and revenue impact to better tailor care and engagement.",
+    },
+
+    HomeCard: [
+      {
+        title: "Patient Volume vs Revenue",
+        positive:
+          user?.sector == "hospital"
+            ? "Diabetes Checkups grew 30%"
+            : user?.sector == "dentist"
+            ? "Teeth Cleaning appointments grew 30%"
+            : user?.sector == "pharmacy"
+            ? "Prescription refill volume grew 30%"
+            : "Diabetes Checkups grew 30%",
+        nagative:
+          user?.sector == "hospital"
+            ? "but total revenue declined — revisit pricing"
+            : user?.sector == "dentist"
+            ? "but total revenue declined — revisit pricing or upsell opportunities."
+            : user?.sector == "pharmacy"
+            ? " but overall revenue declined — revisit pricing or upsell OTC opportunities."
+            : "but total revenue declined — revisit pricing",
+        positiveArrow: true,
+        negativeArrow: true,
+      },
+      {
+        title: "Pricing vs Patient",
+        positive:
+          user?.sector == "hospital"
+            ? "Charges for Spinal Surgery rose 20%"
+            : user?.sector == "dentist"
+            ? "Charges for Root Canal Therapy rose 20%,"
+            : user?.sector == "pharmacy"
+            ? "Charges for Branded Pain Medication rose 20%"
+            : "Charges for Spinal Surgery rose 20%",
+        nagative:
+          user?.sector == "hospital"
+            ? "Patient visits dropped 12%"
+            : user?.sector == "dentist"
+            ? "Patient visits dropped 12%"
+            : user?.sector == "pharmacy"
+            ? "Patient purchases dropped 12%."
+            : "Patient visits dropped 12%",
+        positiveArrow: true,
+        negativeArrow: true,
+      },
+      {
+        title: "Underutilised High-Charge Services",
+        positive:
+          user?.sector == "hospital"
+            ? "Charges for Spinal Surgery rose 20%"
+            : user?.sector == "dentist"
+            ? "Dental Implants have the highest charge"
+            : user?.sector == "pharmacy"
+            ? "Biologics have the highest margin"
+            : "Charges for Spinal Surgery rose 20%",
+        nagative:
+          user?.sector == "hospital"
+            ? "but only 3 visits this month”"
+            : user?.sector == "dentist"
+            ? "but only 3 procedures this month."
+            : user?.sector == "pharmacy"
+            ? "but only 3 fills this month."
+            : "but only 3 visits this month”",
+        positiveArrow: true,
+        negativeArrow: true,
+      },
+      {
+        title: "Payer Mix vs Profitability",
+        positive:
+          user?.sector == "hospital"
+            ? "Charges for Spinal Surgery rose 20%"
+            : user?.sector == "dentist"
+            ? "Cosmetic Dentistry has the highest average charge"
+            : user?.sector == "pharmacy"
+            ? "Chronic Care Prescriptions have the highest average charge"
+            : "Charges for Spinal Surgery rose 20%",
+        nagative:
+          user?.sector == "hospital"
+            ? "but 60% covered by lowest reimbursing payer”"
+            : user?.sector == "dentist"
+            ? "but 60% of cases covered by lowest reimbursing payer."
+            : user?.sector == "pharmacy"
+            ? "but 60% covered by lowest reimbursing insurer."
+            : "but 60% covered by lowest reimbursing payer”",
+        positiveArrow: true,
+        negativeArrow: true,
+      },
+    ],
+  };
 
   return (
-    // <HomeEnterOrchestrator>
     <div className="grid grid-cols-1 gap-[2.4vh] items-stretch flex-1 !relative overflow-y-auto hide-native-scrollbar !p-2 !pt-[2.5vh] ">
       <div className="grid grid-cols-3 gap-x-[2vw] ">
-        <PricingIntelCard />
-        <RevenuePerformanceCard />
-        <PatientIntelligenceCard />
+        <PricingIntelCard
+          description={UserText?.Descriptions?.pricingIntelligence}
+        />
+        <RevenuePerformanceCard
+          description={UserText?.Descriptions?.revenueIntelligence}
+        />
+        <PatientIntelligenceCard
+          description={UserText?.Descriptions?.patientIntelligence}
+        />
       </div>
 
       <div className="grid grid-cols-3 gap-x-[2vw]">
@@ -37,8 +162,8 @@ export default function HomePage() {
             />
 
             <AIUnderText
-              text="“What are the top 3 services "
-              subText="driving revenue this month?”"
+              text="“What are the top 3 locations"
+              subText="driving revenue this month”"
             />
 
             <AIUnderText
@@ -62,34 +187,37 @@ export default function HomePage() {
               >
                 Unified Intelligence
               </h3>
-              {/* <span className="w-[80px] !border-t !border-[#BAB6B6]"></span> */}
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-x-[3.7vw] gap-y-[3.7vh] !mt-[3vh] ">
-            <UIHomeCard
-              title="Patient Volume vs Revenue"
-              subtitle="Diabetes Checkups grew 30%"
-              trend="but total revenue declined — revisit pricing"
-            />
+          <div className="grid grid-cols-2 gap-x-[2.222vw] gap-y-[2.963vh] !mt-[2.9vh] opacity-0 animate-[fadeInRight_0.6s_ease-out_forwards_0.3s] ">
+            {UserText.HomeCard?.map((carddetails, index) => (
+              <UIHomeCard
+                // title="Patient Volume vs Revenue"
+                // subtitle="Diabetes Checkups grew 30%"
+                // trend="but total revenue declined — revisit pricing"
+                {...carddetails}
+                key={index}
+              />
+            ))}
 
-            <UIHomeCard
+            {/* <UIHomeCard
               title="Pricing vs Patient "
               subtitle="Charges for Spinal Surgery rose 20%"
-              trend="but total revenue declined — revisit pricing"
+              trend="Patient visits dropped 12%"
             />
 
             <UIHomeCard
               title="Underutilised High-Charge Services"
               subtitle="Diabetes Checkups grew 30%"
-              trend="but total revenue declined — revisit pricing"
+              trend="but only 3 visits this month”"
             />
 
             <UIHomeCard
               title="Payer Mix vs Profitability"
               subtitle="Cardiology services has the highest average charge"
-              trend="but total revenue declined — revisit pricing"
-            />
+              trend="but 60% covered by lowest reimbursing payer”"
+            /> */}
           </div>
         </div>
       </div>

@@ -211,7 +211,7 @@ export default function MonthlyRevenueDonut2({
               </div>
 
               <span className="text-[0.808vw] leading-[1.08vw] !font-semibold text-[#99B2C6]">
-                {d.cal}%
+                {d.cal}
               </span>
 
               <span className="text-[0.808vw] leading-[1.08vw] !font-semibold text-[#99B2C6]">

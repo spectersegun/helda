@@ -30,7 +30,7 @@ export default function Profile() {
               {/* <div className="mx-auto "> */}
               <button
                 className="!border 2xl:!border-[1.5px] !border-[#1F664B] !bg-inherit w-[15vw] !h-[5.093vh] !outline-none !mb-[1.5vh] flex items-center justify-center rounded-[0.5vw] "
-                // disabled
+                disabled
               >
                 <span className="text-[#1F664B] text-[0.808vw] font-semibold ">
                   Change Password

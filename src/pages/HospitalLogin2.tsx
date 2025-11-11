@@ -71,7 +71,7 @@ export default function HospitalLogin2() {
       }}
     >
       <GreenWrapper>
-        <div className="grid grid-cols-24 gap-[3.3] !p-[4.2vw] h-full  ">
+        <div className="grid grid-cols-24 gap-[3.3] !p-[4.2vw] h-full logins">
           <div className="col-span-12 bg-[url('/images/hospital_pic_login.png')] !h-full !w-full bg-no-repeat bg-cover rounded-[1vw] "></div>
 
           <div className="col-span-12 relative flex justify-center items-start h-full overflow-y-auto hide-native-scrollbar ">
@@ -93,7 +93,7 @@ export default function HospitalLogin2() {
                 </h1>
 
                 <div className="flex justify-center ">
-                  <p className="!mb-[1.6vw] text-[#5B5B5B]  !text-[1vw]">
+                  <p className="!mb-[2.9vh] text-[#5B5B5B]  !text-[1vw]">
                     Enter your email and password to access your account
                   </p>
                 </div>

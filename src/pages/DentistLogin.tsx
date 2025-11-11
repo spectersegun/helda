@@ -68,7 +68,7 @@ export default function DentistLogin() {
       }}
     >
       <GreenWrapper>
-        <div className="grid grid-cols-24 gap-[3.3] !p-[7.8vh] !h-full loggingin">
+        <div className="grid grid-cols-24 gap-[3.3] !p-[7.8vh] !h-full logins">
           <div className="col-span-12 bg-[url('/images/DentistLogin.png')] !h-full !w-full bg-no-repeat bg-cover rounded-[1vw] "></div>
 
           <div className="col-span-12 relative flex justify-center items-start h-full overflow-y-auto hide-native-scrollbar ">

@@ -95,6 +95,7 @@ export default function Revenue() {
               "Highlight underperforming services by revenue.",
               "Compare this months revenue to the same month last year.",
             ]}
+            subheadingTop="Ask about Revenue Data"
             onSend={(q) => console.log(q)}
           />
         </div>

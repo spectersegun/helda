@@ -320,3 +320,11 @@ svg.recharts-surface:focus:not(:focus-visible),
 .digit:nth-child(3) .numbers {
   animation-delay: 0.4s;
 }
+
+.logins .ant-form-item-vertical .ant-form-item-label {
+  padding-bottom: 1.481vh;
+}
+
+.logins .ant-form-item {
+  margin-bottom: 3.704vh;
+}

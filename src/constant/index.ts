@@ -14,7 +14,7 @@ export const HEADERS: Record<TabKey, { name: string; subtitle?: string }> = {
   revenue: {
     name: "Revenue Performance",
     subtitle:
-      "Your financial pulseboard for tracking income by service, department, and payer — spotlighting growth drivers and underperformers in real time.",
+      "Your financial pulseboard for tracking income by service, department, and payer spotlighting growth drivers and underperformers in real time.",
   },
   patient: {
     name: "Patient Intelligence",

@@ -102,7 +102,7 @@ export default function Patient() {
           </div>
 
           <div className="!mt-5">
-            <MonthlyRevenueDonut total={10343} />
+            <MonthlyRevenueDonut title="Demographic Breakdown" total={10343} />
           </div>
           <div className="!mt-[2.222vh] ">
             <PatientRetentionChart />
@@ -116,6 +116,7 @@ export default function Patient() {
               "Which patient demographic brings in the most revenue?",
               "Show me the trend in patient retention over the past year.",
             ]}
+            subheadingTop="Ask about Patient Data"
             onSend={(q) => console.log(q)}
           />
         </div>

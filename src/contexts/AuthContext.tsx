@@ -6,7 +6,7 @@ interface User {
   id: string;
   email: string;
   name?: string;
-  role?: "hospital" | "dentist" | "pharmacy";
+  sector?: "hospital" | "dentist" | "pharmacy";
 }
 
 interface AuthContextType {
@@ -15,7 +15,7 @@ interface AuthContextType {
   login: (
     email: string,
     password: string,
-    role: "hospital" | "dentist" | "pharmacy"
+    sector: "hospital" | "dentist" | "pharmacy"
   ) => Promise<boolean>;
   logout: () => void;
   loading: boolean;
@@ -44,16 +44,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const login = async (
     email: string,
     password: string,
-    role: "hospital" | "dentist" | "pharmacy"
+    sector: "hospital" | "dentist" | "pharmacy"
   ): Promise<boolean> => {
     try {
-      const validation = await validateLogin(email, password, role);
+      const validation = await validateLogin(email, password, sector);
 
       if (validation.isValid) {
         const userData: User = {
-          id: `${role}-${email}`,
+          id: `${sector}-${email}`,
           email,
-          role: role as User["role"],
+          sector: sector as User["sector"],
           name: email.split("@")[0],
         };
 

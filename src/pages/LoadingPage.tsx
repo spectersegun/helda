@@ -21,7 +21,7 @@ const LoadingPage: React.FC = () => {
           <img
             src="/images/heldaFullLogo.png"
             alt="Helda Full Logo"
-            className="!w-auto !h-[27.315vh] "
+            className="!w-auto !h-[27.315vh]"
           />
 
           <div className=" flex flex-col justify-center items-center w-full">
