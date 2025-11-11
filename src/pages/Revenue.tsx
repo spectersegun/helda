@@ -3,11 +3,25 @@ import HeldaAssistantCard from "../components/common/HeldaAssistantCard";
 import MiniHeader from "../components/common/MiniHeader";
 import MonthlyRevenueDonut2 from "../components/common/MonthlyRevenueDonut2";
 import RevenueOverTimeCard from "../components/common/RevenueOverTimeCard";
+import { useChatHistory } from "../contexts/ChatHistoryContext";
 
 export default function Revenue() {
+  const { addToHistory } = useChatHistory();
+
+  const handleAIResponse = (question: string, response: string) => {
+    // Save to global history
+    addToHistory(question, response, "revenue");
+  };
+
+  const revenueSuggestions = [
+    "Which department contributed the most revenue this quarter?",
+    "Highlight underperforming services by revenue.",
+    "Compare this months revenue to the same month last year.",
+  ];
+
   return (
-    <div className="grid grid-cols-1 gap-[1.212vw] items-stretch flex-1 !relative !pt-[2.5vh] overflow-y-auto">
-      <div className="grid grid-cols-3 gap-x-7 ">
+    <div className="grid grid-cols-1 gap-[1.212vw] flex-1 !relative !pt-[2.5vh] overflow-hidden h-full">
+      <div className="grid grid-cols-3 gap-x-7 h-full items-stretch">
         <div>
           <div className="flex gap-[1.667vw] !text-center justify-between">
             <div className="!px-[0.606vw] !pt-[0.741vh] !pb-[1.111vh] bg-white rounded-[1vw] flex-1 h-[13.889vh] flex flex-col justify-between">
@@ -89,7 +103,7 @@ export default function Revenue() {
         </div>
 
         <div>
-          <HeldaAssistantCard
+          {/* <HeldaAssistantCard
             suggestions={[
               "Which department contributed the most revenue this quarter?",
               "Highlight underperforming services by revenue.",
@@ -97,6 +111,15 @@ export default function Revenue() {
             ]}
             subheadingTop="Ask about Revenue Data"
             onSend={(q) => console.log(q)}
+          /> */}
+          <HeldaAssistantCard
+            heading="Helda AI Assistant"
+            subheadingTop="Ask about Revenue Performance"
+            subheadingBottom="How can I assist you?"
+            suggestions={revenueSuggestions}
+            onResponse={handleAIResponse}
+            pageContext="revenue"
+            userAvatarSrc="/images/dp.png"
           />
         </div>
       </div>

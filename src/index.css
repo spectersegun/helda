@@ -301,6 +301,15 @@ svg.recharts-surface:focus:not(:focus-visible),
       transform: scale(1);
     }
   }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 }
 
 @keyframes roll {

@@ -3,11 +3,25 @@ import MiniHeader from "../components/common/MiniHeader";
 import MonthlyRevenueDonut from "../components/common/MonthlyRevenueDonut";
 import PatientRetentionChart from "../components/common/PatientRetentionChart";
 import MarketBenchmarkingChart from "../components/MarketBenchmarkingChart";
+import { useChatHistory } from "../contexts/ChatHistoryContext";
 
 export default function Patient() {
+  const { addToHistory } = useChatHistory();
+
+  const handleAIResponse = (question: string, response: string) => {
+    // Save to global history
+    addToHistory(question, response, "patient");
+  };
+
+  const patientSuggestions = [
+    "What is the patient retention rate this quarter?",
+    "Which age group visits most frequently?",
+    "Show me the demographics breakdown of patients.",
+  ];
+
   return (
-    <div className="grid grid-cols-1 gap-[1.212vw] items-stretch flex-1 !relative !pt-[2.5vh] overflow-y-auto">
-      <div className="grid grid-cols-3 gap-x-7 ">
+    <div className="grid grid-cols-1 gap-[1.212vw] flex-1 !relative !pt-[2.5vh] overflow-hidden h-full">
+      <div className="grid grid-cols-3 gap-x-7 h-full items-stretch">
         <div>
           <div className="flex gap-[1.667vw] !text-center justify-between">
             <div className="!px-[0.606vw] !pt-[0.741vh] !pb-[1.111vh] bg-white rounded-[1vw] flex-1 h-[13.889vh] flex flex-col justify-between">
@@ -110,7 +124,7 @@ export default function Patient() {
         </div>
 
         <div>
-          <HeldaAssistantCard
+          {/* <HeldaAssistantCard
             suggestions={[
               "How many new vs. returning patients did we have last quarter?",
               "Which patient demographic brings in the most revenue?",
@@ -118,6 +132,16 @@ export default function Patient() {
             ]}
             subheadingTop="Ask about Patient Data"
             onSend={(q) => console.log(q)}
+          /> */}
+
+          <HeldaAssistantCard
+            heading="Helda AI Assistant"
+            subheadingTop="Ask about Patient Intelligence"
+            subheadingBottom="How can I assist you?"
+            suggestions={patientSuggestions}
+            onResponse={handleAIResponse}
+            pageContext="patient"
+            userAvatarSrc="/images/dp.png"
           />
         </div>
       </div>

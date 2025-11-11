@@ -6,6 +6,9 @@ import {
   // Navigate,
 } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext";
+import { DataProvider } from "./contexts/DataContext";
+import { ChatHistoryProvider } from "./contexts/ChatHistoryContext";
+import { StreamingProvider } from "./contexts/StreamingContext";
 import "./App.css";
 import "./index.css";
 import "antd/dist/reset.css";
@@ -20,13 +23,19 @@ function App() {
     <ToastProvider>
       <AllPageNavigationProvider>
         <AuthProvider>
-          <Router>
-            <DeviceGuard>
-              <div className="app">
-                <AllPages />
-              </div>
-            </DeviceGuard>
-          </Router>
+          <DataProvider>
+            <ChatHistoryProvider>
+              <StreamingProvider>
+                <Router>
+                  <DeviceGuard>
+                    <div className="app">
+                      <AllPages />
+                    </div>
+                  </DeviceGuard>
+                </Router>
+              </StreamingProvider>
+            </ChatHistoryProvider>
+          </DataProvider>
         </AuthProvider>
       </AllPageNavigationProvider>
     </ToastProvider>
