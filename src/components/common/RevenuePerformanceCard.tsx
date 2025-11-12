@@ -121,7 +121,7 @@ export default function RevenuePerformanceCard({
         <Text13>{description}</Text13>
 
         {/* Metric */}
-        <div className="absolute  left-0 right-0 top-[9.30vh]">
+        <div className="absolute  left-0 right-0 top-[9.80vh]">
           <div className="flex justify-center items-center gap-3 ">
             <div className="">
               {/* {value}  */}

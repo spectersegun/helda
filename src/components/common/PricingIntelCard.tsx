@@ -47,7 +47,7 @@ export default function PricingIntelCard({
         <Heading24 className="!leading-[2.8vh]" text={title} />
         <Text13>{description}</Text13>
 
-        <div className="!mb-0 absolute  left-0 right-0 top-[9.30vh]">
+        <div className="!mb-0 absolute  left-0 right-0 top-[9.80vh]">
           <div className="text-[1.2vw] leading-[2.0vh] !font-normal text-black ">
             {metricLabel}
           </div>
