@@ -1,4 +1,6 @@
-import { useState } from "react";
+"use client";
+
+import { useMemo, useState } from "react";
 import {
   LineChart,
   Line,
@@ -6,9 +8,11 @@ import {
   YAxis,
   CartesianGrid,
   ResponsiveContainer,
-  Tooltip,
+  Tooltip as RechartTooltip,
 } from "recharts";
 import SectionTitle from "./common/SectionTitle";
+import { CircleAlert } from "lucide-react";
+import { Tooltip as Tooltips } from "antd";
 
 export type Period = "6m" | "30d";
 
@@ -23,16 +27,13 @@ const COLORS = {
 const months = ["Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 const data6m = [
-  // numbers chosen to visually match the screenshot trends
   { name: "Jul", routine: 18, flu: 22, cancer: 16, asthma: 25, back: 26 },
   { name: "Aug", routine: 12, flu: 28, cancer: 18, asthma: 14, back: 22 },
   { name: "Sep", routine: 24, flu: 20, cancer: 26, asthma: 10, back: 18 },
   { name: "Oct", routine: 17, flu: 21, cancer: 20, asthma: 35, back: 32 },
   { name: "Nov", routine: 13, flu: 19, cancer: 28, asthma: 30, back: 29 },
   { name: "Dec", routine: 9, flu: 14, cancer: 24, asthma: 48, back: 40 },
-].map((d) => ({
-  ...d,
-}));
+].map((d) => ({ ...d }));
 
 const data30d = months.map((m, i) => ({
   name: m,
@@ -134,16 +135,143 @@ function labelForKey(k: string) {
   }
 }
 
+type ViewConfig = {
+  key: string;
+  label: string;
+  tooltip: string;
+  // transform receives base dataset and should return transformed dataset
+  transform: (base: typeof data6m) => typeof data6m;
+  title?: string;
+};
+
+const views: ViewConfig[] = [
+  {
+    key: "view1",
+    label: "View 1",
+    tooltip: "Monthly Average Charge",
+    transform: (base) => base.map((r) => ({ ...r })), // identity
+    title: "Monthly Average Charge",
+  },
+  {
+    key: "view2",
+    label: "View 2",
+    tooltip: "Top Priced Services",
+    // amplify higher values to simulate top priced services (preserve shape)
+    transform: (base) =>
+      base.map((r) => {
+        const res: any = { name: r.name };
+        for (const k of Object.keys(r)) {
+          if (k === "name") continue;
+          // upscale values non-linearly so chart rescales
+          res[k] = Math.round((r as any)[k] * 1.4 + (k === "back" ? 3 : 0));
+        }
+        return res;
+      }),
+    title: "Top Priced Services",
+  },
+  {
+    key: "view3",
+    label: "View 3",
+    tooltip: "Future Prediction",
+    // project forward: gradually increase values by month index
+    transform: (base) =>
+      base.map((r, idx) => {
+        const res: any = { name: r.name };
+        for (const k of Object.keys(r)) {
+          if (k === "name") continue;
+          // add a small upward trend per month
+          res[k] = Math.round(
+            (r as any)[k] + idx * 2 + (k === "asthma" ? 4 : 0)
+          );
+        }
+        return res;
+      }),
+    title: "Future Prediction",
+  },
+];
+
 export default function MonthlyAverageChargeChart() {
   const [period, setPeriod] = useState<Period>("6m");
-  const data = period === "6m" ? data6m : data30d;
+  // activeViewKey is either null or one of views[].key
+  const [activeViewKey, setActiveViewKey] = useState<string | null>("view1");
+
+  // choose base data according to period
+  const base = period === "6m" ? data6m : data30d;
+
+  // get active view config (if any)
+  const activeView = useMemo(
+    () => views.find((v) => v.key === activeViewKey) ?? null,
+    [activeViewKey]
+  );
+
+  // apply transform if a view is active; otherwise identity
+  const chartData = useMemo(() => {
+    if (activeView) return activeView.transform(base);
+    return base;
+  }, [base, activeView]);
+
+  // compute max value across numeric keys to set Y domain & ticks responsively
+  const { maxVal, ticks } = useMemo(() => {
+    const keys = ["routine", "flu", "cancer", "asthma", "back"];
+    let max = 0;
+    for (const row of chartData) {
+      for (const k of keys) {
+        max = Math.max(max, (row as any)[k] ?? 0);
+      }
+    }
+    // round up to nearest 10 for nicer chart scale
+    const ceiling = Math.max(10, Math.ceil(max / 10) * 10);
+    // create ticks at step 10 from 0..ceiling
+    const step = 10;
+    const t: number[] = [];
+    for (let v = 0; v <= ceiling; v += step) t.push(v);
+    return { maxVal: ceiling, ticks: t };
+  }, [chartData]);
+
+  // header title: use active view title if active, else default
+  const headerTitle = activeView?.title ?? "Monthly Average Charge";
+
+  // toggle handler: clicking an active button will deselect (invert), else select
+  function handleToggleView(key: string) {
+    setActiveViewKey((cur) => (cur === key ? null : key));
+  }
 
   return (
-    <div className="w-full rounded-[1.3vw] bg-white !px-[1.212vw] !pt-[1.296vh] !pb-[1.667vh] shadow-[0_6px_24px_rgba(16,24,40,0.04)]">
+    <div className="w-full rounded-[1.3vw] bg-white !px-[1.212vw] !pt-[1.296vh] !pb-[1.667vh] shadow-[0_6px_24px_rgba(16,24,40,0.04)] relative">
+      <div className="absolute right-[1.8vw] top-[2.037vh] flex flex-col gap-[0.648vh] ">
+        {views.map((v) => {
+          const isActive = activeViewKey === v.key;
+          return (
+            <Tooltips
+              key={v.key}
+              title={v.tooltip}
+              placement="right"
+              color="#1F664B"
+              className="helda-tooltip"
+            >
+              <button
+                onClick={() => handleToggleView(v.key)}
+                className={`!outline-none h-[2.407vh] w-[4.949vw] flex items-center justify-end gap-[0.20vw] !px-[0.303vw] !py-[0.370vh] rounded-[0.505vw] !border !text-[0.808vw] !font-medium transition-all duration-350 ${
+                  isActive
+                    ? "!bg-[#1F664B] !text-white !border-[#1F664B]"
+                    : "!bg-inherit !text-black !border-[#BAB6B6]"
+                }`}
+              >
+                {v.label}{" "}
+                <CircleAlert
+                  color={isActive ? "#FFFFFF" : "#1F664B"}
+                  className="rotate-180 w-[1.481vh] h-[1.481vh] "
+                />
+              </button>
+            </Tooltips>
+          );
+        })}
+      </div>
+
       <div className="!mb-[2.778vh] flex justify-center">
         <SectionTitle
-          title="Monthly Average Charge"
-          className="min-h-[5.74vh]  "
+          title={headerTitle}
+          className="min-h-[5.74vh] "
           width="w-[12vw]"
         />
       </div>
@@ -157,7 +285,7 @@ export default function MonthlyAverageChargeChart() {
       <div className="w-full h-[26.056vh] ">
         <ResponsiveContainer>
           <LineChart
-            data={data}
+            data={chartData}
             margin={{ top: 10, right: 10, bottom: 0, left: 0 }}
           >
             <CartesianGrid
@@ -174,8 +302,8 @@ export default function MonthlyAverageChargeChart() {
             />
 
             <YAxis
-              domain={[0, 60]}
-              ticks={[0, 10, 20, 30, 40, 50, 60]}
+              domain={[0, maxVal]}
+              ticks={ticks}
               tickFormatter={(v: number) => (v === 0 ? "0" : `${v}k`)}
               tickLine={false}
               axisLine={false}
@@ -183,7 +311,7 @@ export default function MonthlyAverageChargeChart() {
               width={36}
             />
 
-            <Tooltip content={<CustomTooltip />} />
+            <RechartTooltip content={<CustomTooltip />} />
 
             <Line
               type="monotone"
@@ -232,6 +360,34 @@ export default function MonthlyAverageChargeChart() {
         <LegendPill color={COLORS.asthma} label="Asthma" />
         <LegendPill color={COLORS.back} label="Back Pain" />
       </div>
+      <style jsx global>{`
+        .ant-tooltip .ant-tooltip-arrow {
+        }
+        @media (max-width: 1440px) {
+          .ant-tooltip .ant-tooltip-arrow {
+            left: 0.08vw !important;
+            width: 14px;
+            top: 10.0554px !important;
+          }
+        }
+        .ant-tooltip .ant-tooltip-content .ant-tooltip-inner {
+          font-size: 0.606vw;
+          line-height: 0.706vw;
+          min-height: 0.706vw;
+          padding: 0.306vw 0.606vw !important;
+        }
+
+        @keyframes fadeInScale {
+          from {
+            transform: scale(0.9);
+            opacity: 0;
+          }
+          to {
+            transform: scale(1);
+            opacity: 1;
+          }
+        }
+      `}</style>
     </div>
   );
 }

@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import { useState, useMemo } from "react";
 import {
   LineChart,
   Line,
@@ -9,8 +11,21 @@ import {
   Tooltip,
 } from "recharts";
 import SectionTitle from "./SectionTitle";
+import { Tooltip as AntdTooltip } from "antd";
+import { CircleAlert } from "lucide-react";
 
 type Period = "1m" | "6m" | "1y";
+
+type ViewConfig = {
+  key: string;
+  label: string;
+  tooltip: string;
+  transform: (base: Array<{ name: string; value: number }>) => Array<{
+    name: string;
+    value: number;
+  }>;
+  title?: string;
+};
 
 const COLORS = {
   stroke: "#12428D",
@@ -115,15 +130,108 @@ const CustomTooltip = ({ active, payload, label }: any) => {
   );
 };
 
-export default function RevenueOverTimeCard() {
-  const [period, setPeriod] = React.useState<Period>("6m");
+export default function RevenueOverTimeCard({
+  title = "Revenue over time",
+}: {
+  title?: string;
+}) {
+  const [period, setPeriod] = useState<Period>("6m");
   const data = period === "1m" ? data1m : period === "1y" ? data1y : data6m;
 
+  // views config (single-series transforms)
+  const views: ViewConfig[] = [
+    {
+      key: "view1",
+      label: "View 1",
+      tooltip: title,
+      transform: (base) => base.map((r) => ({ ...r })), // identity
+      title: title,
+    },
+    {
+      key: "view2",
+      label: "View 2",
+      tooltip: "Top Priced Services",
+      transform: (base) =>
+        base.map((r) => {
+          // slightly amplify values
+          return { ...r, value: Math.round(r.value * 1.35 + 2) };
+        }),
+      title: "Top Priced Services",
+    },
+    {
+      key: "view3",
+      label: "View 3",
+      tooltip: "Future Prediction",
+      transform: (base) =>
+        base.map((r, idx) => {
+          // trend upward per index
+          return { ...r, value: Math.round(r.value + idx * 2) };
+        }),
+      title: "Future Prediction",
+    },
+  ];
+
+  // active view state + toggle (start with "view1")
+  const [activeViewKey, setActiveViewKey] = useState<string | null>("view1");
+  function handleToggleView(key: string) {
+    setActiveViewKey((cur) => (cur === key ? null : key));
+  }
+
+  // apply active view transform to the currently selected period data
+  const chartData = useMemo(() => {
+    const active = views.find((v) => v.key === activeViewKey) ?? null;
+    return active ? active.transform(data) : data;
+  }, [data, activeViewKey, views]);
+
+  // header shows active view title if selected
+  const headerTitle =
+    views.find((v) => v.key === activeViewKey)?.title ?? title;
+
   return (
-    <div className="w-full rounded-[1vw] bg-white shadow-[0_6px_24px_rgba(16,24,40,0.04)] !px-[1.112vw] !pt-[1.296vh] !pb-[1.667vh] ">
+    <div className="w-full rounded-[1vw] bg-white shadow-[0_6px_24px_rgba(16,24,40,0.04)] !px-[1.112vw] !pt-[1.296vh] !pb-[1.667vh] relative ">
+      <div className="absolute right-[1.8vw] top-[2.037vh] flex flex-col gap-[0.648vh] ">
+        {views.map((v) => {
+          const isActive = activeViewKey === v.key;
+          return (
+            <AntdTooltip
+              key={v.key}
+              title={v.tooltip}
+              placement="right"
+              color="#1F664B"
+              style={{
+                backgroundColor: "#FFFFFF",
+                color: "#1F664B",
+                borderRadius: "0.4vw",
+                border: "1px solid #E4E7EC",
+                fontSize: "0.758vw",
+                fontWeight: 500,
+                padding: "0.5vw 0.8vw",
+                boxShadow:
+                  "0 4px 10px rgba(31, 102, 75, 0.12), 0 2px 5px rgba(31, 102, 75, 0.06)",
+              }}
+            >
+              <button
+                onClick={() => handleToggleView(v.key)}
+                className={`!outline-none h-[2.407vh] w-[4.949vw] flex items-center justify-end gap-[0.20vw] !px-[0.303vw] !py-[0.370vh] rounded-[0.505vw] !border !text-[0.808vw] !font-medium transition-all duration-350 ${
+                  isActive
+                    ? "!bg-[#1F664B] !text-white !border-[#1F664B]"
+                    : "!bg-inherit !text-black !border-[#BAB6B6]"
+                }`}
+              >
+                {v.label}{" "}
+                <CircleAlert
+                  color={isActive ? "#FFFFFF" : "#1F664B"}
+                  className="rotate-180 w-[1.481vh] h-[1.481vh] "
+                />
+              </button>
+            </AntdTooltip>
+          );
+        })}
+      </div>
+
       <div className="!mb-[3.611vh] flex justify-center">
         <SectionTitle
-          title="Revenue over time"
+          title={headerTitle}
           className="min-h-[5.74vh]  "
           width="w-[12vw]"
         />
@@ -136,7 +244,7 @@ export default function RevenueOverTimeCard() {
       <div className="w-full h-[26.056vh] ">
         <ResponsiveContainer>
           <LineChart
-            data={data}
+            data={chartData}
             margin={{ top: 0, right: 6, bottom: 0, left: 0 }}
           >
             <CartesianGrid
@@ -182,6 +290,35 @@ export default function RevenueOverTimeCard() {
           <span>Revenue</span>
         </div>
       </div>
+
+      <style jsx global>{`
+        .ant-tooltip .ant-tooltip-arrow {
+        }
+        @media (max-width: 1440px) {
+          .ant-tooltip .ant-tooltip-arrow {
+            left: 0.08vw !important;
+            width: 14px;
+            top: 10.0554px !important;
+          }
+        }
+        .ant-tooltip .ant-tooltip-content .ant-tooltip-inner {
+          font-size: 0.606vw;
+          line-height: 0.706vw;
+          min-height: 0.706vw;
+          padding: 0.306vw 0.606vw !important;
+        }
+
+        @keyframes fadeInScale {
+          from {
+            transform: scale(0.9);
+            opacity: 0;
+          }
+          to {
+            transform: scale(1);
+            opacity: 1;
+          }
+        }
+      `}</style>
     </div>
   );
 }

@@ -1,8 +1,3 @@
-/**
- * Data Context for switching between hospital and dental CSV data
- * based on user login type
- */
-
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { useAuth } from "./AuthContext";
 
@@ -43,7 +38,9 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
   const [data, setData] = useState<DataRow[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [dataSource, setDataSource] = useState<"hospital" | "dental" | null>(null);
+  const [dataSource, setDataSource] = useState<"hospital" | "dental" | null>(
+    null
+  );
 
   /**
    * Parse CSV data
@@ -64,11 +61,8 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
     });
   };
 
-  /**
-   * Load data based on user role
-   */
   useEffect(() => {
-    if (!user || !user.role) {
+    if (!user || !user.sector) {
       setData([]);
       setDataSource(null);
       return;
@@ -81,11 +75,10 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
       try {
         let csvFile = "";
 
-        // Determine which CSV to load based on user role
-        if (user.role === "hospital") {
+        if (user.sector === "hospital") {
           csvFile = "/src/data/hospital_dummy_data.csv";
           setDataSource("hospital");
-        } else if (user.role === "dentist") {
+        } else if (user.sector === "dentist") {
           csvFile = "/src/data/dental_dummy_data.csv";
           setDataSource("dental");
         } else {
@@ -112,7 +105,7 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
     };
 
     loadData();
-  }, [user?.role]);
+  }, [user?.sector]);
 
   /**
    * Generate a summary of the data for LLM context
@@ -123,8 +116,10 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
     // Calculate summary statistics
     const totalRecords = data.length;
     const departments = [...new Set(data.map((d) => d.department))];
-    const diagnoses = [...new Set(data.map((d) => d.diagnosis).filter(Boolean))];
-    
+    const diagnoses = [
+      ...new Set(data.map((d) => d.diagnosis).filter(Boolean)),
+    ];
+
     // Calculate revenue metrics
     const totalRevenue = data.reduce((sum, row) => {
       const charge = parseFloat(row.charge_amount_USD) || 0;
@@ -152,8 +147,12 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
     const femaleCount = data.filter((d) => d.gender === "Female").length;
 
     // Visit types
-    const inpatientCount = data.filter((d) => d.visit_type === "Inpatient").length;
-    const outpatientCount = data.filter((d) => d.visit_type === "Outpatient").length;
+    const inpatientCount = data.filter(
+      (d) => d.visit_type === "Inpatient"
+    ).length;
+    const outpatientCount = data.filter(
+      (d) => d.visit_type === "Outpatient"
+    ).length;
 
     // Claim statuses
     const claimStatuses: Record<string, number> = {};
@@ -163,15 +162,25 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
     });
 
     const summary = `
-Data Source: ${dataSource === "hospital" ? "Hospital" : "Dental Clinic"} Healthcare Data
+Data Source: ${
+      dataSource === "hospital" ? "Hospital" : "Dental Clinic"
+    } Healthcare Data
 Total Records: ${totalRecords.toLocaleString()}
 Data Period: ${data[0]?.visit_date} to ${data[data.length - 1]?.visit_date}
 
-Departments (${departments.length}): ${departments.slice(0, 10).join(", ")}${departments.length > 10 ? "..." : ""}
+Departments (${departments.length}): ${departments.slice(0, 10).join(", ")}${
+      departments.length > 10 ? "..." : ""
+    }
 
 Financial Metrics:
-- Total Revenue: $${totalRevenue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-- Average Revenue per Visit: $${avgRevenue.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+- Total Revenue: $${totalRevenue.toLocaleString(undefined, {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    })}
+- Average Revenue per Visit: $${avgRevenue.toLocaleString(undefined, {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    })}
 - Top Revenue Departments: ${topDepartments}
 
 Patient Demographics:
@@ -179,12 +188,21 @@ Patient Demographics:
 - Female: ${femaleCount} (${((femaleCount / totalRecords) * 100).toFixed(1)}%)
 
 Visit Types:
-- Inpatient: ${inpatientCount} (${((inpatientCount / totalRecords) * 100).toFixed(1)}%)
-- Outpatient: ${outpatientCount} (${((outpatientCount / totalRecords) * 100).toFixed(1)}%)
+- Inpatient: ${inpatientCount} (${(
+      (inpatientCount / totalRecords) *
+      100
+    ).toFixed(1)}%)
+- Outpatient: ${outpatientCount} (${(
+      (outpatientCount / totalRecords) *
+      100
+    ).toFixed(1)}%)
 
 Claim Statuses:
 ${Object.entries(claimStatuses)
-  .map(([status, count]) => `- ${status}: ${count} (${((count / totalRecords) * 100).toFixed(1)}%)`)
+  .map(
+    ([status, count]) =>
+      `- ${status}: ${count} (${((count / totalRecords) * 100).toFixed(1)}%)`
+  )
   .join("\n")}
 
 Top Diagnoses (sample): ${diagnoses.slice(0, 10).filter(Boolean).join(", ")}

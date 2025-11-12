@@ -103,15 +103,6 @@ export default function Revenue() {
         </div>
 
         <div>
-          {/* <HeldaAssistantCard
-            suggestions={[
-              "Which department contributed the most revenue this quarter?",
-              "Highlight underperforming services by revenue.",
-              "Compare this months revenue to the same month last year.",
-            ]}
-            subheadingTop="Ask about Revenue Data"
-            onSend={(q) => console.log(q)}
-          /> */}
           <HeldaAssistantCard
             heading="Helda AI Assistant"
             subheadingTop="Ask about Revenue Performance"
