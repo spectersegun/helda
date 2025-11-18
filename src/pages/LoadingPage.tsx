@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import "./LoadingPage.css";
 import { useAllPageNavigation } from "../contexts/AllPagesNavigationContext";
 import GreenWrapper from "../components/common/GreenWrapper";
+import HeldaShimmerLoader from "../components/HeldaShimmerLoader";
+// import HeldaGlowBar from "../components/common/HeldaGlowBar";
 
 const LoadingPage: React.FC = () => {
   const { currentView, navigateTo } = useAllPageNavigation();
@@ -25,10 +27,22 @@ const LoadingPage: React.FC = () => {
           />
 
           <div className=" flex flex-col justify-center items-center w-full">
-            <div className="loading-bar">
-              <div className="loading-progress"></div>
-            </div>
+            <HeldaShimmerLoader />
 
+            {/* <HeldaGlowBar width={1200} /> */}
+            {/* <HeldaLoadingAnimation
+              width={1200}
+              height={44}
+              light1Duration={1800}
+              light2Duration={2600}
+              light1Blur={30}
+              light2Blur={36}
+              debug={true}
+            /> */}
+
+            {/* <div className="loading-bar">
+              <div className="loading-progress"></div>
+            </div> */}
             {/* <div className="">
               <video
                 className="loading-video w-full h-[40px] "

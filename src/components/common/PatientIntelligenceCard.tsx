@@ -1,6 +1,6 @@
 import { useNavigation } from "../../contexts/NavigationContext";
 import Heading24 from "./Heading24";
-// import RollingNumber from "./RollingNumbers";
+import RollingNumber from "./RollingNumber";
 import Text13 from "./Text13";
 
 type PatientIntelligenceCardProps = {
@@ -20,7 +20,7 @@ export default function PatientIntelligenceCard({
     <div
       className={[
         "relative overflow-hidden rounded-2xl bg-white text-center max-h-[26vh] h-[25.9vh] cursor-pointer opacity-0 animate-[fadeInRight_0.6s_ease-out_forwards_0.3s] ",
-        " !pt-[0.8vw] shadow-sm border border-[#FCFAFA] hover:shadow-[0_4px_7px_3px_rgba(31,102,75,0.78)] overflow-hidden transition-shadow duration-300 ease-in-out flex flex-col justify-between w-full",
+        " !pt-[0.8vw] shadow-sm border border-[#eab4b4] hover:shadow-[0_4px_7px_3px_rgba(31,102,75,0.78)] overflow-hidden transition-shadow duration-300 ease-in-out flex flex-col justify-between w-full",
         className,
       ].join(" ")}
       onClick={() => navigateToTab("patient")}
@@ -88,9 +88,10 @@ export default function PatientIntelligenceCard({
           </g>
         </svg>
 
-        <div className="text-[2.7vw] absolute bottom-[4.0vh] text-black font-medium   ">
-          68%
-          {/* <RollingNumber value={68} height={80} duration={9500} /> */}
+        <div className="text-[2.5vw] absolute bottom-[3.5vh] text-black font-medium  flex items-center justify-center gap-[0.2vw]">
+          {/* 68% */}
+          <RollingNumber value={22} rowHeight={50} duration={3000} />{" "}
+          <span className="text-[2.5vw] ">%</span>
         </div>
 
         <p className="text-black text-[1.15vw] !mb-0 ">
