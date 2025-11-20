@@ -38,8 +38,7 @@ const AllPages: React.FC = () => {
     case "splashscreen":
       return <SplashPage />;
     case "healthcare":
-      // return <HealthcareSector2 />;
-      return <LoadingPage />;
+      return <HealthcareSector2 />;
     case "dashboard":
       return <ProtectedDashboard />;
     case "hospital-login":
