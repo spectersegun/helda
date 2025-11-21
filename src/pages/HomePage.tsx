@@ -175,7 +175,7 @@ export default function HomePage() {
             Helda AI Assistant
           </h2>
 
-          <AIBlobVideo />
+          <AIBlobVideo delay={0.6} />
 
           <div className="grid grid-cols-2 gap-x-[1.2vw] g-y-[1.11vh]">
             {aiItems.map((item, index) => (

@@ -3,15 +3,17 @@ import { motion } from "framer-motion";
 const AIBlobVideo = ({
   classNameWrapper,
   className,
+  delay = 0,
 }: {
   classNameWrapper?: string;
   className?: string;
+  delay?: number;
 }) => {
   return (
     <motion.div
       initial={{ scale: 0 }}
       animate={{ scale: 1 }}
-      transition={{ duration: 1, ease: "easeOut" }}
+      transition={{ duration: 1, ease: "easeOut", delay }}
       className={`grid place-items-center !mb-[0.761vh] !py-[1.952vh] ${classNameWrapper}`}
     >
       <div className="w-[10vw] max-w-full h-[18vh] aspect-[1/1] overflow-hidden rounded-full relative">
