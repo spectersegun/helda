@@ -337,3 +337,63 @@ svg.recharts-surface:focus:not(:focus-visible),
 .logins .ant-form-item {
   margin-bottom: 3.704vh;
 }
+
+/* @keyframes fallInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+} */
+
+@keyframes fallInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(var(--fall-distance, -50px));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fallInFromTop2 {
+  from {
+    opacity: 0;
+    transform: translateY(-70px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fall-in {
+  animation-name: fallInFromTop;
+  animation-duration: 1300ms;
+  animation-timing-function: cubic-bezier(0.3, 0.05, 0.3, 1);
+  animation-delay: 600ms;
+  animation-fill-mode: both;
+  will-change: transform, opacity;
+}
+
+.fall-in2 {
+  animation-name: fallInFromTop;
+  animation-duration: 1300ms;
+  animation-timing-function: cubic-bezier(0.3, 0.05, 0.3, 1);
+  animation-delay: 600ms;
+  animation-fill-mode: both;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fall-in,
+  .fall-in2 {
+    animation-duration: 0ms;
+    animation-delay: 0ms;
+    transition: none;
+  }
+}

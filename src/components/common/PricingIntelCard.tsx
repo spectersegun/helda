@@ -44,10 +44,23 @@ export default function PricingIntelCard({
       onClick={() => navigateToTab("pricing")}
     >
       <div className="!px-[0.7vw]">
-        <Heading24 className="!leading-[2.8vh]" text={title} />
-        <Text13>{description}</Text13>
+        <Heading24
+          className="!leading-[2.8vh] fall-in"
+          text={title}
+          style={{ "--fall-distance": "-20px" } as React.CSSProperties}
+        />
 
-        <div className="!mb-0 absolute  left-0 right-0 top-[9.80vh]">
+        <Text13
+          className="fall-in"
+          style={{ "--fall-distance": "-30px" } as React.CSSProperties}
+        >
+          {description}
+        </Text13>
+
+        <div
+          className="!mb-0 absolute  left-0 right-0 top-[9.80vh] fall-in"
+          style={{ "--fall-distance": "-10px" } as React.CSSProperties}
+        >
           <div className="text-[1.2vw] leading-[2.0vh] !font-normal text-black ">
             {metricLabel}
           </div>

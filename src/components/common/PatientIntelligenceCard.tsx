@@ -26,11 +26,20 @@ export default function PatientIntelligenceCard({
       onClick={() => navigateToTab("patient")}
     >
       <div className="!px-[0.6vw] ">
-        <Heading24 text={title} />
-        <Text13>{description}</Text13>
+        <Heading24
+          text={title}
+          className="fall-in"
+          style={{ "--fall-distance": "-20px" } as React.CSSProperties}
+        />
+        <Text13
+          className="fall-in"
+          style={{ "--fall-distance": "-30px" } as React.CSSProperties}
+        >
+          {description}
+        </Text13>
       </div>
 
-      <div className="absolute bottom-[0] left-0 right-0 !w-full !pb-[0.556vh] flex flex-col items-center">
+      <div className="absolute bottom-[0] left-0 right-0 !w-full !pb-[0.556vh] flex flex-col items-center chart-animate ">
         <svg
           viewBox="0 0 262 137"
           fill="none"
@@ -88,10 +97,15 @@ export default function PatientIntelligenceCard({
           </g>
         </svg>
 
-        <div className="text-[2.5vw] absolute bottom-[3.5vh] text-black font-medium  flex items-center justify-center gap-[0.2vw]">
+        <div className="text-[2.5vw] absolute bottom-[3.5vh] text-black font-medium  flex items-center justify-center">
           {/* 68% */}
-          <RollingNumber value={22} rowHeight={50} duration={3000} />{" "}
-          <span className="text-[2.5vw] ">%</span>
+          <RollingNumber
+            value={22}
+            rowHeight={50}
+            duration={3000}
+            animationDelay={600}
+          />{" "}
+          {/* <span className="text-[2.5vw] ">%</span> */}
         </div>
 
         <p className="text-black text-[1.15vw] !mb-0 ">

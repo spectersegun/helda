@@ -144,7 +144,8 @@ a:focus-visible {
 
 .chart-animate {
   animation: slideUpBlurFade 1s ease-out 0.4s forwards;
-  opacity: 0; /* ensures it starts invisible before animation */
+  opacity: 0;
+  animation-delay: 600ms;
 }
 
 /* .counter {

@@ -8,6 +8,25 @@ import { useNavigation } from "../contexts/NavigationContext";
 import AIUnderText from "../components/common/AIUnderText";
 // import { animate, motion, useMotionValue, useTransform } from "framer-motion";
 
+const aiItems = [
+  {
+    text: "“What are the top 3 services",
+    subText: "driving revenue this month?”",
+  },
+  {
+    text: "“What are the top 3 locations",
+    subText: "driving revenue this month”",
+  },
+  {
+    text: "“Show me the new vs returning",
+    subText: "patient trends for Q2.”",
+  },
+  {
+    text: "“Which services need pricing",
+    subText: "adjustments based on ",
+  },
+];
+
 export default function HomePage() {
   const { navigateToTab } = useNavigation();
   const { user } = useAuth();
@@ -146,35 +165,28 @@ export default function HomePage() {
 
       <div className="grid grid-cols-3 gap-x-[2vw]">
         <div
-          className="bg-white rounded-[1vw] !p-[0.93vh] hover:shadow-[0_4px_7px_3px_rgba(31,102,75,0.78)] cursor-pointer transition-shadow duration-300 ease-in-out"
+          className="bg-white rounded-[1vw] !p-[0.93vh] hover:shadow-[0_4px_7px_3px_rgba(31,102,75,0.78)] cursor-pointer transition-shadow duration-300 ease-in-out opacity-0 animate-[fadeInBottom_0.6s_ease-out_forwards_0.3s]  "
           onClick={() => navigateToTab("assistant")}
         >
-          <h2 className="text-[#1F664B] !text-[1.62vw] text-center text-medium mb=[1.11vw] ">
+          <h2
+            className="text-[#1F664B] !text-[1.62vw] text-center text-medium mb=[1.11vw] fall-in"
+            style={{ "--fall-distance": "-20px" } as React.CSSProperties}
+          >
             Helda AI Assistant
           </h2>
 
           <AIBlobVideo />
 
           <div className="grid grid-cols-2 gap-x-[1.2vw] g-y-[1.11vh]">
-            <AIUnderText
-              text="“What are the top 3 services"
-              subText="driving revenue this month?”"
-            />
-
-            <AIUnderText
-              text="“What are the top 3 locations"
-              subText="driving revenue this month”"
-            />
-
-            <AIUnderText
-              text="“Show me the new vs returning"
-              subText="patient trends for Q2.”"
-            />
-
-            <AIUnderText
-              text="“Which services need pricing"
-              subText="adjustments based on "
-            />
+            {aiItems.map((item, index) => (
+              <AIUnderText
+                key={index}
+                text={item.text}
+                subText={item.subText}
+                className="fall-in"
+                style={{ "--fall-distance": "0px" } as React.CSSProperties}
+              />
+            ))}
           </div>
         </div>
 
@@ -185,39 +197,15 @@ export default function HomePage() {
               <h3
                 className={`relative z-10 !text-[1.2vw] !font-semibold w-[22vw] h-full !border flex items-center justify-center !border-[#BAB6B6] rounded-lg !text-center leading-6 !mb-0 bg-white `}
               >
-                Unified Intelligence
+                <span className="fall-in">Unified Intelligence</span>
               </h3>
             </div>
           </div>
 
           <div className="grid grid-cols-2 gap-x-[2.222vw] gap-y-[2.963vh] !mt-[2.9vh] opacity-0 animate-[fadeInRight_0.6s_ease-out_forwards_0.3s] ">
             {UserText.HomeCard?.map((carddetails, index) => (
-              <UIHomeCard
-                // title="Patient Volume vs Revenue"
-                // subtitle="Diabetes Checkups grew 30%"
-                // trend="but total revenue declined — revisit pricing"
-                {...carddetails}
-                key={index}
-              />
+              <UIHomeCard {...carddetails} key={index} />
             ))}
-
-            {/* <UIHomeCard
-              title="Pricing vs Patient "
-              subtitle="Charges for Spinal Surgery rose 20%"
-              trend="Patient visits dropped 12%"
-            />
-
-            <UIHomeCard
-              title="Underutilised High-Charge Services"
-              subtitle="Diabetes Checkups grew 30%"
-              trend="but only 3 visits this month”"
-            />
-
-            <UIHomeCard
-              title="Payer Mix vs Profitability"
-              subtitle="Cardiology services has the highest average charge"
-              trend="but 60% covered by lowest reimbursing payer”"
-            /> */}
           </div>
         </div>
       </div>

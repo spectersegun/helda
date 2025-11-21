@@ -5,17 +5,21 @@
 //   rowHeight?: number | string;
 //   duration?: number;
 //   fontSize?: number | string;
+//   animationDelay?: number;
 // };
 
-// export default function RollingNumberCompact({
+// export default function RollingNumber2({
 //   value,
 //   rowHeight = 50,
 //   duration = 950,
-//   fontSize = "2.8vw",
-// }: Props) {
+//   animationDelay = 600,
+// }: // fontSize = "2.8vw",
+
+// Props) {
 //   const colRef = useRef<HTMLDivElement | null>(null);
 //   const containerRef = useRef<HTMLDivElement | null>(null);
 //   const [collapsed, setCollapsed] = useState(false);
+//   const fallbackTimerRef = useRef<number | null>(null);
 
 //   useEffect(() => {
 //     const target = Math.max(0, Math.floor(value));
@@ -30,7 +34,7 @@
 
 //     // animate to negative
 //     requestAnimationFrame(() => {
-//       col.style.transition = `transform ${duration}ms cubic-bezier(0.3,0.05,0.3,1)`;
+//       col.style.transition = `transform ${duration}ms cubic-bezier(0.3,0.05,0.3,1) ${animationDelay}ms`;
 //       col.style.transform = `translateY(${-target * 25}px)`;
 //     });
 
@@ -40,8 +44,14 @@
 //     };
 
 //     col.addEventListener("transitionend", onEnd);
+//     const total = duration + (animationDelay || 0) + 50; // small buffer
+//     fallbackTimerRef.current = window.setTimeout(() => {
+//       setCollapsed(true);
+//       fallbackTimerRef.current = null;
+//     }, total);
+
 //     return () => col.removeEventListener("transitionend", onEnd);
-//   }, [value, rowHeight, duration]);
+//   }, [value, rowHeight, duration, animationDelay]);
 
 //   const target = Math.max(0, Math.floor(value));
 //   if (collapsed) {
@@ -54,7 +64,7 @@
 //             display: "flex",
 //             alignItems: "center",
 //             justifyContent: "center",
-//             fontSize: fontSize,
+//             fontSize: "2.8vw",
 //           }}
 //         >
 //           {target}
@@ -90,7 +100,7 @@
 //                 display: "flex",
 //                 alignItems: "center",
 //                 justifyContent: "center",
-//                 fontSize: fontSize,
+//                 fontSize: "2.8vw",
 //               }}
 //             >
 //               {n}
