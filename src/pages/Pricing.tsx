@@ -43,7 +43,7 @@ export default function Pricing() {
               <h3 className="!text-[1.57vw] leading-[1.57vw] !font-semibold text-[#1F664B] flex items-center justify-center gap-1 !mb-0 ">
                 <span>
                   <img
-                    src="/icons/liverCancerIcon.png"
+                    src="/icons/liverCancerIcon.svg"
                     className="w-[1.36vw] !h-auto"
                     alt="Liver Cancer"
                   />
@@ -64,7 +64,7 @@ export default function Pricing() {
               Top 5 Diagnosis by Volume
             </h4>
 
-            <div className="!mx-auto !max-w-[16.77vw]">
+            <div className="!mx-auto !max-w-[17.77vw]">
               <ul className="!mb-0 !pb-0 font-semibold">
                 {[
                   { id: 1, name: "Routine Check-up", volume: 214 },
@@ -77,7 +77,7 @@ export default function Pricing() {
                     key={item.id}
                     className="!mb-0 !text-[0.85vw] leading-[1.05vw] text-[#1F664B] "
                   >
-                    <span className="w-[11vw] inline-block">
+                    <span className="w-min-[11vw] inline-block">
                       {item.id}. {item.name} &#45;{" "}
                     </span>
                     <span>{item.volume}</span>
@@ -93,15 +93,6 @@ export default function Pricing() {
         </div>
 
         <div>
-          {/* <HeldaAssistantCard
-            suggestions={[
-              "What's our average charge for a knee replacement?",
-              "Which services had the biggest charge variation in April?",
-              "How do our maternity service charges compare to other hospitals?",
-            ]}
-            onSend={(q) => console.log(q)}
-          /> */}
-
           <HeldaAssistantCard
             heading="Helda AI Assistant"
             subheadingTop="Ask about Pricing Intelligence"

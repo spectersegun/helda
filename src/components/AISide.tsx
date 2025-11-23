@@ -1,17 +1,105 @@
+// import type { Dispatch, SetStateAction } from "react";
+// import { useChatHistory } from "../contexts/ChatHistoryContext";
+
+// type AISideProps = {
+//   setWithQuestions: Dispatch<SetStateAction<boolean>>;
+//   withQuestions: boolean;
+// };
+
+// export default function AISide({ setWithQuestions }: AISideProps) {
+//   const toggle = () => setWithQuestions((v) => !v);
+//   const { getTodayHistory, getYesterdayHistory } = useChatHistory();
+
+//   const todayHistory = getTodayHistory();
+//   const yesterdayHistory = getYesterdayHistory();
+
+//   return (
+//     <div className="col-span-1 bg-white rounded-[0.8vw] text-center !pt-[7.4vh] !px-[3.56vw] ">
+//       <h2 className="text-[#BAB6B6] !text-[3.33vh] !mb-[4.5vh] !leading-[4.5vh] ">
+//         History
+//       </h2>
+
+//       {/* Today Section */}
+//       {todayHistory.length > 0 && (
+//         <div className="text-black !mb-[3vh]">
+//           <h4 className="text-[#BAB6B6] !text-[1vw] !font-normal h-[2.3vh] mb-[0.74vh]">
+//             Today
+//           </h4>
+//           {todayHistory.slice(0, 3).map((item) => (
+//             <p
+//               key={item.id}
+//               className="!mb-[0.324vh] cursor-pointer !text-[1vw] leading-[2.36vh]"
+//               onClick={toggle}
+//             >
+//               "{item.question}"
+//             </p>
+//           ))}
+//         </div>
+//       )}
+
+//       {/* Yesterday Section */}
+//       {yesterdayHistory.length > 0 ? (
+//         <div className="text-black !mb-[3vh]">
+//           <h4 className="text-[#BAB6B6] !text-[1vw] !font-normal h-[2.3vh] mb-[0.74vh]">
+//             Yesterday
+//           </h4>
+//           {yesterdayHistory.slice(0, 3).map((item) => (
+//             <p
+//               key={item.id}
+//               className="!mb-[0.324vh] cursor-pointer !text-[1vw] leading-[2.36vh]"
+//               onClick={toggle}
+//             >
+//               "{item.question}"
+//             </p>
+//           ))}
+//         </div>
+//       ) : (
+//         <div className="text-black !mb-[3vh]">
+//           <h4 className="text-[#BAB6B6] !text-[1vw] !font-normal h-[2.3vh] mb-[0.74vh]">
+//             Yesterday
+//           </h4>
+//           <p className="text-[#BAB6B6] !text-[0.9vw] italic">
+//             No conversations
+//           </p>
+//         </div>
+//       )}
+
+//       {/* Empty State if no history at all */}
+//       {todayHistory.length === 0 && yesterdayHistory.length === 0 && (
+//         <div className="text-[#BAB6B6] !text-[1vw] !mt-[3vh]">
+//           No conversation history yet
+//         </div>
+//       )}
+//     </div>
+//   );
+// }
+
+// AISide.tsx (only the parts that change)
 import type { Dispatch, SetStateAction } from "react";
 import { useChatHistory } from "../contexts/ChatHistoryContext";
 
 type AISideProps = {
   setWithQuestions: Dispatch<SetStateAction<boolean>>;
   withQuestions: boolean;
+  onSelectHistory?: (question: string, sourceEl: HTMLElement) => void; // NEW
 };
 
-export default function AISide({ setWithQuestions }: AISideProps) {
+export default function AISide({
+  setWithQuestions,
+  onSelectHistory,
+}: AISideProps) {
   const toggle = () => setWithQuestions((v) => !v);
   const { getTodayHistory, getYesterdayHistory } = useChatHistory();
 
   const todayHistory = getTodayHistory();
   const yesterdayHistory = getYesterdayHistory();
+
+  const handleClick = (q: string, e: React.MouseEvent<HTMLElement>) => {
+    // call toggle as before
+    toggle();
+    // call the provided callback with the actual DOM element
+    onSelectHistory?.(q, e.currentTarget as HTMLElement);
+  };
 
   return (
     <div className="col-span-1 bg-white rounded-[0.8vw] text-center !pt-[7.4vh] !px-[3.56vw] ">
@@ -19,17 +107,19 @@ export default function AISide({ setWithQuestions }: AISideProps) {
         History
       </h2>
 
-      {/* Today Section */}
+      {/* Today Section (slice to 3) */}
       {todayHistory.length > 0 && (
         <div className="text-black !mb-[3vh]">
           <h4 className="text-[#BAB6B6] !text-[1vw] !font-normal h-[2.3vh] mb-[0.74vh]">
             Today
           </h4>
-          {todayHistory.map((item) => (
+          {todayHistory.slice(0, 3).map((item) => (
             <p
               key={item.id}
               className="!mb-[0.324vh] cursor-pointer !text-[1vw] leading-[2.36vh]"
-              onClick={toggle}
+              onClick={(e) => handleClick(item.question, e)}
+              // optional: data attribute so clone can match visual
+              data-hist-id={item.id}
             >
               "{item.question}"
             </p>
@@ -37,17 +127,18 @@ export default function AISide({ setWithQuestions }: AISideProps) {
         </div>
       )}
 
-      {/* Yesterday Section */}
+      {/* Yesterday Section (same pattern) */}
       {yesterdayHistory.length > 0 ? (
         <div className="text-black !mb-[3vh]">
           <h4 className="text-[#BAB6B6] !text-[1vw] !font-normal h-[2.3vh] mb-[0.74vh]">
             Yesterday
           </h4>
-          {yesterdayHistory.map((item) => (
+          {yesterdayHistory.slice(0, 3).map((item) => (
             <p
               key={item.id}
               className="!mb-[0.324vh] cursor-pointer !text-[1vw] leading-[2.36vh]"
-              onClick={toggle}
+              onClick={(e) => handleClick(item.question, e)}
+              data-hist-id={item.id}
             >
               "{item.question}"
             </p>
@@ -58,11 +149,13 @@ export default function AISide({ setWithQuestions }: AISideProps) {
           <h4 className="text-[#BAB6B6] !text-[1vw] !font-normal h-[2.3vh] mb-[0.74vh]">
             Yesterday
           </h4>
-          <p className="text-[#BAB6B6] !text-[0.9vw] italic">No conversations</p>
+          <p className="text-[#BAB6B6] !text-[0.9vw] italic">
+            No conversations
+          </p>
         </div>
       )}
 
-      {/* Empty State if no history at all */}
+      {/* Empty State */}
       {todayHistory.length === 0 && yesterdayHistory.length === 0 && (
         <div className="text-[#BAB6B6] !text-[1vw] !mt-[3vh]">
           No conversation history yet

@@ -6,6 +6,8 @@ import { useLLM } from "../../hooks/useLLM";
 import type { LLMError } from "../../types/llm.types";
 import { MarkdownRenderer } from "./MarkdownRenderer";
 import { useStreaming } from "../../contexts/StreamingContext";
+import { useNavigation } from "../../contexts/NavigationContext";
+import { TypeAnimation } from "react-type-animation";
 
 export type HeldaAssistantCardProps = {
   heading?: string;
@@ -13,7 +15,7 @@ export type HeldaAssistantCardProps = {
   subheadingBottom?: string;
   suggestions?: string[];
   onResponse?: (question: string, response: string) => void;
-  pageContext?: 'patient' | 'revenue' | 'pricing' | 'ai-assistant';
+  pageContext?: "patient" | "revenue" | "pricing" | "ai-assistant";
   userAvatarSrc?: string;
 };
 
@@ -27,7 +29,7 @@ export default function HeldaAssistantCard({
     "Compare this months revenue to the same month last year.",
   ],
   onResponse,
-  pageContext = 'ai-assistant',
+  pageContext = "ai-assistant",
   userAvatarSrc = "/images/dp.png",
 }: HeldaAssistantCardProps) {
   const [value, setValue] = useState("");
@@ -35,21 +37,37 @@ export default function HeldaAssistantCard({
   const [showHistory, setShowHistory] = useState(false);
   const [hasAnimated, setHasAnimated] = useState(false);
   const previousHistoryLengthRef = React.useRef(0);
-  
+
+  const { navigateToTab } = useNavigation();
+
   // Use streaming context for persistent state
-  const { streamingState, setStreamingState, clearStreamingState, updateStreamingResponse, addToConversation } = useStreaming();
-  
+  const {
+    streamingState,
+    setStreamingState,
+    clearStreamingState,
+    updateStreamingResponse,
+    addToConversation,
+  } = useStreaming();
+
   // Local state derived from context
-  const isStreaming = streamingState?.pageContext === pageContext && streamingState?.isStreaming;
-  const currentQuestion = isStreaming ? streamingState?.currentQuestion || "" : "";
-  const streamingResponse = isStreaming ? streamingState?.streamingResponse || "" : "";
-  const conversationHistory = (streamingState?.pageContext === pageContext ? streamingState?.conversationHistory : []) || [];
+  const isStreaming =
+    streamingState?.pageContext === pageContext && streamingState?.isStreaming;
+  const currentQuestion = isStreaming
+    ? streamingState?.currentQuestion || ""
+    : "";
+  const streamingResponse = isStreaming
+    ? streamingState?.streamingResponse || ""
+    : "";
+  const conversationHistory =
+    (streamingState?.pageContext === pageContext
+      ? streamingState?.conversationHistory
+      : []) || [];
 
   const { isLoading, streamMessage, isHealthy } = useLLM({
     pageContext,
     includeDataContext: true,
     onError: (err: LLMError) => {
-      console.error('LLM Error:', err);
+      console.error("LLM Error:", err);
       setIsProcessing(false);
       clearStreamingState();
     },
@@ -57,15 +75,17 @@ export default function HeldaAssistantCard({
 
   const handleSend = async () => {
     if (!value.trim() || isLoading || isProcessing) return;
-    
+
     if (!isHealthy) {
-      alert('AI assistant is currently unavailable. Please check your API configuration.');
+      alert(
+        "AI assistant is currently unavailable. Please check your API configuration."
+      );
       return;
     }
 
     const question = value.trim();
     setValue("");
-    
+
     // Set streaming state in context
     setStreamingState({
       isStreaming: true,
@@ -78,19 +98,16 @@ export default function HeldaAssistantCard({
 
     try {
       let fullResponse = "";
-      
-      await streamMessage(
-        question,
-        (chunk: string) => {
-          fullResponse += chunk;
-          updateStreamingResponse(fullResponse);
-        }
-      );
-      
+
+      await streamMessage(question, (chunk: string) => {
+        fullResponse += chunk;
+        updateStreamingResponse(fullResponse);
+      });
+
       if (onResponse) {
         onResponse(question, fullResponse);
       }
-      
+
       // Add to conversation history
       addToConversation(question, fullResponse);
     } catch (err) {
@@ -103,9 +120,11 @@ export default function HeldaAssistantCard({
 
   const handleSuggestionClick = async (suggestion: string) => {
     if (isLoading || isProcessing) return;
-    
+
     if (!isHealthy) {
-      alert('AI assistant is currently unavailable. Please check your API configuration.');
+      alert(
+        "AI assistant is currently unavailable. Please check your API configuration."
+      );
       return;
     }
 
@@ -121,19 +140,16 @@ export default function HeldaAssistantCard({
 
     try {
       let fullResponse = "";
-      
-      await streamMessage(
-        suggestion,
-        (chunk: string) => {
-          fullResponse += chunk;
-          updateStreamingResponse(fullResponse);
-        }
-      );
-      
+
+      await streamMessage(suggestion, (chunk: string) => {
+        fullResponse += chunk;
+        updateStreamingResponse(fullResponse);
+      });
+
       if (onResponse) {
         onResponse(suggestion, fullResponse);
       }
-      
+
       // Add to conversation history
       addToConversation(suggestion, fullResponse);
     } catch (err) {
@@ -152,7 +168,8 @@ export default function HeldaAssistantCard({
   };
 
   const hasConversationHistory = conversationHistory.length > 0;
-  const showToggleButton = hasConversationHistory && conversationHistory.length > 1;
+  const showToggleButton =
+    hasConversationHistory && conversationHistory.length > 1;
 
   // Reset animation flag when new conversation starts
   React.useEffect(() => {
@@ -165,7 +182,10 @@ export default function HeldaAssistantCard({
   // Track when history should be visible to control animations
   React.useEffect(() => {
     if (showHistory && !hasAnimated) {
-      const timer = setTimeout(() => setHasAnimated(true), conversationHistory.length * 100 + 500);
+      const timer = setTimeout(
+        () => setHasAnimated(true),
+        conversationHistory.length * 100 + 500
+      );
       return () => clearTimeout(timer);
     }
   }, [showHistory, hasAnimated, conversationHistory.length]);
@@ -183,23 +203,25 @@ export default function HeldaAssistantCard({
       </div>
 
       {/* Streaming Content */}
-      {(isStreaming || conversationHistory.length > 0) ? (
+      {isStreaming || conversationHistory.length > 0 ? (
         <div className="flex-1 flex flex-col min-h-0">
           {/* Scrollable content area with fixed height */}
           <div className="flex-1 overflow-y-auto relative min-h-0 hide-native-scrollbar">
             {/* Fade gradient overlay at top - only show when scrolled */}
             <div className="sticky top-0 h-8 bg-gradient-to-b from-white via-white to-transparent pointer-events-none z-10" />
-            
+
             <div className="space-y-4 px-2 pb-4">
               {/* Previous Conversation History - Only show when toggle button is clicked */}
               {showHistory && conversationHistory.length > 0 && (
                 <div className="transition-opacity duration-500 opacity-100">
                   {conversationHistory.map((item, index) => (
-                    <div 
+                    <div
                       key={`${item.timestamp}-${index}`}
                       className="space-y-3 mb-4"
                       style={{
-                        animation: !hasAnimated ? `fadeIn 0.5s ease-in ${index * 0.1}s both` : 'none'
+                        animation: !hasAnimated
+                          ? `fadeIn 0.5s ease-in ${index * 0.1}s both`
+                          : "none",
                       }}
                     >
                       {/* Question with User Profile Picture */}
@@ -207,18 +229,24 @@ export default function HeldaAssistantCard({
                         <p className="text-[#12428D] font-medium text-[0.95vw] text-right">
                           {item.question}
                         </p>
-                        <img 
-                          src={userAvatarSrc} 
-                          alt="User" 
+                        {/* <TypeAnimation
+                          sequence={[item.question, 800]}
+                          speed={50}
+                          className="text-[#12428D] font-medium text-[0.95vw] text-right"
+                        /> */}
+                        <img
+                          src={userAvatarSrc}
+                          alt="User"
                           className="w-7 h-7 rounded-full flex-shrink-0"
                         />
                       </div>
 
                       {/* Answer with AI Icon */}
+
                       <div className="flex items-start gap-3">
-                        <img 
-                          src="/icons/AIGenerate.png" 
-                          alt="AI" 
+                        <img
+                          src="/icons/AIGenerate.png"
+                          alt="AI"
                           className="w-6 h-6 mt-1 flex-shrink-0"
                         />
                         <div className="text-[14px] leading-6 text-black flex-1">
@@ -236,11 +264,15 @@ export default function HeldaAssistantCard({
                   <button
                     onClick={() => setShowHistory(!showHistory)}
                     className="w-10 h-10 rounded-full bg-[#1F664B] hover:bg-[#15503a] transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:scale-110 ring-2 ring-[#1F664B] ring-opacity-30"
-                    title={showHistory ? "Hide previous messages" : "Show previous messages"}
+                    title={
+                      showHistory
+                        ? "Hide previous messages"
+                        : "Show previous messages"
+                    }
                   >
-                    <ChevronUpIcon 
+                    <ChevronUpIcon
                       className={`w-6 h-6 text-white transition-transform duration-300 ${
-                        showHistory ? 'rotate-180' : ''
+                        showHistory ? "rotate-180" : ""
                       }`}
                     />
                   </button>
@@ -249,20 +281,26 @@ export default function HeldaAssistantCard({
 
               {/* Current Streaming Question and Response - Fade in */}
               {isStreaming && (
-                <div 
+                <div
                   className="space-y-3"
                   style={{
-                    animation: 'fadeIn 0.5s ease-in'
+                    animation: "fadeIn 0.5s ease-in",
                   }}
                 >
                   {/* Question with User Profile Picture */}
                   <div className="flex items-start gap-3 justify-end">
-                    <p className="text-[#12428D] font-medium text-[0.95vw] text-right">
+                    {/* <p className="text-[#12428D] font-medium text-[0.95vw] text-right">
                       {currentQuestion}
-                    </p>
-                    <img 
-                      src={userAvatarSrc} 
-                      alt="User" 
+                    </p> */}
+                    <TypeAnimation
+                      sequence={[currentQuestion, 800, "Streaming more text…"]}
+                      speed={50}
+                      cursor={false}
+                      className="text-[#12428D] font-medium text-[0.95vw] text-right"
+                    />
+                    <img
+                      src={userAvatarSrc}
+                      alt="User"
                       className="w-7 h-7 rounded-full flex-shrink-0"
                     />
                   </div>
@@ -270,9 +308,9 @@ export default function HeldaAssistantCard({
                   {/* Streaming Response with AI Icon */}
                   {streamingResponse && (
                     <div className="flex items-start gap-3">
-                      <img 
-                        src="/icons/AIGenerate.png" 
-                        alt="AI" 
+                      <img
+                        src="/icons/AIGenerate.png"
+                        alt="AI"
                         className="w-6 h-6 mt-1 flex-shrink-0"
                       />
                       <div className="text-[14px] leading-6 text-black flex-1">
@@ -293,40 +331,43 @@ export default function HeldaAssistantCard({
               )}
 
               {/* Most Recent Conversation - Show when not streaming and history is hidden */}
-              {!isStreaming && !showHistory && conversationHistory.length > 0 && (
-                <div className="space-y-3">
-                  {(() => {
-                    const lastItem = conversationHistory[conversationHistory.length - 1];
-                    return (
-                      <>
-                        {/* Question with User Profile Picture */}
-                        <div className="flex items-start gap-3 justify-end">
-                          <p className="text-[#12428D] font-medium text-[0.95vw] text-right">
-                            {lastItem.question}
-                          </p>
-                          <img 
-                            src={userAvatarSrc} 
-                            alt="User" 
-                            className="w-7 h-7 rounded-full flex-shrink-0"
-                          />
-                        </div>
-
-                        {/* Answer with AI Icon */}
-                        <div className="flex items-start gap-3">
-                          <img 
-                            src="/icons/AIGenerate.png" 
-                            alt="AI" 
-                            className="w-6 h-6 mt-1 flex-shrink-0"
-                          />
-                          <div className="text-[14px] leading-6 text-black flex-1">
-                            <MarkdownRenderer content={lastItem.answer} />
+              {!isStreaming &&
+                !showHistory &&
+                conversationHistory.length > 0 && (
+                  <div className="space-y-3">
+                    {(() => {
+                      const lastItem =
+                        conversationHistory[conversationHistory.length - 1];
+                      return (
+                        <>
+                          {/* Question with User Profile Picture */}
+                          <div className="flex items-start gap-3 justify-end">
+                            <p className="text-[#12428D] font-medium text-[0.95vw] text-right">
+                              {lastItem.question}
+                            </p>
+                            <img
+                              src={userAvatarSrc}
+                              alt="User"
+                              className="w-7 h-7 rounded-full flex-shrink-0"
+                            />
                           </div>
-                        </div>
-                      </>
-                    );
-                  })()}
-                </div>
-              )}
+
+                          {/* Answer with AI Icon */}
+                          <div className="flex items-start gap-3">
+                            <img
+                              src="/icons/AIGenerate.png"
+                              alt="AI"
+                              className="w-6 h-6 mt-1 flex-shrink-0"
+                            />
+                            <div className="text-[14px] leading-6 text-black flex-1">
+                              <MarkdownRenderer content={lastItem.answer} />
+                            </div>
+                          </div>
+                        </>
+                      );
+                    })()}
+                  </div>
+                )}
             </div>
           </div>
         </div>
@@ -371,8 +412,13 @@ export default function HeldaAssistantCard({
             </div>
 
             {/* Blob Video */}
-            <div className="!py-[1.6vh]">
-              <AIBlobVideo />
+            <div className="!py-[1.6vh] flex justify-center items-center ">
+              <span
+                onClick={() => navigateToTab("assistant")}
+                className="cursor-pointer"
+              >
+                <AIBlobVideo />
+              </span>
             </div>
 
             {/* Loading indicator */}

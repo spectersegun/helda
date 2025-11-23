@@ -1,5 +1,3 @@
-"use client";
-
 export default function HeldaGlowBar({
   width = 1100,
   height = 10,

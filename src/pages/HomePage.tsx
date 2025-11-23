@@ -192,7 +192,7 @@ export default function HomePage() {
 
         <div className="col-span-2">
           <div>
-            <div className="relative flex justify-center items-center h-[5vh]">
+            <div className="relative flex justify-center items-center h-[5vh] opacity-0 animate-[fadeInRight_0.6s_ease-out_forwards_0.3s]  duration-300 ">
               <span className="absolute w-full !border-t !border-[#BAB6B6] "></span>
               <h3
                 className={`relative z-10 !text-[1.2vw] !font-semibold w-[22vw] h-full !border flex items-center justify-center !border-[#BAB6B6] rounded-lg !text-center leading-6 !mb-0 bg-white `}

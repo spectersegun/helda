@@ -74,17 +74,17 @@ export default function Patient() {
               <div>
                 <h3 className="!text-[1.5vw]  !font-semibold text-[#1F664B] !mb-0 flex items-center justify-center gap-2">
                   <img
-                    src="/icons/mix1.png"
+                    src="/icons/patientMix1.svg"
                     alt="mix 1"
-                    className="!w-auto !h-[3.241vh] "
+                    className="!w-auto !h-[3.041vh] "
                   />
                   54%
                 </h3>
                 <h3 className="!text-[1.5vw]  !font-semibold text-[#1F664B] !mb-0 flex items-center justify-center gap-2 ">
                   <img
-                    src="/icons/mix2.png"
+                    src="/icons/patientMix2.svg"
                     alt="mix 2"
-                    className="!w-auto !h-[3.241vh]"
+                    className="!w-auto !h-[3.041vh]"
                   />
                   46%
                 </h3>
@@ -124,16 +124,6 @@ export default function Patient() {
         </div>
 
         <div>
-          {/* <HeldaAssistantCard
-            suggestions={[
-              "How many new vs. returning patients did we have last quarter?",
-              "Which patient demographic brings in the most revenue?",
-              "Show me the trend in patient retention over the past year.",
-            ]}
-            subheadingTop="Ask about Patient Data"
-            onSend={(q) => console.log(q)}
-          /> */}
-
           <HeldaAssistantCard
             heading="Helda AI Assistant"
             subheadingTop="Ask about Patient Intelligence"

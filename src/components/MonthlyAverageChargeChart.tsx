@@ -1,5 +1,3 @@
-"use client";
-
 import { useMemo, useState } from "react";
 import {
   LineChart,
@@ -139,7 +137,6 @@ type ViewConfig = {
   key: string;
   label: string;
   tooltip: string;
-  // transform receives base dataset and should return transformed dataset
   transform: (base: typeof data6m) => typeof data6m;
   title?: string;
 };
@@ -156,13 +153,11 @@ const views: ViewConfig[] = [
     key: "view2",
     label: "View 2",
     tooltip: "Top Priced Services",
-    // amplify higher values to simulate top priced services (preserve shape)
     transform: (base) =>
       base.map((r) => {
         const res: any = { name: r.name };
         for (const k of Object.keys(r)) {
           if (k === "name") continue;
-          // upscale values non-linearly so chart rescales
           res[k] = Math.round((r as any)[k] * 1.4 + (k === "back" ? 3 : 0));
         }
         return res;
@@ -173,7 +168,6 @@ const views: ViewConfig[] = [
     key: "view3",
     label: "View 3",
     tooltip: "Future Prediction",
-    // project forward: gradually increase values by month index
     transform: (base) =>
       base.map((r, idx) => {
         const res: any = { name: r.name };
@@ -192,46 +186,70 @@ const views: ViewConfig[] = [
 
 export default function MonthlyAverageChargeChart() {
   const [period, setPeriod] = useState<Period>("6m");
-  // activeViewKey is either null or one of views[].key
   const [activeViewKey, setActiveViewKey] = useState<string | null>("view1");
 
-  // choose base data according to period
   const base = period === "6m" ? data6m : data30d;
 
-  // get active view config (if any)
   const activeView = useMemo(
     () => views.find((v) => v.key === activeViewKey) ?? null,
     [activeViewKey]
   );
 
-  // apply transform if a view is active; otherwise identity
   const chartData = useMemo(() => {
     if (activeView) return activeView.transform(base);
     return base;
   }, [base, activeView]);
 
-  // compute max value across numeric keys to set Y domain & ticks responsively
-  const { maxVal, ticks } = useMemo(() => {
-    const keys = ["routine", "flu", "cancer", "asthma", "back"];
-    let max = 0;
+  // --- NEW: keys list and compute topKey when view2 is active ---
+  const keys = ["routine", "flu", "cancer", "asthma", "back"];
+
+  // compute which key has the highest average across the chartData
+  const topKey = useMemo(() => {
+    if (activeViewKey !== "view2") return null;
+    const sums: Record<string, number> = {};
+    const counts: Record<string, number> = {};
+    for (const k of keys) {
+      sums[k] = 0;
+      counts[k] = 0;
+    }
     for (const row of chartData) {
       for (const k of keys) {
+        const val = (row as any)[k];
+        if (typeof val === "number") {
+          sums[k] += val;
+          counts[k] += 1;
+        }
+      }
+    }
+    let best: string | null = null;
+    let bestAvg = -Infinity;
+    for (const k of keys) {
+      const avg = counts[k] ? sums[k] / counts[k] : -Infinity;
+      if (avg > bestAvg) {
+        bestAvg = avg;
+        best = k;
+      }
+    }
+    return best;
+  }, [chartData, activeViewKey]);
+
+  const { maxVal, ticks } = useMemo(() => {
+    const keysLocal = keys;
+    let max = 0;
+    for (const row of chartData) {
+      for (const k of keysLocal) {
         max = Math.max(max, (row as any)[k] ?? 0);
       }
     }
-    // round up to nearest 10 for nicer chart scale
     const ceiling = Math.max(10, Math.ceil(max / 10) * 10);
-    // create ticks at step 10 from 0..ceiling
     const step = 10;
     const t: number[] = [];
     for (let v = 0; v <= ceiling; v += step) t.push(v);
     return { maxVal: ceiling, ticks: t };
   }, [chartData]);
 
-  // header title: use active view title if active, else default
   const headerTitle = activeView?.title ?? "Monthly Average Charge";
 
-  // toggle handler: clicking an active button will deselect (invert), else select
   function handleToggleView(key: string) {
     setActiveViewKey((cur) => (cur === key ? null : key));
   }
@@ -313,52 +331,74 @@ export default function MonthlyAverageChargeChart() {
 
             <RechartTooltip content={<CustomTooltip />} />
 
-            <Line
-              type="monotone"
-              dataKey="routine"
-              stroke={COLORS.routine}
-              strokeWidth={3}
-              dot={false}
-            />
-            <Line
-              type="monotone"
-              dataKey="flu"
-              stroke={COLORS.flu}
-              strokeWidth={3}
-              dot={false}
-            />
-            <Line
-              type="monotone"
-              dataKey="cancer"
-              stroke={COLORS.cancer}
-              strokeWidth={3}
-              dot={false}
-            />
-            <Line
-              type="monotone"
-              dataKey="asthma"
-              stroke={COLORS.asthma}
-              strokeWidth={3}
-              dot={false}
-            />
-            <Line
-              type="monotone"
-              dataKey="back"
-              stroke={COLORS.back}
-              strokeWidth={3}
-              dot={false}
-            />
+            {/* --- RENDER LINES CONDITIONALLY: if view2 (Top Priced Services) is active, render only topKey --- */}
+            {activeViewKey === "view2" && topKey ? (
+              <Line
+                type="monotone"
+                dataKey={topKey}
+                stroke={(COLORS as any)[topKey]}
+                strokeWidth={3}
+                dot={false}
+              />
+            ) : (
+              <>
+                <Line
+                  type="monotone"
+                  dataKey="routine"
+                  stroke={COLORS.routine}
+                  strokeWidth={3}
+                  dot={false}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="flu"
+                  stroke={COLORS.flu}
+                  strokeWidth={3}
+                  dot={false}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="cancer"
+                  stroke={COLORS.cancer}
+                  strokeWidth={3}
+                  dot={false}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="asthma"
+                  stroke={COLORS.asthma}
+                  strokeWidth={3}
+                  dot={false}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="back"
+                  stroke={COLORS.back}
+                  strokeWidth={3}
+                  dot={false}
+                />
+              </>
+            )}
           </LineChart>
         </ResponsiveContainer>
       </div>
 
-      {/* Legend */}
+      {/* Legend: show only the visible lines */}
       <div className="gap-[0.404vw] grid grid-cols-3 ">
-        <LegendPill color={COLORS.routine} label="Routine Check" />
-        <LegendPill color={COLORS.flu} label="Flu Test" />
-        <LegendPill color={COLORS.cancer} label="Cancer check.." />
-        <LegendPill color={COLORS.asthma} label="Asthma" />
-        <LegendPill color={COLORS.back} label="Back Pain" />
+        {activeViewKey === "view2" && topKey ? (
+          <LegendPill
+            color={(COLORS as any)[topKey]}
+            label={labelForKey(topKey)}
+          />
+        ) : (
+          <>
+            <LegendPill color={COLORS.routine} label="Routine Check" />
+            <LegendPill color={COLORS.flu} label="Flu Test" />
+            <LegendPill color={COLORS.cancer} label="Cancer check.." />
+            <LegendPill color={COLORS.asthma} label="Asthma" />
+            <LegendPill color={COLORS.back} label="Back Pain" />
+          </>
+        )}
       </div>
       <style jsx global>{`
         .ant-tooltip .ant-tooltip-arrow {
