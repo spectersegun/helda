@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { StarIcon } from "../Icons";
-import { SendIcon, ChevronUpIcon } from "./Icons";
+import { SendIcon, ChevronUpIcon, ArrowUpIcon } from "./Icons";
 import AIBlobVideo from "./AIBlob";
 import { useLLM } from "../../hooks/useLLM";
 import type { LLMError } from "../../types/llm.types";
@@ -191,7 +191,7 @@ export default function HeldaAssistantCard({
   }, [showHistory, hasAnimated, conversationHistory.length]);
 
   return (
-    <div className="w-full rounded-[1.2vw] bg-white !px-[1.162vw] !py-[1.6vh] h-full flex flex-col">
+    <div className="w-full rounded-[1.2vw] bg-white !px-[1.162vw] !py-[1.6vh] h-full flex flex-col relative">
       {/* Title - Always visible */}
       <div className="flex items-start justify-center gap-[0.619vw] !mb-[2.5vh] flex-shrink-0">
         <span className="inline-block align-middle" aria-hidden>
@@ -204,11 +204,11 @@ export default function HeldaAssistantCard({
 
       {/* Streaming Content */}
       {isStreaming || conversationHistory.length > 0 ? (
-        <div className="flex-1 flex flex-col min-h-0">
+        <div className="flex-auto flex flex-col min-h-0 h-[54.630vh] ">
           {/* Scrollable content area with fixed height */}
           <div className="flex-1 overflow-y-auto relative min-h-0 hide-native-scrollbar">
             {/* Fade gradient overlay at top - only show when scrolled */}
-            <div className="sticky top-0 h-8 bg-gradient-to-b from-white via-white to-transparent pointer-events-none z-10" />
+            <div className="sticky top-0 h-12 bg-gradient-to-b from-white via-white to-transparent pointer-events-none z-10" />
 
             <div className="space-y-4 px-2 pb-4">
               {/* Previous Conversation History - Only show when toggle button is clicked */}
@@ -229,11 +229,6 @@ export default function HeldaAssistantCard({
                         <p className="text-[#12428D] font-medium text-[0.95vw] text-right">
                           {item.question}
                         </p>
-                        {/* <TypeAnimation
-                          sequence={[item.question, 800]}
-                          speed={50}
-                          className="text-[#12428D] font-medium text-[0.95vw] text-right"
-                        /> */}
                         <img
                           src={userAvatarSrc}
                           alt="User"
@@ -263,15 +258,21 @@ export default function HeldaAssistantCard({
                 <div className="flex justify-center my-4">
                   <button
                     onClick={() => setShowHistory(!showHistory)}
-                    className="w-10 h-10 rounded-full bg-[#1F664B] hover:bg-[#15503a] transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-xl transform hover:scale-110 ring-2 ring-[#1F664B] ring-opacity-30"
+                    className=" transition-all duration-300 transform hover:scale-110 p-4 !bg-inherit !outline-none "
                     title={
                       showHistory
                         ? "Hide previous messages"
                         : "Show previous messages"
                     }
                   >
-                    <ChevronUpIcon
+                    {/* <ChevronUpIcon
                       className={`w-6 h-6 text-white transition-transform duration-300 ${
+                        showHistory ? "rotate-180" : ""
+                      }`}
+                    /> */}
+
+                    <ArrowUpIcon
+                      className={`w-min-[3.222vh] h-min-[3.222vh] transition-transform duration-300 ${
                         showHistory ? "rotate-180" : ""
                       }`}
                     />
@@ -293,7 +294,7 @@ export default function HeldaAssistantCard({
                       {currentQuestion}
                     </p> */}
                     <TypeAnimation
-                      sequence={[currentQuestion, 800, "Streaming more text…"]}
+                      sequence={[currentQuestion, 800]}
                       speed={50}
                       cursor={false}
                       className="text-[#12428D] font-medium text-[0.95vw] text-right"
@@ -393,7 +394,7 @@ export default function HeldaAssistantCard({
           )}
 
           {/* Scrollable content area */}
-          <div className="flex-1 overflow-y-auto min-h-0">
+          <div className="flex-auto overflow-y-auto min-h-0">
             {/* Suggestions */}
             <div className="flex flex-col gap-[1.48vh]">
               {suggestions.map((s, i) => (

@@ -2,6 +2,7 @@ import { useNavigation } from "../../contexts/NavigationContext";
 import GreenWavesChart from "./GreenWavesChart";
 import Heading24 from "./Heading24";
 import Heading36 from "./Heading36";
+// import RollingNumber from "./RollingNumber";
 import Text13 from "./Text13";
 
 type DeltaDir = "up" | "down" | "flat";
@@ -38,7 +39,7 @@ export default function PricingIntelCard({
     <div
       className={[
         "relative overflow-hidden rounded-2xl bg-white text-center max-h-[26vh] h-[25.9vh] cursor-pointer opacity-0 animate-[fadeInTop_0.6s_ease-out_forwards_0.3s] ",
-        " !pt-[0.8vw] shadow-sm border border-[#FCFAFA] hover:shadow-[0_4px_7px_3px_rgba(31,102,75,0.78)] overflow-hidden transition-shadow duration-300 flex flex-col justify-between w-full",
+        "z-50 !pt-[0.8vw] shadow-sm border border-[#FCFAFA] hover:shadow-[0_4px_7px_3px_rgba(31,102,75,0.78)] overflow-hidden transition-shadow duration-300 flex flex-col justify-between w-full",
         className,
       ].join(" ")}
       onClick={() => navigateToTab("pricing")}
@@ -67,6 +68,12 @@ export default function PricingIntelCard({
 
           <div className="flex justify-center items-center gap-3 ">
             <Heading36>{value}</Heading36>
+            {/* <RollingNumber
+              value={64}
+              rowHeight={50}
+              duration={3000}
+              animationDelay={600}
+            /> */}
             <div className={`text-[1vw] font-medium ${deltaColor}`}>
               <span className="!mr-0.5 ">▲</span>
               {deltaText}
