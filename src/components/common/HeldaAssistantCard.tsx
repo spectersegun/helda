@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { StarIcon } from "../Icons";
-import { SendIcon, ChevronUpIcon, ArrowUpIcon } from "./Icons";
+import { SendIcon, ArrowUpIcon } from "./Icons";
 import AIBlobVideo from "./AIBlob";
 import { useLLM } from "../../hooks/useLLM";
 import type { LLMError } from "../../types/llm.types";
