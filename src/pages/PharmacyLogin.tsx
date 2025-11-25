@@ -178,7 +178,7 @@ export default function PharmacyLogin() {
                       disabled={loading}
                       type="submit"
                       className="
-                    !mt-[6.0vh] flex justify-center items-center w-[11.7vw] !h-[2.4vw] !rounded-full !outline-none
+                    !mt-[4.5vh] flex justify-center items-center w-[11.7vw] !h-[2.4vw] !rounded-full !outline-none
                     !bg-[#1F664B] !text-white !text-[0.8vw] font-medium
                     transition-colors duration-300 ease-out
                     hover:!bg-white hover:!text-[#1F664B] !border-2 !border-[#1F664B] 

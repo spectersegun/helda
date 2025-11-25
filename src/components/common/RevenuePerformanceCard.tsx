@@ -79,7 +79,7 @@ export default function RevenuePerformanceCard({
       </div>
 
       <div className="chart-animate">
-        <FilledSparkline height={"7.57vw"} />
+        <FilledSparkline height={"7vw"} />
       </div>
     </div>
   );

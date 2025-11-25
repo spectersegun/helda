@@ -68,11 +68,11 @@ export default function DentistLogin() {
       }}
     >
       <GreenWrapper>
-        <div className="grid grid-cols-24 gap-[3.3] !p-[7.8vh] !h-full logins">
+        <div className="grid grid-cols-24 gap-[3.3vw] !p-[7.8vh] !h-full logins">
           <div className="col-span-12 bg-[url('/images/DentistLogin.png')] !h-full !w-full bg-no-repeat bg-cover rounded-[1vw] "></div>
 
           <div className="col-span-12 relative flex justify-center items-start h-full overflow-y-auto hide-native-scrollbar ">
-            <div className="text-center !py-[2vh]">
+            <div className="text-center !py-[1.9vh]">
               <div className="flex justify-center !mb-[6.67vh] ">
                 <img
                   src="/images/logo1.png"
@@ -84,13 +84,13 @@ export default function DentistLogin() {
               <div>
                 <h1
                   id="healthcare-heading"
-                  className="!text-[2.24vw] !text-center !text-black !font-bold  !mb-[1.7vh] "
+                  className="!text-[4.2vh] !text-center !text-black !font-bold  !mb-[1.5vh] "
                 >
                   Welcome to Helda Insights
                 </h1>
 
                 <div className="flex justify-center ">
-                  <p className="!mb-[2.9vh] text-[#5B5B5B]  !text-[1vw]">
+                  <p className="!mb-[2.9vh] text-[#5B5B5B]  !text-[1.8vh]">
                     Enter your email and password to access your account
                   </p>
                 </div>
@@ -108,13 +108,13 @@ export default function DentistLogin() {
                 >
                   <Form.Item
                     label={
-                      <span className="text-[0.9vw] text-black">Email</span>
+                      <span className="text-[1.6vh] text-black">Email</span>
                     }
                     name="email"
-                    className={emailError ? "!mb-0" : "!mb-[2vw"}
+                    className={emailError ? "!mb-0" : "!mb-[3vh"}
                   >
                     <input
-                      className={`!h-[2.7vw] !text-[0.8vw]  placeholder-[#ACACAC]  !w-full !outline-none !py-4 !px-[1.4vw] !border !text-black !rounded-[1.9vw]  !transition !duration-200 ${
+                      className={`!h-[4.8vh] !text-[1.481vh]  placeholder-[#ACACAC]  !w-full !outline-none !py-[1vh] !px-[1.4vw] !border !text-black !rounded-[1.9vw]  !transition !duration-200 ${
                         emailError
                           ? "!border-[#FD0303]"
                           : "focus:!border-[#1F664B] !border-[#1F664B33]"
@@ -125,21 +125,21 @@ export default function DentistLogin() {
                     />
                   </Form.Item>
                   {emailError && (
-                    <div className="!pl-[1.4vw] !text-[#FD0303] !mt-1.5 font-medium flex !mb-3">
+                    <div className="!pl-[1.4vw] !text-[#FD0303] !mt-[0.5vh] font-medium flex !mb-3">
                       {emailError}
                     </div>
                   )}
 
                   <Form.Item
                     label={
-                      <span className="text-[0.9vw] text-black">Password</span>
+                      <span className="text-[1.6vh] text-black">Password</span>
                     }
                     name="password"
                     className={passwordError ? "!mb-0" : ""}
                   >
                     <div className="relative !w-full">
                       <input
-                        className={`!h-[2.7vw] !text-[0.8vw] !border-[#1F664B33] placeholder-[#ACACAC] focus:!border-[#1F664B] !w-full !outline-none !py-4 !px-[1.4vw] !border  !text-black !rounded-[1.9vw] !transition !duration-200 ${
+                        className={`!h-[4.8vh] !text-[1.481vh] !border-[#1F664B33] placeholder-[#ACACAC] focus:!border-[#1F664B] !w-full !outline-none !py-[1vh] !px-[1.4vw] !border  !text-black !rounded-[1.9vw] !transition !duration-200 ${
                           passwordError
                             ? "!border-[#FD0303]"
                             : "focus:!border-[#1F664B] !border-[#1F664B33]"
@@ -163,7 +163,7 @@ export default function DentistLogin() {
                       </span>
                     </div>
                     {passwordError && (
-                      <div className="!pl-[1.4vw] !text-[#FD0303] !mt-1.5 font-medium flex ">
+                      <div className="!pl-[1.4vw] !text-[#FD0303] !mt-[0.5vh] font-medium flex ">
                         {passwordError}
                       </div>
                     )}
@@ -174,8 +174,8 @@ export default function DentistLogin() {
                       disabled={loading}
                       type="submit"
                       className="
-                    !mt-[6.0vh] flex justify-center items-center w-[11.7vw] !h-[2.4vw]  !rounded-full !outline-none
-                    !bg-[#1F664B] !text-white !text-[0.8vw] font-medium
+                    !mt-[4.5vh] flex justify-center items-center w-[11.7vw] !h-[2.4vw]  !rounded-full !outline-none
+                    !bg-[#1F664B] !text-white !text-[1.481vh] font-medium
                     transition-colors duration-300 ease-out
                     hover:!bg-white hover:!text-[#1F664B] !border-2 !border-[#1F664B] 
                     active:!shadow-[0_4px_7.3px_-1px_#1F664B]

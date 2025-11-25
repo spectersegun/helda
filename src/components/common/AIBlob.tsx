@@ -16,7 +16,7 @@ const AIBlobVideo = ({
       transition={{ duration: 1, ease: "easeOut", delay }}
       className={`grid place-items-center !mb-[0.761vh] !py-[1.952vh] ${classNameWrapper}`}
     >
-      <div className="w-[10vw] max-w-full h-[18vh] aspect-[1/1] overflow-hidden rounded-full relative">
+      <div className="w-[18vh] max-w-full h-[18vh] aspect-[1/1] overflow-hidden rounded-full relative">
         <video
           src="/assets/AIBlob.web.mp4"
           autoPlay

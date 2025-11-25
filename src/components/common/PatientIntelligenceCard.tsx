@@ -44,7 +44,7 @@ export default function PatientIntelligenceCard({
           viewBox="0 0 262 137"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="max-w-full 2xl:w-[13.23vw] 2xl:h-[12.7vh] w-[11.46vw] h-[11vh] "
+          className="max-w-full 2xl:max-w-[13.23vw] 2xl:h-[11vh] w-auto w-max-[11.46vw] h-[11vh] "
         >
           <defs>
             <clipPath id="reveal-1">
