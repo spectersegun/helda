@@ -20,7 +20,7 @@ export default function Revenue() {
   ];
 
   return (
-    <div className="grid grid-cols-1 gap-[1.212vw] flex-1 !relative !pt-[2.5vh] overflow-hidden h-full">
+    <div className="grid grid-cols-1 gap-[1.212vw] flex-1 !relative !pt-[2.5vh] h-full">
       <div className="grid grid-cols-3 gap-x-7 h-full items-stretch">
         <div>
           <div className="flex gap-[1.667vw] !text-center justify-between">
@@ -29,7 +29,7 @@ export default function Revenue() {
                 Total Monthly Billed Revenue
               </MiniHeader>
 
-              <h3 className="!text-[1.515vw] !font-semibold text-[#1F664B] !mb-0">
+              <h3 className="!text-[2.7vh] !font-semibold text-[#1F664B] !mb-0">
                 ₦2.3M
               </h3>
 
@@ -73,7 +73,7 @@ export default function Revenue() {
                 Revenue per Encounter
               </MiniHeader>
 
-              <h3 className="!text-[1.515vw] !font-semibold text-[#1F664B] !mb-0 ">
+              <h3 className="!text-[2.7vh] !font-semibold text-[#1F664B] !mb-0 ">
                 ₦556,000
               </h3>
 
@@ -87,7 +87,7 @@ export default function Revenue() {
                 Avg. Days to Payment
               </MiniHeader>
 
-              <h3 className="!text-[1.515vw] !font-semibold text-[#1F664B] !mb-0">
+              <h3 className="!text-[2.7vh] !font-semibold text-[#1F664B] !mb-0">
                 37 Days
               </h3>
 

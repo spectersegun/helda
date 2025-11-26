@@ -191,7 +191,7 @@ export default function HeldaAssistantCard({
   }, [showHistory, hasAnimated, conversationHistory.length]);
 
   return (
-    <div className="w-full rounded-[1.2vw] bg-white !px-[1.162vw] !py-[1.6vh] h-full flex flex-col relative">
+    <div className="w-full rounded-[1.2vw] bg-white !px-[1.162vw] !py-[1.6vh] h-[69vh] flex flex-col relative">
       {/* Title - Always visible */}
       <div className="flex items-start justify-center gap-[0.619vw] !mb-[2.5vh] flex-shrink-0">
         <span className="inline-block align-middle" aria-hidden>
@@ -413,7 +413,7 @@ export default function HeldaAssistantCard({
             </div>
 
             {/* Blob Video */}
-            <div className="!py-[1.6vh] flex justify-center items-center ">
+            <div className=" flex justify-center items-center ">
               <span
                 onClick={() => navigateToTab("assistant")}
                 className="cursor-pointer"

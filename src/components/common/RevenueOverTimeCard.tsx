@@ -239,7 +239,7 @@ export default function RevenueOverTimeCard({
         <Segmented value={period} onChange={setPeriod} />
       </div>
 
-      <div className="w-full h-[26.056vh] ">
+      <div className="w-full h-[24.056vh] ">
         <ResponsiveContainer>
           <LineChart
             data={chartData}

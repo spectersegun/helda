@@ -128,7 +128,7 @@ export default function MonthlyRevenueDonut2({
           className="relative"
           style={{
             height: `${Math.round(
-              (22.259 / 100) * window.innerHeight || Math.round(19.259 * 8)
+              (20.259 / 100) * window.innerHeight || Math.round(19.259 * 8)
             )}px`,
             padding: `${Math.round(
               (0.104 * (window?.innerWidth ?? 1000)) / 100

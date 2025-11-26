@@ -55,11 +55,11 @@ const DashboardContent: React.FC = () => {
 
   return (
     <GreenWrapper>
-      <div className="!p-[3vh] !h-full bg-[#f3f3ee] flex gap-[1.2vw] font-outfit ">
+      <div className="!p-[3vh] !pb-0 !h-full bg-[#f3f3ee] flex gap-[1.2vw] font-outfit ">
         <AnimatePresence>
           {showSidebar && (
             <motion.div
-              className="!h-full"
+              className="!h-full !pb-[3vh]"
               initial={{ x: -60, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               exit={{ x: -60, opacity: 0 }}

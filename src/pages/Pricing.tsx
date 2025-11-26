@@ -19,7 +19,7 @@ export default function Pricing() {
   ];
 
   return (
-    <div className="grid grid-cols-1 gap-[1.212vw] flex-1 !relative overflow-hidden !pt-[2.5vh] h-full">
+    <div className="grid grid-cols-1 gap-[1.212vw] flex-1 !relative !pt-[2.5vh] h-full">
       <div className="grid grid-cols-3 gap-x-7 h-full items-stretch">
         <div>
           <div className="gap-[2.4vw] !text-center grid grid-cols-2">
@@ -27,20 +27,20 @@ export default function Pricing() {
               <MiniHeader className="!max-w-[8.586vw] ">
                 Most expensive diagnosis
               </MiniHeader>
-              <h4 className="text-[#1F664B] !mb-[0.74vh] !font-normal !text-[1.2vw] ">
+              <h4 className="text-[#1F664B] !mb-[0.74vh] !font-normal !text-[2.2vh] ">
                 Melanoma
               </h4>
-              <h3 className="!text-[1.57vw] leading-[1.57vw] !font-semibold text-[#1F664B] !mb-0 ">
+              <h3 className="!text-[2.7vh] leading-[2.7vh] !font-semibold text-[#1F664B] !mb-0 ">
                 ₦400,000
               </h3>
             </div>
 
             <div className="!p-[0.74vh] bg-white rounded-[1vw] h-[13.9vh] ">
               <MiniHeader>Most Variable Pricing Diagnosis</MiniHeader>
-              <h4 className="text-[#1F664B] !mb-[0.74vh] !font-normal !text-[1.2vw] ">
+              <h4 className="text-[#1F664B] !mb-[0.74vh] !font-normal !text-[2.2vh] ">
                 Liver Cancer
               </h4>
-              <h3 className="!text-[1.57vw] leading-[1.57vw] !font-semibold text-[#1F664B] flex items-center justify-center gap-1 !mb-0 ">
+              <h3 className="!text-[2.7vh] leading-[2.7vh] !font-semibold text-[#1F664B] flex items-center justify-center gap-1 !mb-0 ">
                 <span>
                   <img
                     src="/icons/liverCancerIcon.svg"
@@ -75,7 +75,7 @@ export default function Pricing() {
                 ].map((item) => (
                   <li
                     key={item.id}
-                    className="!mb-0 !text-[0.85vw] leading-[1.05vw] text-[#1F664B] "
+                    className="!mb-0 !text-[1.48vh] leading-[1.88vh] text-[#1F664B] "
                   >
                     <span className="w-min-[11vw] inline-block">
                       {item.id}. {item.name} &#45;{" "}

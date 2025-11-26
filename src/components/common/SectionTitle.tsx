@@ -11,7 +11,7 @@ export default function SectionTitle({
 }: SectionTitleProps) {
   return (
     <h2
-      className={`text-center mx-auto ${width} leading-[2.6vh] tracking-[-0.02em]  text-black !text-[1.2vw] !font-bold !mb-0 ${className}`}
+      className={`text-center mx-auto ${width} leading-[2.3vh] tracking-[-0.02em]  text-black !text-[2.2vh] !font-bold !mb-0 ${className}`}
     >
       {title}
     </h2>

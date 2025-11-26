@@ -75,12 +75,6 @@ export default function PatientRetentionChart({
               strokeDasharray="3 3"
             />
 
-            {/* <CartesianGrid
-              vertical={false}
-              stroke="#EDF2F7"
-              strokeDasharray={`${s(3)} ${s(3)}`}
-            /> */}
-
             <XAxis
               dataKey="name"
               tickLine={false}

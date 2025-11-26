@@ -20,7 +20,7 @@ export default function Patient() {
   ];
 
   return (
-    <div className="grid grid-cols-1 gap-[1.212vw] flex-1 !relative !pt-[2.5vh] overflow-hidden h-full">
+    <div className="grid grid-cols-1 gap-[1.212vw] flex-1 !relative !pt-[2.5vh] h-full">
       <div className="grid grid-cols-3 gap-x-7 h-full items-stretch">
         <div>
           <div className="flex gap-[1.667vw] !text-center justify-between">
@@ -29,11 +29,11 @@ export default function Patient() {
                 Total Patients Seen
               </MiniHeader>
 
-              <h3 className="!text-[1.515vw] !font-semibold text-[#1F664B] !mb-0">
+              <h3 className="!text-[2.7vh] leading-[2.7vh] !font-semibold text-[#1F664B] !mb-0">
                 8,213
               </h3>
 
-              <h6 className="text-[#1F664B]  !font-normal !text-[0.808vw] !mb-0">
+              <h6 className="text-[#1F664B]  !font-normal !text-[1.48vh] !mb-0">
                 <span>▲ </span>4.1% increase from previous month
               </h6>
             </div>
@@ -43,11 +43,11 @@ export default function Patient() {
                 New Patients This Month
               </MiniHeader>
 
-              <h3 className="!text-[1.515vw] !font-semibold text-[#1F664B] !mb-0">
+              <h3 className="!text-[2.7vh] leading-[2.7vh] !font-semibold text-[#1F664B] !mb-0">
                 2,731
               </h3>
 
-              <h6 className="text-[#1F664B]  !font-normal !text-[0.808vw] !mb-0">
+              <h6 className="text-[#1F664B]  !font-normal !text-[1.48vh] !mb-0">
                 33% of total visits — key for acquisition tracking
               </h6>
             </div>
@@ -72,7 +72,7 @@ export default function Patient() {
               </MiniHeader>
 
               <div>
-                <h3 className="!text-[1.5vw]  !font-semibold text-[#1F664B] !mb-0 flex items-center justify-center gap-2">
+                <h3 className="!text-[2.7vh] leading-[2.7vh] !font-semibold text-[#1F664B] !mb-0 flex items-center justify-center gap-2">
                   <img
                     src="/icons/patientMix1.svg"
                     alt="mix 1"
@@ -80,7 +80,7 @@ export default function Patient() {
                   />
                   54%
                 </h3>
-                <h3 className="!text-[1.5vw]  !font-semibold text-[#1F664B] !mb-0 flex items-center justify-center gap-2 ">
+                <h3 className="!text-[2.7vh] leading-[2.7vh]  !font-semibold text-[#1F664B] !mb-0 flex items-center justify-center gap-2 ">
                   <img
                     src="/icons/patientMix2.svg"
                     alt="mix 2"
@@ -90,7 +90,7 @@ export default function Patient() {
                 </h3>
               </div>
 
-              <h6 className="text-[#1F664B]  !font-normal !text-[0.808vw] !mb-0">
+              <h6 className="text-[#1F664B]  !font-normal !text-[1.48vh] !mb-0">
                 Based on this quarter&#39;s visit data
               </h6>
             </div>
@@ -101,21 +101,21 @@ export default function Patient() {
                   Top Postal Code
                 </MiniHeader>
 
-                <h3 className="!text-[1.5vw]  !font-semibold text-[#1F664B] !mb-0 flex items-center justify-center gap-2">
+                <h3 className="!text-[2.7vh] leading-[2.7vh]   !font-semibold text-[#1F664B] !mb-0 flex items-center justify-center gap-2">
                   9% from
                 </h3>
-                <h3 className="!text-[1.5vw]  !font-semibold text-[#1F664B] !mb-0 flex items-center justify-center gap-2">
+                <h3 className="!text-[2.7vh] leading-[2.7vh]   !font-semibold text-[#1F664B] !mb-0 flex items-center justify-center gap-2">
                   101241
                 </h3>
               </div>
 
-              <h6 className="text-[#1F664B]  !font-normal !text-[0.808vw] !mb-0">
+              <h6 className="text-[#1F664B]  !font-normal !text-[1.48vh] !mb-0">
                 Victoria Island
               </h6>
             </div>
           </div>
 
-          <div className="!mt-5">
+          <div className="!mt-[2.037vh]">
             <MonthlyRevenueDonut title="Demographic Breakdown" total={10343} />
           </div>
           <div className="!mt-[2.222vh] ">

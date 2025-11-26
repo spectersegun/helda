@@ -265,6 +265,7 @@ export default function MarketBenchmarkingChart({
 
       <div
         style={{
+          // height: `${Math.round((35.704 / 100) * window.innerHeight)}px`,
           height: `${Math.round((35.704 / 100) * window.innerHeight)}px`,
           marginTop: `${Math.round((3.704 / 100) * window.innerHeight)}px`,
           width: "100%",
